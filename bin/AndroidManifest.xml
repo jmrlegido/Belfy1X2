@@ -1,17 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jm.q1x2"
-    android:versionCode="1"
-    android:versionName="1.0" >
+      package="jm.q1x2"
+      android:versionCode="19"
+      android:versionName="3.4"
+      android:installLocation="auto">
+    <uses-sdk android:minSdkVersion="8" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />   
 
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="21" />
+    <application android:name="Belfy1x2App" android:icon="@drawable/icono_belfy1x2_32x32" android:label="@string/app_name">
+        <activity android:name="jm.q1x2.activities.Jm1x2Principal" android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:label="Quinielas" android:name="jm.q1x2.activities.Quinielas"/>
+        <activity android:label="Equipos" android:name="jm.q1x2.activities.Equipos"/>
+        <activity android:label="Config" android:name="jm.q1x2.activities.Config"/>
+        <activity android:label="Usuarios" android:name="jm.q1x2.activities.Usuarios"/>
 
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        <activity android:label="@string/activ_tit_usuarionuevo" android:name="jm.q1x2.activities.UsuarioNuevo" android:theme="@android:style/Theme.Dialog" />
+        <activity android:label="@string/activ_tit_usuariomodif" android:name="jm.q1x2.activities.UsuarioModificar" android:theme="@android:style/Theme.Dialog"/>
+
+        <activity android:label="Equipos - calidad intrínseca" android:name="jm.q1x2.activities.ConfigEquiposCalidadIntrinseca" />
+        <activity android:label="Configuración" android:name="jm.q1x2.activities.ConfigEquipoCalidadIntrinseca" />
+        <activity android:label="Parámetros quinielas" android:name="jm.q1x2.activities.ConfigParametrosQuinielas" />        
+        
+        <activity android:label="Resultados" android:name="jm.q1x2.activities.EquipoResultados" />
+        <activity android:label="Estadísticas" android:name="jm.q1x2.activities.EquipoEstadisticas" />
+
+        <activity android:label="Quiniela de la semana" android:name="jm.q1x2.activities.QuinielaHacer"/>
+        <activity android:label="Hacer quiniela manualmente" android:name="jm.q1x2.activities.QuinielaHacerManual" android:screenOrientation="portrait"/>        
+        <activity android:label="Grabar quiniela" android:name="jm.q1x2.activities.QuinielaGrabar" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:label="Quinielas de la última jornada" android:name="jm.q1x2.activities.QuinielaComprobarSemanaPasada" />
+        <activity android:label="Seguir quinielas en tiempo real" android:name="jm.q1x2.activities.QuinielaComprobarEstaSemanaEnTiempoReal" />
+        <activity android:label="Todas las quinielas" android:name="jm.q1x2.activities.QuinielaVerResultadosTodas"/>
+        <activity android:label="Resultados de quiniela" android:name="jm.q1x2.activities.QuinielaVerPronostico" />        
+        <activity android:label="Quiniela premiada" android:name="jm.q1x2.activities.QuinielaVerPronosticoNotif"  android:theme="@android:style/Theme.Dialog"  />        
+        <activity android:label="Grabar patrón" android:name="jm.q1x2.activities.QuinielaGrabarPatron" android:theme="@android:style/Theme.Dialog" />
+        <activity android:label="Cargar patrón" android:name="jm.q1x2.activities.QuinielaCargarPatron" android:theme="@android:style/Theme.Dialog" />
+
+        <activity android:label="Información" android:name="jm.q1x2.activities.AcercaDe" android:theme="@android:style/Theme.Dialog" />       
+        <activity android:label="Histórico de cambios" android:name="jm.q1x2.activities.Changelog" />       
     </application>
-
 </manifest>

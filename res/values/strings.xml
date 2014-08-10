@@ -1,5 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Belfy1X2</string>
+ 
+    <string name="menu_anadir">Añadir usuario</string>
+    <string name="lbl_usuarionuevo_nombre">Nombre:</string>
 
-    <string name="app_name">Belfy1x2</string>
+    <string name="activ_tit_usuarionuevo">Nuevo Usuario</string>
+    <string name="activ_tit_usuariomodif">Modificar Usuario</string>
 
+    <string name="titulo_usuarios">Usuarios:</string>
+    <string name="titulo_usuarionuevo">Nuevo Usuario</string>
+    <string name="titulo_usuariomodif">Modificar Usuario</string>
+    
+    <string name="boton_aceptar">Aceptar</string>
+    <string name="boton_cancelar">Cancelar</string>
+    <string name="boton_eliminar">Eliminar</string>
+    <string name="boton_anadir_usuario">Añadir usuario</string>
+	        
 </resources>
