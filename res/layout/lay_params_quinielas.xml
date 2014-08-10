@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent" android:layout_height="match_parent"
+    >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/lista_params_quinielas" 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:layout_weight="1">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"
+    >
+	<TextView 
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Aleatoriedad (0-100):"
+		/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent" android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    >
+		<SeekBar android:id="@+id/pq_aleatoriedad_barra" 
+				 android:layout_height="wrap_content" android:layout_width="wrap_content"
+				 android:max="100"
+				 android:minWidth="240dp"
+				 android:paddingRight="5dp"
+				 android:secondaryProgress="24"
+				 android:clickable="true"				 
+				 />
+		<TextView android:id="@+id/pq_aleatoriedad_valor"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:width="52dp"			
+			android:text="100"
+			android:textSize="25dp"
+			android:singleLine="true"
+			android:gravity="right"			
+			/>
+	</LinearLayout>	
+
+	<TextView 
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Calidad intrínseca (0-100):"
+		/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent" android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    >
+		<SeekBar android:id="@+id/pq_calidad_intrinseca_barra" 
+				 android:layout_height="wrap_content" android:layout_width="wrap_content"
+				 android:max="100"
+				 android:minWidth="240dp"
+				 android:paddingRight="5dp"
+				 android:secondaryProgress="24"
+				 android:clickable="true"				 
+				 />
+		<TextView android:id="@+id/pq_calidad_intrinseca_valor"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:width="52dp"			
+			android:text="100"
+			android:textSize="25dp"
+			android:singleLine="true"
+			android:gravity="right"			
+			/>
+	</LinearLayout>	
+
+	<TextView 
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Factor campo (0-100):"
+		/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent" android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    >
+		<SeekBar android:id="@+id/pq_factor_campo_barra" 
+				 android:layout_height="wrap_content" android:layout_width="wrap_content"
+				 android:max="100"
+				 android:minWidth="240dp"
+				 android:paddingRight="5dp"
+				 android:secondaryProgress="24"
+				 android:clickable="true"				 
+				 />
+		<TextView android:id="@+id/pq_factor_campo_valor"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:width="52dp"			
+			android:text="100"
+			android:textSize="25dp"
+			android:singleLine="true"
+			android:gravity="right"			
+			/>
+	</LinearLayout>	
+
+	<TextView 
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Golaveraje total (0-100):"
+		/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent" android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    >
+		<SeekBar android:id="@+id/pq_golaveraje_total_barra" 
+				 android:layout_height="wrap_content" android:layout_width="wrap_content"
+				 android:max="100"
+				 android:minWidth="240dp"
+				 android:paddingRight="5dp"
+				 android:secondaryProgress="24"
+				 android:clickable="true"				 
+				 />
+		<TextView android:id="@+id/pq_golaveraje_total_valor"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:width="52dp"			
+			android:text="100"
+			android:textSize="25dp"
+			android:singleLine="true"
+			android:gravity="right"			
+			/>
+	</LinearLayout>	
+
+	<TextView 
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Golaveraje como local/visitante (0-100):"
+		/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent" android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    >
+		<SeekBar android:id="@+id/pq_golaveraje_localvisit_barra" 
+				 android:layout_height="wrap_content" android:layout_width="wrap_content"
+				 android:max="100"
+				 android:minWidth="240dp"
+				 android:paddingRight="5dp"
+				 android:secondaryProgress="24"
+				 android:clickable="true"				 
+				 />
+		<TextView android:id="@+id/pq_golaveraje_localvisit_valor"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:width="52dp"			
+			android:text="100"
+			android:textSize="25dp"
+			android:singleLine="true"
+			android:gravity="right"			
+			/>
+	</LinearLayout>	
+
+	<TextView 
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Puntos por partido (0-100):"
+		/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent" android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    >
+		<SeekBar android:id="@+id/pq_puntos_partido_barra" 
+				 android:layout_height="wrap_content" android:layout_width="wrap_content"
+				 android:max="100"
+				 android:minWidth="240dp"
+				 android:paddingRight="5dp"
+				 android:secondaryProgress="24"
+				 android:clickable="true"				 
+				 />
+		<TextView android:id="@+id/pq_puntos_partido_valor"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:width="52dp"			
+			android:text="100"
+			android:textSize="25dp"
+			android:singleLine="true"
+			android:gravity="right"			
+			/>
+	</LinearLayout>	
+
+	<TextView 
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Puntos por partido como local/visitante (0-100):"
+		/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent" android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    >
+		<SeekBar android:id="@+id/pq_puntos_partido_localvisit_barra" 
+				 android:layout_height="wrap_content" android:layout_width="wrap_content"
+				 android:max="100"
+				 android:minWidth="240dp"
+				 android:paddingRight="5dp"
+				 android:secondaryProgress="24"
+				 android:clickable="true"				 
+				 />
+		<TextView android:id="@+id/pq_puntos_partido_localvisit_valor"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:width="52dp"			
+			android:text="100"
+			android:textSize="25dp"
+			android:singleLine="true"
+			android:gravity="right"			
+			/>
+	</LinearLayout>	
+
+	<TextView 
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Últimos 4 partidos (0-100):"
+		/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent" android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    >
+		<SeekBar android:id="@+id/pq_ultimos4_barra" 
+				 android:layout_height="wrap_content" android:layout_width="wrap_content"
+				 android:max="100"
+				 android:minWidth="240dp"
+				 android:paddingRight="5dp"
+				 android:secondaryProgress="24"
+				 android:clickable="true"				 
+				 />
+		<TextView android:id="@+id/pq_ultimos4_valor"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:width="52dp"			
+			android:text="100"
+			android:textSize="25dp"
+			android:singleLine="true"
+			android:gravity="right"			
+			/>
+	</LinearLayout>	
+
+	<TextView 
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Últimos 4 partidos como local/visitante (0-100):"
+		/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent" android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    >
+		<SeekBar android:id="@+id/pq_ultimos4_localvisit_barra" 
+				 android:layout_height="wrap_content" android:layout_width="wrap_content"
+				 android:max="100"
+				 android:minWidth="240dp"
+				 android:paddingRight="5dp"
+				 android:secondaryProgress="24"
+				 android:clickable="true"				 
+				 />
+		<TextView android:id="@+id/pq_ultimos4_localvisit_valor"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:width="52dp"			
+			android:text="100"
+			android:textSize="25dp"
+			android:singleLine="true"
+			android:gravity="right"			
+			/>
+	</LinearLayout>	
+</LinearLayout>	
+</ScrollView>
+
+<LinearLayout  
+	android:layout_height="wrap_content" android:layout_width="match_parent"
+>
+	<Button android:id="@+id/pq_boton_aceptar"
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:text="@string/boton_aceptar" 
+	/>
+   	<Button android:id="@+id/pq_boton_cancelar"
+	android:layout_width="wrap_content" android:layout_height="wrap_content" 
+	android:text="@string/boton_cancelar" 
+	/>
+</LinearLayout>	
+</LinearLayout>

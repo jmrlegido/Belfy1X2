@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1">
+<TextView android:id="@+id/texto_etiqueta" 
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:text="@string/lbl_usuarionuevo_nombre" /> <!-- como valor por defecto se pone "Nombre: " -->
+<EditText android:id="@+id/valor" 
+	android:layout_width="match_parent" android:layout_height="wrap_content"
+	android:singleLine="true" />
+<LinearLayout android:id="@+id/linearLayout2" 
+	android:layout_height="wrap_content" android:layout_width="wrap_content" 
+	android:orientation="horizontal" 
+	>
+	<Button android:id="@+id/boton_aceptar"
+		android:onClick="boton_aceptar"
+		android:layout_width="wrap_content" android:layout_height="wrap_content" 
+		android:text="@string/boton_aceptar" />
+	<Button android:id="@+id/boton_cancelar"
+		android:onClick="boton_cancelar"
+		android:layout_width="wrap_content" android:layout_height="wrap_content" 
+		android:text="@string/boton_cancelar" />
+</LinearLayout>
+	
+</LinearLayout>

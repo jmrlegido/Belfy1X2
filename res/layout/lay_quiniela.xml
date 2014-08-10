@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1">
+	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:layout_weight="1">
+    
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:orientation="vertical"
+		    android:layout_width="fill_parent" android:layout_height="wrap_content"
+		    >
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			    android:orientation="vertical"
+				android:paddingTop="15dp"
+				android:paddingBottom="15dp"  
+			    android:layout_width="fill_parent" android:layout_height="wrap_content"
+			    >
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales1" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p1_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p1_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p1_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales2" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p2_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p2_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p2_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales3" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p3_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p3_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p3_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales4" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p4_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p4_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p4_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales5" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p5_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p5_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p5_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales6" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p6_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p6_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p6_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales7" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p7_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p7_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p7_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales8" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p8_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p8_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p8_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales9" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p9_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p9_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p9_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales10" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p10_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p10_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p10_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales11" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p11_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p11_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p11_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales12" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p12_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p12_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p12_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales13" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p13_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p13_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p13_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales14" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p14_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p14_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p14_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/rivales15" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<ImageView
+							android:id="@+id/p15_1"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p15_x"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+						<ImageView
+							android:id="@+id/p15_2"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			
+			</LinearLayout>	
+			
+			
+			<LinearLayout
+				android:id="@+id/quiniela_botonera"   
+				android:layout_height="wrap_content" 
+				android:layout_width="match_parent" 
+				android:orientation="horizontal" 
+				>
+				<Button android:id="@+id/boton_grabar_quiniela"
+					android:layout_width="match_parent" 
+					android:layout_height="wrap_content" 
+					android:text="Grabar esta quiniela" />
+					
+				<!-- este botón por defecto es invisible. Sólo se mostrará en las quinielas premiadas 
+						(las que se acceden desde la barra de notificaciones) -->					
+				<Button android:id="@+id/boton_aceptar"
+					android:visibility="invisible"
+					android:layout_width="match_parent" 
+					android:layout_height="wrap_content" 
+					android:text="Aceptar"
+					android:onClick="btn_aceptar" />
+			</LinearLayout>
+		</LinearLayout>
+	</ScrollView>	
+</LinearLayout>

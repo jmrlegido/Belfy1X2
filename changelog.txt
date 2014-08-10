@@ -1,0 +1,37 @@
+[v3.2] versionCode 16
+	- eliminada notificación 'partidos_suspendidos_corregidos' y todo lo relativo a ello en programa
+	- se tiene la posibilidad de anular ciertas versiones de la aplicación. Se controla por la notificación 'versioncode_minimo'
+
+
+[v3.1] versionCode 15
+	- Nuevo parámetro en notificaciones: 'cambios_datos_generales'
+		Valdrá para hacer cualquier tipo de cambio de datos (son ficheros .sql) cada vez que se inicia el programa.
+
+[v3.0] versionCode 14
+	- Corregido bug: ahora ya funciona toda la mecánica cuando se detecta un cambio de temporada
+			(en el parámetro 'temporada_actual' de las notificaciones)
+
+[entre v1.6 y 2.3]
+	- (olvidé documentarlo)
+
+[v1.6]
+	- poder hacer quinielas con n dobles, m tripes ...
+	- [corregido este error] la primera y segunda div. no tienen por que ir por la misma jornada. 
+		Por lo tanto el parámetro de notifxxxxx.properties deberá distinguir div1 y div2.
+		De igual forma, hay que controlar que pueda haber actualizaciones en cualquiera de las 2 
+	- para ver los pronósticos o eliminar una quiniela hay que hacer "menú contextual". Que también saga con un simple click.
+	- No deja meter nombre de quiniela repetido en esa jornada, pero puede ser igual a otra de otra jornada.
+	- Se permiten nombres en blanco de quinielas. En este caso no se chequea lo del nombre repetido.
+	- Ahora se podrán corregir en tiempo real las quinielas hechas (se mostrará el número de aciertos sobre los partidos ya finalizados).
+	- no deja hacer quiniela p.e. 20120119 si estamos en febrero
+	- En las quinielas premiadas (aciertos >=10):
+		(1) que se resalte (p.e. que parpadee el nombre de la quiniela con un "¡premiado!")
+		(2) que lo escriba en otro log distinto del de descargas
+		(3) que le mande una notificación al usuario
+	- no sé por qué los programas clientes no se enteran de la actualización de los contenidos del recurso  http://cdtenis-trescantos.com/resultados/jm/jm1x2/jm1x2_notifs.properties
+		Se ha creado un .php (http://cdtenis-trescantos.com/resultados/jm/jm1x2/jm1x2_notifs.php) que no tendrá el problema de caché y que lo leerá en tiempo real.
+
+[v1.5]
+	- Primera versión realmente estable con la funcionalidad básica.
+	- Permite mover la aplicación a la tarjeta.
+	

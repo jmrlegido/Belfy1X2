@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1">
+
+	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:layout_weight="1">
+    
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:orientation="vertical"
+		    android:layout_width="fill_parent" android:layout_height="wrap_content"
+		    >
+		    <TextView android:id="@+id/textView1" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+				android:text="La configuración actual tiene los siguientes valores:" />
+			
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			    android:orientation="vertical"
+				android:paddingTop="15dp"
+				android:paddingBottom="15dp"  
+			    android:layout_width="fill_parent" android:layout_height="wrap_content"
+			    >
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="Aleatoriedad:" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/aleatoriedad" android:paddingLeft="5dp"  
+							/>
+					</LinearLayout>
+				</LinearLayout>
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="Calidad intrínseca:" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/calidad_intrinseca" android:paddingLeft="5dp"
+							/>
+					</LinearLayout>
+				</LinearLayout>	
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="Factor campo:" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/factor_campo" android:paddingLeft="5dp" 
+							/>
+					</LinearLayout>
+				</LinearLayout>	
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="Golaveraje total:" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/golaveraje_total" android:paddingLeft="5dp" 
+							/>
+					</LinearLayout>
+				</LinearLayout>	
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="Golaveraje como local/visitante:" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/golaveraje_localvisit" android:paddingLeft="5dp" 
+							/>
+					</LinearLayout>
+				</LinearLayout>	
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="Puntos por partido:" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/ptos_partido" android:paddingLeft="5dp" 
+							/>
+					</LinearLayout>
+				</LinearLayout>	
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="Puntos por partido local/visit.:" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/ptos_partido_localvisit" android:paddingLeft="5dp" 
+							/>
+					</LinearLayout>
+				</LinearLayout>	
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="Últimos 4 partidos:" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/ult4partidos" android:paddingLeft="5dp" 
+							/>
+					</LinearLayout>
+				</LinearLayout>	
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="wrap_content" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="Últimos 4 partidos local/visit.:" android:textStyle="bold"
+							/>
+					</LinearLayout>
+					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal" android:gravity="right"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    >
+						<TextView 
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:id="@+id/ult4partidos_localvisit" android:paddingLeft="5dp" 
+							/>
+					</LinearLayout>
+				</LinearLayout>
+			</LinearLayout>	
+
+
+			<LinearLayout android:id="@+id/linearLayout2" 
+				android:layout_height="wrap_content" 
+				android:layout_width="fill_parent" 
+				android:orientation="horizontal" 
+				android:gravity="right" 
+				>
+				<Button android:id="@+id/boton_cambiar_valores"
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:text="Cambiar valores" />
+			</LinearLayout>
+
+			
+			<!-- dobles y triples -->
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent" android:layout_height="wrap_content"
+			    >
+			    
+			    <!-- triples -->
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"				    
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<TextView 
+						android:id="@+id/triples_label"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:layout_gravity="center_vertical|left"
+						android:text="Triples (0-9): "
+						/>
+				    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    android:layout_gravity="center_vertical|right"
+					    >
+						<SeekBar android:id="@+id/triples" 
+								 android:layout_height="wrap_content" android:layout_width="0px" android:layout_weight="1"
+								 android:max="9"
+								 android:paddingLeft="9dp"
+								 android:paddingRight="9dp"
+								 android:clickable="true"
+								 android:minWidth="100dp"				 
+								 />
+						<TextView android:id="@+id/triples_valor"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text=" 0"
+							android:textSize="22dp"
+							android:singleLine="true"
+							android:layout_gravity="right"			
+							/>
+					</LinearLayout>	
+				</LinearLayout>			
+
+				<!-- dobles -->
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent" android:layout_height="wrap_content"
+				    >
+					<TextView 
+						android:id="@+id/dobles_label" 
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content" 
+						android:layout_gravity="center_vertical|left"
+						android:text="Dobles (0-14): "
+						/>
+				    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					    android:orientation="horizontal"
+					    android:layout_width="fill_parent" android:layout_height="wrap_content"
+					    android:layout_gravity="center_vertical|right"
+					    >
+						<SeekBar android:id="@+id/dobles" 
+								 android:layout_height="wrap_content" android:layout_width="0px" android:layout_weight="1"
+								 android:max="14"
+								 android:paddingLeft="9dp"								 
+								 android:paddingRight="9dp"
+								 android:clickable="true"
+								 android:minWidth="100dp"
+								 />
+						<TextView android:id="@+id/dobles_valor"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:text="  0"
+							android:textSize="22dp"
+							android:singleLine="true"
+							android:layout_gravity="right"			
+							/>
+					</LinearLayout>	
+				</LinearLayout>			
+
+			</LinearLayout>  <!-- fin dobles y triples -->			
+			
+			<LinearLayout android:id="@+id/linearLayout2" 
+				android:layout_height="wrap_content" 
+				android:layout_width="fill_parent"				 
+				android:orientation="horizontal"
+				android:gravity="right" 
+				>
+				<Button android:id="@+id/boton_hacer_quiniela"
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:text="Hacer quiniela" />
+			</LinearLayout>
+		</LinearLayout>
+	</ScrollView>			
+</LinearLayout>

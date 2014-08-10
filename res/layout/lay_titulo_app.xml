@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_layout_tituloApp" 
+	android:layout_width="fill_parent" android:layout_height="fill_parent" 
+	android:orientation="horizontal"
+	>
+	<!-- el texto 'Belfy1X2 v0.9' se cambia desde código (no debería verse nunca)  -->
+    <TextView
+       android:id="@+id/app_nombreyVersion"
+       android:text="Belfy1X2 v0.9"  
+       android:textColor="@android:color/white"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:gravity="left"
+	/>
+    <TextView
+       android:id="@+id/app_usuario"
+       android:textColor="@color/color_usuario"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="right"
+	/>
+</LinearLayout>

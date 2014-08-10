@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS equipos;
+DROP TABLE IF EXISTS equipos_temporada;
+DROP TABLE IF EXISTS equipos_usuarios;
+DROP TABLE IF EXISTS valoresdefecto_equipos_calidadintrinseca;
+DROP TABLE IF EXISTS jornadas;
+DROP TABLE IF EXISTS pesos_factores;
+DROP TABLE IF EXISTS quinielas;
+DROP TABLE IF EXISTS quinielas_partidos;
+DROP TABLE IF EXISTS quinielas_usuarios;
+DROP TABLE IF EXISTS quinielas_disponibles_server;
+DROP TABLE IF EXISTS quinielas_partidos_disponibles_server;
+DROP TABLE IF EXISTS temporadas;
+DROP TABLE IF EXISTS usuarios;

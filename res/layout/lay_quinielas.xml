@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/hacer_quiniela_esta_semana"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:background="@android:drawable/list_selector_background"
+    android:padding="6dp">
+    <ImageView
+        android:src="@drawable/ic_hacer_quiniela"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="6dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="55px" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="fill_parent"        
+        android:gravity="center_vertical">
+        <TextView
+            android:text="Hacer quiniela de esta semana"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+        />
+    </LinearLayout>
+</LinearLayout>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/hacer_quiniela_manual"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:background="@android:drawable/list_selector_background"
+    android:padding="6dp">
+    <ImageView
+        android:src="@drawable/ic_quinielas_manual"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="6dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="55px" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="fill_parent"        
+        android:gravity="center_vertical">
+        <TextView
+            android:text="Quiniela manual"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+        />
+    </LinearLayout>
+</LinearLayout>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/comprobar_quinielas_semana_pasada"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:background="@android:drawable/list_selector_background"
+    android:padding="6dp">
+    <ImageView        
+    	android:src="@drawable/ic_corregir_quiniela_semana_pasada"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="6dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="55px" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical">
+        <TextView
+            android:text="Corregir quinielas de la semana pasada"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+        />
+    </LinearLayout>
+</LinearLayout>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/ver_quinielas_pasadas"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:background="@android:drawable/list_selector_background"
+    android:padding="6dp">
+    <ImageView        
+    	android:src="@drawable/ic_quinielas_ver_todas"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="6dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="55px" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical">
+        <TextView
+            android:text="Ver todas las quinielas hechas"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+        />
+    </LinearLayout>
+</LinearLayout>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/ver_quinielas_tiempo_real"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:background="@android:drawable/list_selector_background"
+    android:padding="6dp">
+    <ImageView        
+    	android:src="@drawable/ic_quinielas_tiempo_real"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="6dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="55px" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical">
+        <TextView
+            android:text="Seguir quinielas en tiempo real"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+        />
+    </LinearLayout>
+</LinearLayout>
+
+
+
+</LinearLayout>	
