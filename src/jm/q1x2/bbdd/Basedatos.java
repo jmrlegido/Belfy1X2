@@ -30,9 +30,12 @@ public class Basedatos
 
     public static void db_execSQL_log(SQLiteDatabase db, String sql)
     {
-    	db.execSQL(sql);    	
-		if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-			Log.d(Constantes.LOG_TAG, "sql> "+sql);
+    	if (!sql.startsWith("#"))   // sería un comentario
+    	{
+	    	db.execSQL(sql);    	
+			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
+				Log.d(Constantes.LOG_TAG, "sql> "+sql);
+    	}
     }
 	
 }

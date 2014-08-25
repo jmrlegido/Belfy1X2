@@ -1,3 +1,5 @@
+# para comentar una línea usar # al inicio
+
 DROP TABLE IF EXISTS equipos;                                 
 DROP TABLE IF EXISTS equipos_temporada;                       
 DROP TABLE IF EXISTS equipos_usuarios;                        
@@ -27,7 +29,7 @@ CREATE TABLE quinielas_partidos (id integer PRIMARY KEY  AUTOINCREMENT  NOT NULL
 CREATE TABLE quinielas_partidos_disponibles_server (id integer PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , id_quiniela integer NOT NULL, id_local varchar NOT NULL , id_visitante varchar NOT NULL , partido_num integer NOT NULL , resultado_1x2 CHAR  );
 CREATE TABLE quinielas_usuarios (id_quiniela integer NOT NULL , id_usuario integer NOT NULL , PRIMARY KEY (id_quiniela, id_usuario));
 CREATE TABLE temporadas (id integer PRIMARY KEY  NOT NULL  UNIQUE , nombre VARCHAR NOT NULL );
-CREATE TABLE usuarios (id integer PRIMARY KEY  AUTOINCREMENT  NOT NULL , nombre varchar NOT NULL );
+#CREATE TABLE usuarios (id integer PRIMARY KEY  AUTOINCREMENT  NOT NULL , nombre varchar NOT NULL );
 CREATE TABLE valoresdefecto_equipos_calidadintrinseca (id_temporada integer NOT NULL , id_equipo varchar NOT NULL , calidad_intrinseca integer NOT NULL,  PRIMARY KEY (id_temporada, id_equipo));
 
 insert into pesos_factores (id_usuario, aleatoriedad, calidad_intrinseca, factor_campo, golaveraje, golaveraje_localvisit, puntos_partido, puntos_partido_localvisit, ultimos4, ultimos4_localvisit) values (6,11,22,33,44,55,66,77,88,99);
@@ -66,7 +68,7 @@ insert into equipos values ('leg', 'Leganés');
 insert into equipos values ('lla', 'Llagostera');
 insert into equipos values ('lug', 'Lugo');
 insert into equipos values ('mca', 'Mallorca');
-insert into equipos values ('mur', 'Murcia');
+insert into equipos values ('mir', 'Mirandés');
 insert into equipos values ('num', 'Numancia');
 insert into equipos values ('osa', 'Osasuna');
 insert into equipos values ('pon', 'Ponferradina');
@@ -110,7 +112,7 @@ insert into equipos_temporada (id_temporada, id_equipo, division) values (1415, 
 insert into equipos_temporada (id_temporada, id_equipo, division) values (1415, 'lla', 2);
 insert into equipos_temporada (id_temporada, id_equipo, division) values (1415, 'lug', 2);
 insert into equipos_temporada (id_temporada, id_equipo, division) values (1415, 'mca', 2);
-insert into equipos_temporada (id_temporada, id_equipo, division) values (1415, 'mur', 2);
+insert into equipos_temporada (id_temporada, id_equipo, division) values (1415, 'mir', 2);
 insert into equipos_temporada (id_temporada, id_equipo, division) values (1415, 'num', 2);
 insert into equipos_temporada (id_temporada, id_equipo, division) values (1415, 'osa', 2);
 insert into equipos_temporada (id_temporada, id_equipo, division) values (1415, 'pon', 2);
@@ -147,7 +149,7 @@ insert into valoresdefecto_equipos_calidadintrinseca (id_temporada, id_equipo, c
 insert into valoresdefecto_equipos_calidadintrinseca (id_temporada, id_equipo, calidad_intrinseca) values (1415, 'osa',	90);
 insert into valoresdefecto_equipos_calidadintrinseca (id_temporada, id_equipo, calidad_intrinseca) values (1415, 'vad',	90);
 insert into valoresdefecto_equipos_calidadintrinseca (id_temporada, id_equipo, calidad_intrinseca) values (1415, 'bar2', 85);
-insert into valoresdefecto_equipos_calidadintrinseca (id_temporada, id_equipo, calidad_intrinseca) values (1415, 'mur',	81);
+insert into valoresdefecto_equipos_calidadintrinseca (id_temporada, id_equipo, calidad_intrinseca) values (1415, 'mir',	81);
 insert into valoresdefecto_equipos_calidadintrinseca (id_temporada, id_equipo, calidad_intrinseca) values (1415, 'gij',	77);
 insert into valoresdefecto_equipos_calidadintrinseca (id_temporada, id_equipo, calidad_intrinseca) values (1415, 'lpa',	73);
 insert into valoresdefecto_equipos_calidadintrinseca (id_temporada, id_equipo, calidad_intrinseca) values (1415, 'rec',	65);

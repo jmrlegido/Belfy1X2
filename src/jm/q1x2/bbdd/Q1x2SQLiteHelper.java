@@ -105,6 +105,17 @@ public class Q1x2SQLiteHelper extends SQLiteOpenHelper
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAnterior, int versionNueva) 
     {
+    	/*
+    	 * En       android:versionCode="20"     android:versionName="4.0"
+				al ser la primera versión de la temporada 2014/15, no hay actualización.
+				Siempre será onCreate
+		   Las 2 siguientes líneas SÓLO deberían estar presentes en esta versión.
+		   Todas las   android:versionCode  superiores a 20 de la temporada 2014/15, no deben tener estas 2 líneas 
+    	 */
+    	onCreate(db);
+    	if (true) return;
+    	
+    	
     	try
     	{
 			if (Log.isLoggable(Constantes.LOG_TAG, Log.INFO))

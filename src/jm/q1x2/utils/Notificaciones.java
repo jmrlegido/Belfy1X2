@@ -48,6 +48,8 @@ public class Notificaciones
     	boolean ret= false;
     	if (propNotificaciones==null)
     		ret= true;
+jmVoyPorAqui    	else if (Config.esDesarrollo())
+    		ret= true;
     	else
     	{
 	    	/*
