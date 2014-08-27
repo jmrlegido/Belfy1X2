@@ -32,9 +32,11 @@ public class Basedatos
     {
     	if (!sql.startsWith("#"))   // sería un comentario
     	{
-	    	db.execSQL(sql);    	
 			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
 				Log.d(Constantes.LOG_TAG, "sql> "+sql);
+	    	db.execSQL(sql);    	
+			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
+				Log.d(Constantes.LOG_TAG, "\tsql << OK ");
     	}
     }
 	

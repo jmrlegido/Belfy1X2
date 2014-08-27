@@ -88,7 +88,7 @@ public class Q1x2SQLiteHelper extends SQLiteOpenHelper
     		if (sqlCreate == null)
     			sqlCreate= getSentenciasSQLDeFichero("jm1x2_create.sql");
     		for (String sql : sqlCreate)
-    			Basedatos.db_execSQL_log(db, sql);
+    			Basedatos.db_execSQL_log(db, sql.trim());
     	}
     	catch (FileNotFoundException e) 
     	{

@@ -1,4 +1,4 @@
-# para comentar una línea usar # al inicio
+# para comentar una línea usar # al inicio y finalizar con punto y coma ;
 
 DROP TABLE IF EXISTS equipos;                                 
 DROP TABLE IF EXISTS equipos_temporada;                       
@@ -25,11 +25,11 @@ CREATE TABLE patrones_pesos_factores (id integer PRIMARY KEY  NOT NULL  UNIQUE ,
 CREATE TABLE pesos_factores (id integer PRIMARY KEY  NOT NULL  UNIQUE , id_usuario integer NOT NULL , aleatoriedad integer NOT NULL , calidad_intrinseca integer NOT NULL , factor_campo integer NOT NULL , golaveraje integer NOT NULL , golaveraje_localvisit integer NOT NULL , puntos_partido integer NOT NULL , puntos_partido_localvisit integer NOT NULL , ultimos4 integer NOT NULL , ultimos4_localvisit integer NOT NULL );
 CREATE TABLE quinielas (id integer PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , id_temporada integer NOT NULL , fecha integer NOT NULL, nombre varchar, aciertos integer default -1  );
 CREATE TABLE quinielas_disponibles_server (id integer PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , id_temporada integer NOT NULL , fecha integer NOT NULL, disponible_correccion bool default 0  );
-CREATE TABLE quinielas_partidos (id integer PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , id_quiniela integer NOT NULL, id_local varchar NOT NULL , id_visitante varchar NOT NULL , partido_num integer NOT NULL , resultado_1x2 CHAR NOT NULL );
-CREATE TABLE quinielas_partidos_disponibles_server (id integer PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , id_quiniela integer NOT NULL, id_local varchar NOT NULL , id_visitante varchar NOT NULL , partido_num integer NOT NULL , resultado_1x2 CHAR  );
+CREATE TABLE quinielas_partidos (id integer PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , id_quiniela integer NOT NULL, id_local varchar NOT NULL , id_visitante varchar NOT NULL , partido_num integer NOT NULL , resultado_1x2 varchar NOT NULL );
+CREATE TABLE quinielas_partidos_disponibles_server (id integer PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , id_quiniela integer NOT NULL, id_local varchar NOT NULL , id_visitante varchar NOT NULL , partido_num integer NOT NULL , resultado_1x2 varchar  );
 CREATE TABLE quinielas_usuarios (id_quiniela integer NOT NULL , id_usuario integer NOT NULL , PRIMARY KEY (id_quiniela, id_usuario));
 CREATE TABLE temporadas (id integer PRIMARY KEY  NOT NULL  UNIQUE , nombre VARCHAR NOT NULL );
-#CREATE TABLE usuarios (id integer PRIMARY KEY  AUTOINCREMENT  NOT NULL , nombre varchar NOT NULL );
+CREATE TABLE usuarios (id integer PRIMARY KEY  AUTOINCREMENT  NOT NULL , nombre varchar NOT NULL );
 CREATE TABLE valoresdefecto_equipos_calidadintrinseca (id_temporada integer NOT NULL , id_equipo varchar NOT NULL , calidad_intrinseca integer NOT NULL,  PRIMARY KEY (id_temporada, id_equipo));
 
 insert into pesos_factores (id_usuario, aleatoriedad, calidad_intrinseca, factor_campo, golaveraje, golaveraje_localvisit, puntos_partido, puntos_partido_localvisit, ultimos4, ultimos4_localvisit) values (6,11,22,33,44,55,66,77,88,99);
@@ -72,7 +72,7 @@ insert into equipos values ('mir', 'Mirandés');
 insert into equipos values ('num', 'Numancia');
 insert into equipos values ('osa', 'Osasuna');
 insert into equipos values ('pon', 'Ponferradina');
-insert into equipos values ('san', 'Racing');
+insert into equipos values ('san', 'R.Santander');
 insert into equipos values ('rec', 'Recreativo');
 insert into equipos values ('sab', 'Sabadell');
 insert into equipos values ('gij', 'S.Gijón');
