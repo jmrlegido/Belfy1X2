@@ -6,6 +6,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import jm.q1x2.activities.Jm1x2Principal.TareaSegundoPlano;
 import jm.q1x2.activities.QuinielaVerPronosticoNotif;
@@ -46,15 +47,29 @@ public class QuinielaOp
 	public static int RES_1X2= 6;
 	public static int RES_12= 7;
 	public static int RES_NO_DISPONIBLE= 9;
-	public static int RES_PLENO15_0GGOLES= 10;
-	public static int RES_PLENO15_1GGOLES= 11;
-	public static int RES_PLENO15_2GGOLES= 12;
-	public static int RES_PLENO15_MASDE2GGOLES= 13;
+	public static int RES_PLENO15_00= 10;
+	public static int RES_PLENO15_01= 11;
+	public static int RES_PLENO15_02= 12;
+	public static int RES_PLENO15_0M= 13;
+	public static int RES_PLENO15_10= 14;
+	public static int RES_PLENO15_11= 15;
+	public static int RES_PLENO15_12= 16;
+	public static int RES_PLENO15_1M= 17;
+	public static int RES_PLENO15_20= 18;
+	public static int RES_PLENO15_21= 19;
+	public static int RES_PLENO15_22= 20;
+	public static int RES_PLENO15_2M= 21;
+	public static int RES_PLENO15_M0= 22;
+	public static int RES_PLENO15_M1= 23;
+	public static int RES_PLENO15_M2= 24;
+	public static int RES_PLENO15_MM= 25;
 	
 	private static BigDecimal UMBRAL_PRONOSTICO_1X= new BigDecimal(43.6);  // es un porcentaje. Por debajo de ese valor será "1".
 	private static BigDecimal UMBRAL_PRONOSTICO_X2= new BigDecimal(50.4);  // es un porcentaje. Por encima de ese valor será "2". 
 
 	private static BigDecimal cero= new BigDecimal(0);
+	private static BigDecimal uno= new BigDecimal(1);
+	private static BigDecimal dos= new BigDecimal(2);
 	private static BigDecimal unTercio= new BigDecimal(0.3333);
 	private static BigDecimal dosTercios= new BigDecimal(0.6666);
 	
@@ -218,13 +233,20 @@ public class QuinielaOp
 	public ArrayList<ValoracionEquiposPartidoQuiniela> getValoracionesEquiposSegunCriterios(ArrayList<Partido> partidos, FactoresPesos fac, SQLiteDatabase con, int idTemporada, int idUsuario)
 	{
 		ArrayList<ValoracionEquiposPartidoQuiniela> ret= new ArrayList<ValoracionEquiposPartidoQuiniela>();
-		
-		for (int k=0; k< partidos.size()-1; k++)  // todos excepto el pleno al 15 (se hace después), que se calcula de distinta forma
+
+		String idLocal= null;
+		String idVisit= null;
+
+		/*
+		 * Primero los partidos 1 al 14.
+		 * El pleno al 15 (se hace después), que se calcula de distinta forma
+		 */
+		for (int k=0; k< partidos.size()-1; k++)  
 		{
 			Partido par= partidos.get(k);
 			
-			String idLocal= par.getIdEquipoLocal();
-			String idVisit= par.getIdEquipoVisit();
+			idLocal= par.getIdEquipoLocal();
+			idVisit= par.getIdEquipoVisit();
 		
 //			StringBuffer resumen= null;
 			BigDecimal local_puntos= new BigDecimal(0);
@@ -245,8 +267,8 @@ public class QuinielaOp
 			valorFactorEnVisit= new BigDecimal(fac.getAleatoriedad()-r);
 			local_puntos= local_puntos.add(valorFactorEnLocal);
 			visit_puntos= visit_puntos.add(valorFactorEnVisit);
-			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-				Log.d(Constantes.LOG_TAG, "[pronóstico] (1) aleatoriedad ("+fac.getAleatoriedad()+") - local: "+valorFactorEnLocal.toString()+" ; visit: "+valorFactorEnVisit.toString());
+//			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
+//				Log.d(Constantes.LOG_TAG, "[pronóstico] (1) aleatoriedad ("+fac.getAleatoriedad()+") - local: "+valorFactorEnLocal.toString()+" ; visit: "+valorFactorEnVisit.toString());
 	
 			// 2: calidad intrínseca
 			int local_calidadIntrinseca= getCalidadIntrinseca(idLocal, eqDao, idTemporada, idUsuario);
@@ -361,7 +383,7 @@ public class QuinielaOp
 		 * Aquí no entrarán en juego todos los criterios. Pongo + en los que sí entrarán y - en los que no:
 		 * 		+ aleatoriedad
 		 * 		+ calidad intrínseca
-		 * 		+ factor campo 
+		 * 		- factor campo 
 		 * 		+ golaveraje
 		 * 		+ golaveraje como local/visitante
 		 * 		- puntos por partido
@@ -369,53 +391,68 @@ public class QuinielaOp
 		 * 		+ últimos 4 partidos
 		 * 		+ últimos 4 partidos como local/visitante
 		 * 
-		 * Seguiré este algoritmo:
+		 * Lo que se acabará retornando como elemento 15 del array es:
+		 * 		ret.add(new ValoracionEquiposPartidoQuiniela(A, B));
+		 * A serán los goles del equipo local, y B los del visitante.
+		 * Si este valor es menor que 3 será ese el pronóstico (0, 1 ó 2). Si es 3 o superior, el pronóstico será M
+		 * 
+		 * Algoritmo que seguiré:
+		 * Tenemos varios criterios (c1, c2, ... ck) y varios pesos de esos criterios (p1, p2, ... pk)
+		 * El número resultante será  N/D, siendo:
+		 * 		N: c1*p1 + c2*p2 + ... + ck*pk
+		 * 		D: p1+p2+...+pk
+		 * (NOTA: c1, c2, ... , ck  tendrán como posibles valores 0,1,2,3.    El 3 representa M. )
 		 */
 		Partido par= partidos.get(partidos.size()-1);
-jm Voy por aquí			
+	
 		idLocal= par.getIdEquipoLocal();
 		idVisit= par.getIdEquipoVisit();
 	
 //			StringBuffer resumen= null;
-		BigDecimal local_puntos= new BigDecimal(0);
-		BigDecimal visit_puntos= new BigDecimal(0);
-		BigDecimal valorFactorEnLocal, valorFactorEnVisit;
+		BigDecimal local_numerador= new BigDecimal(0);
+		BigDecimal local_denominador= new BigDecimal(0);
+		BigDecimal visit_numerador= new BigDecimal(0);
+		BigDecimal visit_denominador= new BigDecimal(0);
 		
 		EquipoDao eqDao= new EquipoDao(con);
 
 //			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
 //			{
-//				Log.d(Constantes.LOG_TAG, "[pronóstico] Partido: "+idLocal+" - "+idVisit);
-//				resumen= new StringBuffer("[pronóstico] ").append(idLocal).append(" - ").append(idVisit).append(": "); 
+//				Log.d(Constantes.LOG_TAG, "[pronóstico (pleno15)] Partido: "+idLocal+" - "+idVisit);
+//				resumen= new StringBuffer("[pronóstico (pleno15)] ").append(idLocal).append(" - ").append(idVisit).append(": "); 
 //			}
 		
 		// 1: aleatoriedad
-		int r= getValorAleatoriedad(fac.getAleatoriedad());
-		valorFactorEnLocal= new BigDecimal(r);
-		valorFactorEnVisit= new BigDecimal(fac.getAleatoriedad()-r);
-		local_puntos= local_puntos.add(valorFactorEnLocal);
-		visit_puntos= visit_puntos.add(valorFactorEnVisit);
+		int local_valorAleatorioEntre0y3 = (new Random()).nextInt(3+1);   
+		local_numerador= local_numerador.add(new BigDecimal(local_valorAleatorioEntre0y3).multiply(new BigDecimal(fac.getAleatoriedad())));
+		local_denominador= local_denominador.add(new BigDecimal(fac.getAleatoriedad()));
+		
+		int visit_valorAleatorioEntre0y3 = (new Random()).nextInt(3+1);   
+		visit_numerador= visit_numerador.add(new BigDecimal(visit_valorAleatorioEntre0y3).multiply(new BigDecimal(fac.getAleatoriedad())));
+		visit_denominador= visit_denominador.add(new BigDecimal(fac.getAleatoriedad()));
+		
 		if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-			Log.d(Constantes.LOG_TAG, "[pronóstico] (1) aleatoriedad ("+fac.getAleatoriedad()+") - local: "+valorFactorEnLocal.toString()+" ; visit: "+valorFactorEnVisit.toString());
-
+			Log.d(Constantes.LOG_TAG, "[pronóstico (pleno15)] (1) aleatoriedad ("+fac.getAleatoriedad()+") - local: "+local_valorAleatorioEntre0y3+" ; visit: "+visit_valorAleatorioEntre0y3);
+		
 		// 2: calidad intrínseca
 		int local_calidadIntrinseca= getCalidadIntrinseca(idLocal, eqDao, idTemporada, idUsuario);
+		if (local_calidadIntrinseca < 40) local_calidadIntrinseca= 0;   else if (local_calidadIntrinseca < 60) local_calidadIntrinseca= 1; 
+																		else if (local_calidadIntrinseca < 80) local_calidadIntrinseca= 2; 
+																		else local_calidadIntrinseca= 3; 
+		local_numerador= local_numerador.add(new BigDecimal(local_calidadIntrinseca).multiply(new BigDecimal(fac.getCalidadIntrinseca())));
+		local_denominador= local_denominador.add(new BigDecimal(fac.getCalidadIntrinseca()));
+		
 		int visit_calidadIntrinseca= getCalidadIntrinseca(idVisit, eqDao, idTemporada, idUsuario);
-		valorFactorEnLocal= ponderarValor(local_calidadIntrinseca, visit_calidadIntrinseca, fac.getCalidadIntrinseca());
-		valorFactorEnVisit= ponderarValor(visit_calidadIntrinseca, local_calidadIntrinseca, fac.getCalidadIntrinseca());
-		local_puntos= local_puntos.add(valorFactorEnLocal);
-		visit_puntos= visit_puntos.add(valorFactorEnVisit);
-//			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-//				Log.d(Constantes.LOG_TAG, "[pronóstico] (2) calidad intrínseca ("+fac.getCalidadIntrinseca()+") - local ("+local_calidadIntrinseca+"): "+valorFactorEnLocal.toString()+" ; visit ("+visit_calidadIntrinseca+"): "+valorFactorEnVisit.toString());
+		if (visit_calidadIntrinseca < 40) visit_calidadIntrinseca= 0;   else if (visit_calidadIntrinseca < 60) visit_calidadIntrinseca= 1; 
+																		else if (visit_calidadIntrinseca < 80) visit_calidadIntrinseca= 2; 
+																		else visit_calidadIntrinseca= 3; 
+		visit_numerador= visit_numerador.add(new BigDecimal(visit_calidadIntrinseca).multiply(new BigDecimal(fac.getCalidadIntrinseca())));
+		visit_denominador= visit_denominador.add(new BigDecimal(fac.getCalidadIntrinseca()));
+		
+		if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
+			Log.d(Constantes.LOG_TAG, "[pronóstico (pleno15)] (2) calidad intrínseca ("+fac.getCalidadIntrinseca()+") - local: "+local_calidadIntrinseca+"); visit: "+visit_calidadIntrinseca+")");
 
-		// 3: factor campo 
-		BigDecimal facCampo= new BigDecimal(fac.getFactorCampo());
-		valorFactorEnLocal= facCampo.multiply(dosTercios).round(new MathContext(4));  	// 2/3 para el local
-		valorFactorEnVisit= facCampo.multiply(unTercio).round(new MathContext(4));		// 1/3 para el visitante
-		local_puntos= local_puntos.add(valorFactorEnLocal);  
-		visit_puntos= visit_puntos.add(valorFactorEnVisit);    
-//			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-//				Log.d(Constantes.LOG_TAG, "[pronóstico] (3) factor campo ("+fac.getFactorCampo()+") - local: "+valorFactorEnLocal.toString()+" ; visit: "+valorFactorEnVisit.toString());
+		// 3: factor campo 		===> criterio que no se tendrá en cuenta en el pleno al 15
 		
 		// 4: golaveraje
 	    int local_numPartidosLocal= eqDao.getNumPartidos(idTemporada, idLocal, EquipoOp.EQUIPO_LOCAL);
@@ -424,42 +461,36 @@ jm Voy por aquí
 	    int visit_numPartidosVisit= eqDao.getNumPartidos(idTemporada, idVisit, EquipoOp.EQUIPO_VISITANTE);
 		BigDecimal local_golaverajePorPartido= eqDao.getGolaverajePorPartido(idTemporada, idLocal, EquipoOp.EQUIPO_LOCAL_Y_VISITANTE, local_numPartidosLocal+local_numPartidosVisit);
 		BigDecimal visit_golaverajePorPartido= eqDao.getGolaverajePorPartido(idTemporada, idVisit, EquipoOp.EQUIPO_LOCAL_Y_VISITANTE, visit_numPartidosLocal+visit_numPartidosVisit);
-		valorFactorEnLocal= ponderarValorPorTramos(local_golaverajePorPartido, fac.getGolaveraje(), -2, 3);
-		valorFactorEnVisit= ponderarValorPorTramos(visit_golaverajePorPartido, fac.getGolaveraje(), -2, 3);
-		local_puntos= local_puntos.add(valorFactorEnLocal);
-		visit_puntos= visit_puntos.add(valorFactorEnVisit);
-//			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-//				Log.d(Constantes.LOG_TAG, "[pronóstico] (4) golaveraje ("+fac.getGolaveraje()+") - local ("+local_golaverajePorPartido.round(new MathContext(4))+"): "+valorFactorEnLocal.toString()+" ; visit ("+visit_golaverajePorPartido.round(new MathContext(4))+"): "+valorFactorEnVisit.toString());
+		if (local_golaverajePorPartido.compareTo(cero) < 0)  local_golaverajePorPartido= cero;
+		if (visit_golaverajePorPartido.compareTo(cero) < 0)  visit_golaverajePorPartido= cero;
+		
+		local_numerador= local_numerador.add(local_golaverajePorPartido.multiply(new BigDecimal(fac.getGolaveraje())));
+		local_denominador= local_denominador.add(new BigDecimal(fac.getGolaveraje()));
+
+		visit_numerador= visit_numerador.add(visit_golaverajePorPartido.multiply(new BigDecimal(fac.getGolaveraje())));
+		visit_denominador= visit_denominador.add(new BigDecimal(fac.getGolaveraje()));
+		
+		if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
+			Log.d(Constantes.LOG_TAG, "[pronóstico (pleno15)] (4) golaveraje ("+fac.getGolaveraje()+") - local: "+local_golaverajePorPartido+" ; visit: "+visit_golaverajePorPartido);
 		
 		// 5: golaveraje como local/visitante
 		BigDecimal local_golaverajePorPartidoLocal= eqDao.getGolaverajePorPartido(idTemporada, idLocal, EquipoOp.EQUIPO_LOCAL, local_numPartidosLocal);
 		BigDecimal visit_golaverajePorPartidoVisit= eqDao.getGolaverajePorPartido(idTemporada, idVisit, EquipoOp.EQUIPO_VISITANTE, visit_numPartidosVisit);
-		valorFactorEnLocal= ponderarValorPorTramos(local_golaverajePorPartidoLocal, fac.getGolaverajeLocalVisit(), -2, 3);
-		valorFactorEnVisit= ponderarValorPorTramos(visit_golaverajePorPartidoVisit, fac.getGolaverajeLocalVisit(), -2, 3);
-		local_puntos= local_puntos.add(valorFactorEnLocal);
-		visit_puntos= visit_puntos.add(valorFactorEnVisit);
-//			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-//				Log.d(Constantes.LOG_TAG, "[pronóstico] (5) golaveraje local/visit ("+fac.getGolaverajeLocalVisit()+") - local ("+local_golaverajePorPartidoLocal.round(new MathContext(4))+"): "+valorFactorEnLocal.toString()+" ; visit ("+visit_golaverajePorPartidoVisit.round(new MathContext(4))+"): "+valorFactorEnVisit.toString());
+		if (local_golaverajePorPartidoLocal.compareTo(cero) < 0)  local_golaverajePorPartidoLocal= cero;
+		if (visit_golaverajePorPartidoVisit.compareTo(cero) < 0)  visit_golaverajePorPartidoVisit= cero;
 
-		// 6: puntos por partido
-		BigDecimal local_ptosPorPartido= eqDao.getPuntosPorPartido(idTemporada, idLocal, EquipoOp.EQUIPO_LOCAL_Y_VISITANTE, local_numPartidosLocal+local_numPartidosVisit);
-		BigDecimal visit_ptosPorPartido= eqDao.getPuntosPorPartido(idTemporada, idVisit, EquipoOp.EQUIPO_LOCAL_Y_VISITANTE, visit_numPartidosLocal+visit_numPartidosVisit);
-		valorFactorEnLocal= ponderarValorPorTramos(local_ptosPorPartido, fac.getPuntosPartido(), 0, 3);
-		valorFactorEnVisit= ponderarValorPorTramos(visit_ptosPorPartido, fac.getPuntosPartido(), 0, 3);
-		local_puntos= local_puntos.add(valorFactorEnLocal);
-		visit_puntos= visit_puntos.add(valorFactorEnVisit);
-//			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-//				Log.d(Constantes.LOG_TAG, "[pronóstico] (6) puntos por partido ("+fac.getPuntosPartido()+") - local ("+local_ptosPorPartido.round(new MathContext(4))+"): "+valorFactorEnLocal.toString()+" ; visit ("+visit_ptosPorPartido.round(new MathContext(4))+"): "+valorFactorEnVisit.toString());
+		local_numerador= local_numerador.add(local_golaverajePorPartidoLocal.multiply(new BigDecimal(fac.getGolaverajeLocalVisit())));
+		local_denominador= local_denominador.add(new BigDecimal(fac.getGolaverajeLocalVisit()));
+
+		visit_numerador= visit_numerador.add(visit_golaverajePorPartidoVisit.multiply(new BigDecimal(fac.getGolaverajeLocalVisit())));
+		visit_denominador= visit_denominador.add(new BigDecimal(fac.getGolaverajeLocalVisit()));
+
 		
-		// 7: puntos por partido como local/visitante
-		BigDecimal local_ptosPorPartidoLocal= eqDao.getPuntosPorPartido(idTemporada, idLocal, EquipoOp.EQUIPO_LOCAL, local_numPartidosLocal);
-		BigDecimal visit_ptosPorPartidoVisit= eqDao.getPuntosPorPartido(idTemporada, idVisit, EquipoOp.EQUIPO_VISITANTE, visit_numPartidosVisit);
-		valorFactorEnLocal= ponderarValorPorTramos(local_ptosPorPartidoLocal, fac.getPuntosPartidoLocalVisit(), 0, 3);
-		valorFactorEnVisit= ponderarValorPorTramos(visit_ptosPorPartidoVisit, fac.getPuntosPartidoLocalVisit(), 0, 3);
-		local_puntos= local_puntos.add(valorFactorEnLocal);
-		visit_puntos= visit_puntos.add(valorFactorEnVisit);
-//			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-//				Log.d(Constantes.LOG_TAG, "[pronóstico] (7) puntos por partido local/visit ("+fac.getPuntosPartidoLocalVisit()+") - local ("+local_ptosPorPartidoLocal.round(new MathContext(4))+"): "+valorFactorEnLocal.toString()+" ; visit ("+visit_ptosPorPartidoVisit.round(new MathContext(4))+"): "+valorFactorEnVisit.toString());
+		if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
+			Log.d(Constantes.LOG_TAG, "[pronóstico (pleno15)] (5) golaveraje local/visit ("+fac.getGolaverajeLocalVisit()+") - local:"+local_golaverajePorPartidoLocal+" ; visit: "+visit_golaverajePorPartidoVisit);
+
+		// 6: puntos por partido 						===> criterio que no se tendrá en cuenta en el pleno al 15
+		// 7: puntos por partido como local/visitante   ===> criterio que no se tendrá en cuenta en el pleno al 15
 		
 		// 8: últimos 4 partidos
 		int local_ptosUltimos4= eqDao.getPuntosUltimos4Partidos(idTemporada, idLocal, EquipoOp.EQUIPO_LOCAL_Y_VISITANTE);
@@ -472,12 +503,17 @@ jm Voy por aquí
 			local_ptosUltimos4 *= 4/local_partidosJugadosUltimasJornadas;
 		if (visit_partidosJugadosUltimasJornadas > 0)
 			visit_ptosUltimos4 *= 4/visit_partidosJugadosUltimasJornadas;
-		valorFactorEnLocal= ponderarValorPorTramos(local_ptosUltimos4, fac.getUltimos4(), 0, 4*3);
-		valorFactorEnVisit= ponderarValorPorTramos(visit_ptosUltimos4, fac.getUltimos4(), 0, 4*3);
-		local_puntos= local_puntos.add(valorFactorEnLocal);
-		visit_puntos= visit_puntos.add(valorFactorEnVisit);
-//			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-//				Log.d(Constantes.LOG_TAG, "[pronóstico] (8) últimos 4 partidos ("+fac.getUltimos4()+") - local ("+local_ptosUltimos4+"): "+valorFactorEnLocal.toString()+" ; visit ("+visit_ptosUltimos4+"): "+valorFactorEnVisit.toString());
+		if (local_ptosUltimos4  < 0)  local_ptosUltimos4= 0;
+		if (visit_ptosUltimos4  < 0)  visit_ptosUltimos4= 0;
+
+		local_numerador= local_numerador.add(new BigDecimal(local_ptosUltimos4).multiply(new BigDecimal(fac.getUltimos4())));
+		local_denominador= local_denominador.add(new BigDecimal(fac.getUltimos4()));
+ 
+		visit_numerador= visit_numerador.add(new BigDecimal(visit_ptosUltimos4).multiply(new BigDecimal(fac.getUltimos4())));
+		visit_denominador= visit_denominador.add(new BigDecimal(fac.getUltimos4()));
+		
+		if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
+			Log.d(Constantes.LOG_TAG, "[pronóstico (pleno15)] (8) últimos 4 partidos ("+fac.getUltimos4()+") - local: "+local_ptosUltimos4+" ; visit: "+visit_ptosUltimos4);
 		
 		// 9: últimos 4 partidos como local/visitante
 		int local_ptosUltimos4Local= eqDao.getPuntosUltimos4Partidos(idTemporada, idLocal, EquipoOp.EQUIPO_LOCAL);
@@ -490,15 +526,20 @@ jm Voy por aquí
 			local_ptosUltimos4Local *= 4/local_partidosJugadosUltimasJornadasLocal;
 		if (visit_partidosJugadosUltimasJornadasVisit > 0)
 			visit_ptosUltimos4Visit *= 4/visit_partidosJugadosUltimasJornadasVisit;
-		valorFactorEnLocal= ponderarValorPorTramos(local_ptosUltimos4Local, fac.getUltimos4LocalVisit(), 0, 4*3);
-		valorFactorEnVisit= ponderarValorPorTramos(visit_ptosUltimos4Visit, fac.getUltimos4LocalVisit(), 0, 4*3);
-		local_puntos= local_puntos.add(valorFactorEnLocal);
-		visit_puntos= visit_puntos.add(valorFactorEnVisit);
-//			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-//				Log.d(Constantes.LOG_TAG, "[pronóstico] (9) últimos 4 partidos local/visit ("+fac.getUltimos4LocalVisit()+") - local ("+local_ptosUltimos4Local+"): "+valorFactorEnLocal.toString()+" ; visit ("+visit_ptosUltimos4Visit+"): "+valorFactorEnVisit.toString());
+		if (local_ptosUltimos4Local < 0)  local_ptosUltimos4Local= 0;
+		if (visit_ptosUltimos4Visit < 0)  visit_ptosUltimos4Visit= 0;
+
+		local_numerador= local_numerador.add(new BigDecimal(local_ptosUltimos4Local).multiply(new BigDecimal(fac.getUltimos4LocalVisit())));
+		local_denominador= local_denominador.add(new BigDecimal(fac.getUltimos4LocalVisit()));
+
+		visit_numerador= visit_numerador.add(new BigDecimal(visit_ptosUltimos4Visit).multiply(new BigDecimal(fac.getUltimos4LocalVisit())));
+		visit_denominador= visit_denominador.add(new BigDecimal(fac.getUltimos4LocalVisit()));
+
+		if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
+			Log.d(Constantes.LOG_TAG, "[pronóstico (pleno15)] (9) últimos 4 partidos local/visit ("+fac.getUltimos4LocalVisit()+") - local: "+local_ptosUltimos4Local+"; visit: "+visit_ptosUltimos4Visit);
 		
-		ret.add(new ValoracionEquiposPartidoQuiniela(local_puntos, visit_puntos));
 		
+		ret.add(new ValoracionEquiposPartidoQuiniela(local_numerador.divide(local_denominador, 4, RoundingMode.HALF_UP), visit_numerador.divide(visit_denominador, 4, RoundingMode.HALF_UP)));
 		
 		return ret;
 	}
@@ -509,7 +550,7 @@ jm Voy por aquí
 		
 		if (numTriples == 0  && numDobles == 0)
 		{
-			for (int k=0; k< partidos.size(); k++) 
+			for (int k=0; k< partidos.size()-1; k++)    // cogerá todos excepto pleno al 15
 			{
 				Partido parK= partidos.get(k);
 				ValoracionEquiposPartidoQuiniela val= valoresLocalVisit.get(k);
@@ -620,7 +661,7 @@ jm Voy por aquí
 			 * Finalmente, debo devolver la lista de 15 partidos con sus pronósticos, ordenada según su campo 'ordenEnQuiniela'
 			 * ya que será según este orden como se mostrarán por pantalla.
 			 */
-			for (int k=0; k< partidos.size(); k++)
+			for (int k=0; k< partidos.size()-1; k++)    // cogerá todos excepto pleno al 15 (que se añadirá al final)
 				ret.add(null);
 			
 			Partido partidoRet;
@@ -639,16 +680,17 @@ jm Voy por aquí
 				partidoRet.setResultadoQuiniela(dob.getPronostico_1x2());
 				ret.set(ordenEnQuiniela, partidoRet);
 			}
-			
-			// ... y el pleno al 15
-			int idx= partidos.size()-1;
-			Partido parPleno15= partidos.get(idx);
-			ValoracionEquiposPartidoQuiniela val= valoresLocalVisit.get(idx);
-			int pron= convertirValoracionEnPronostico1X2_plenoAl15(val.valorLocal, val.valorVisit);
-			parPleno15.setResultadoQuiniela(pron);
-			ret.set(idx, parPleno15);
-			
+						
 		}
+		
+		// pleno al 15
+		int idx= partidos.size()-1;
+		Partido parPleno15= partidos.get(idx);
+		ValoracionEquiposPartidoQuiniela val= valoresLocalVisit.get(idx);
+		int pron= convertirValoracionEnPronostico1X2_plenoAl15(val.valorLocal, val.valorVisit);
+		parPleno15.setResultadoQuiniela(pron);
+		ret.add(parPleno15);		
+		
 		return ret;
 	}
 
@@ -723,31 +765,37 @@ jm Voy por aquí
 	 */
 	private int convertirValoracionEnPronostico1X2_plenoAl15(BigDecimal local_puntos, BigDecimal visit_puntos)
 	{
-		jm Falta por codificar. Su código actual es pegado del pronóstico normal, y no vale 
+	    local_puntos = local_puntos.setScale(0, BigDecimal.ROUND_HALF_UP);
+	    visit_puntos = visit_puntos.setScale(0, BigDecimal.ROUND_HALF_UP);
 		
-		int ret= RES_X;
-		BigDecimal total_puntos= local_puntos.add(visit_puntos);
-		if (total_puntos.intValue() > 0)
-		{
-			BigDecimal umbral1x= getUmbralPronostico1X();
-			BigDecimal umbralx2= getUmbralPronosticoX2();
-			BigDecimal prcVisit= visit_puntos.divide(total_puntos, 4, RoundingMode.HALF_UP).multiply(new BigDecimal(100.0));
-			if (prcVisit.compareTo(umbral1x) < 0)
-				ret= RES_1;
-			else if (prcVisit.compareTo(umbralx2) > 0)
-				ret= RES_2;
-		}
-		
-//		if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-//		{
-//			BigDecimal cien= new BigDecimal(100);
-//			Log.d(Constantes.LOG_TAG, "[pronóstico] puntos %local/%visit: "+ local_puntos.divide(total_puntos, 4, RoundingMode.HALF_UP).multiply(cien).toString() + "% / " + visit_puntos.divide(total_puntos, 4, RoundingMode.HALF_UP).multiply(cien).toString() + "%");
-//			String res= signoQuinielaInt2String(ret);
-//			Log.d(Constantes.LOG_TAG, "[pronóstico] Resultado del pronóstico: " + res);
-//			resumen.append(local_puntos.divide(total_puntos, 4, RoundingMode.HALF_UP).multiply(cien).toString()).append("% --> ").append(res);
-//			Log.d(Constantes.LOG_TAG, "[pronóstico] resumen: " + resumen.toString());
-//		}
-		return ret;
+	    if (local_puntos.equals(cero))
+	    {
+	    	if (visit_puntos.equals(cero)) 		return RES_PLENO15_00;
+	    	else if (visit_puntos.equals(uno)) 	return RES_PLENO15_01;
+	    	else if (visit_puntos.equals(dos)) 	return RES_PLENO15_02;
+	    	else 								return RES_PLENO15_0M;
+	    }
+	    else if (local_puntos.equals(uno))
+	    {
+	    	if (visit_puntos.equals(cero)) 		return RES_PLENO15_10;
+	    	else if (visit_puntos.equals(uno)) 	return RES_PLENO15_11;
+	    	else if (visit_puntos.equals(dos)) 	return RES_PLENO15_12;
+	    	else 								return RES_PLENO15_1M;
+	    }
+	    else if (local_puntos.equals(dos))
+	    {
+	    	if (visit_puntos.equals(cero)) 		return RES_PLENO15_20;
+	    	else if (visit_puntos.equals(uno)) 	return RES_PLENO15_21;
+	    	else if (visit_puntos.equals(dos)) 	return RES_PLENO15_22;
+	    	else 								return RES_PLENO15_2M;
+	    }
+	    else
+	    {
+	    	if (visit_puntos.equals(cero)) 		return RES_PLENO15_M0;
+	    	else if (visit_puntos.equals(uno)) 	return RES_PLENO15_M1;
+	    	else if (visit_puntos.equals(dos)) 	return RES_PLENO15_M2;
+	    	else 								return RES_PLENO15_MM;
+	    }
 	}
 	
 	/*

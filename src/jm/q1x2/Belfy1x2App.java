@@ -13,6 +13,6 @@ public class Belfy1x2App extends Application
   {
     // The following line triggers the initialization of ACRA
     super.onCreate();
-    ACRA.init(this);
+    //[jm]ACRA.init(this);
   }
 }
