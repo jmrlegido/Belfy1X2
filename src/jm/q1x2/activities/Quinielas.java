@@ -3,6 +3,7 @@ package jm.q1x2.activities;
 import jm.q1x2.R;
 import jm.q1x2.logneg.QuinielaOp;
 import jm.q1x2.utils.Constantes;
+import jm.q1x2.utils.Notificaciones;
 import jm.q1x2.utils.Utils;
 import android.app.Activity;
 import android.content.Intent;
@@ -72,19 +73,23 @@ public class Quinielas extends Activity
         LinearLayout opc4= (LinearLayout) findViewById(R.id.ver_quinielas_tiempo_real);
         opc4.setVisibility(View.INVISIBLE);
         
-        if (Utils.estamosEnPeriodoDeTiempoTalQueLaJornadaHaEmpezadoPeroNoAcabado()  
-        	&& QuinielaOp.hayAlgunaQuinielaDeEstaSemanaSinCorregir(getApplicationContext()) )
-        {
-        	opc4.setVisibility(View.VISIBLE);
-	        opc4.setOnClickListener(new OnClickListener()
+    	String seguimientoTRealActivado= Notificaciones.getNotificacion(Constantes.NOTIFICACION_SEGUIMIENTO_TIEMPOREAL_ACTIVO);
+    	if (seguimientoTRealActivado!=null  && seguimientoTRealActivado.equals("1"))
+    	{        
+	        if (Utils.estamosEnPeriodoDeTiempoTalQueLaJornadaHaEmpezadoPeroNoAcabado()  
+	        	&& QuinielaOp.hayAlgunaQuinielaDeEstaSemanaSinCorregir(getApplicationContext()) )
 	        {
-	        	 public void onClick(View v)
-	        	 {
-	  	 		   Intent i = new Intent(getApplicationContext(), QuinielaComprobarEstaSemanaEnTiempoReal.class);			
-				   startActivityForResult(i, SUBACTIVITY_COMPROBAR_QUINIELAS_ESTA_SEMANA_TIEMPO_REAL);		   	    	 
-	        	 }
-	        });
-        }
+	        	opc4.setVisibility(View.VISIBLE);
+		        opc4.setOnClickListener(new OnClickListener()
+		        {
+		        	 public void onClick(View v)
+		        	 {
+		  	 		   Intent i = new Intent(getApplicationContext(), QuinielaComprobarEstaSemanaEnTiempoReal.class);			
+					   startActivityForResult(i, SUBACTIVITY_COMPROBAR_QUINIELAS_ESTA_SEMANA_TIEMPO_REAL);		   	    	 
+		        	 }
+		        });
+	        }
+    	}
     }
     
     @Override

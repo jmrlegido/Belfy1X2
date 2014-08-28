@@ -100,20 +100,20 @@ public final class R {
     }
     public static final class id {
         public static final int aleatoriedad=0x7f080080;
-        public static final int app_nombreyVersion=0x7f08009b;
-        public static final int app_usuario=0x7f08009c;
+        public static final int app_nombreyVersion=0x7f080097;
+        public static final int app_usuario=0x7f080098;
         public static final int boton1=0x7f08001e;
         public static final int boton2=0x7f08001f;
         public static final int boton_aceptar=0x7f080023;
-        public static final int boton_anadir_usuario=0x7f08009d;
+        public static final int boton_anadir_usuario=0x7f080099;
         public static final int boton_cambiar_valores=0x7f080088;
         public static final int boton_cancelar=0x7f080024;
         public static final int boton_grabar_quiniela=0x7f08007e;
         public static final int boton_hacer_quiniela=0x7f08008f;
-        public static final int btn_refrescar=0x7f080099;
+        public static final int btn_refrescar=0x7f080095;
         public static final int calidad_intrinseca=0x7f080002;
         public static final int codigo=0x7f08000e;
-        public static final int comprobar_quinielas_semana_pasada=0x7f080096;
+        public static final int comprobar_quinielas_semana_pasada=0x7f080092;
         public static final int contenido=0x7f08000b;
         public static final int descripcion=0x7f08000f;
         public static final int dobles=0x7f08008d;
@@ -125,20 +125,20 @@ public final class R {
         public static final int eci_equipo=0x7f080011;
         public static final int eci_icono=0x7f080010;
         public static final int eci_valor=0x7f080013;
-        public static final int equipo_estadisticas=0x7f08009f;
-        public static final int equipo_resultados=0x7f08009e;
+        public static final int equipo_estadisticas=0x7f08009b;
+        public static final int equipo_resultados=0x7f08009a;
         public static final int equipos_calidad_intrinseca=0x7f08000c;
         public static final int factor_campo=0x7f080081;
         public static final int golaveraje_localvisit=0x7f080083;
         public static final int golaveraje_total=0x7f080082;
         public static final int goles_por_partido=0x7f08001c;
         public static final int goles_por_partido_local_visit=0x7f08001d;
-        public static final int hacer_quiniela_esta_semana=0x7f080094;
-        public static final int hacer_quiniela_manual=0x7f080095;
+        public static final int hacer_quiniela_esta_semana=0x7f080090;
+        public static final int hacer_quiniela_manual=0x7f080091;
         public static final int icono=0x7f080009;
         public static final int icono_equipo=0x7f080000;
         public static final int icono_usuario=0x7f080007;
-        public static final int id_layout_tituloApp=0x7f08009a;
+        public static final int id_layout_tituloApp=0x7f080096;
         public static final int jornada=0x7f080005;
         public static final int linearLayout2=0x7f080022;
         public static final int lista_params_quinielas=0x7f080026;
@@ -158,8 +158,6 @@ public final class R {
         public static final int p14_1=0x7f080070;
         public static final int p14_2=0x7f080072;
         public static final int p14_x=0x7f080071;
-        public static final int p15_1=0x7f080091;
-        public static final int p15_2=0x7f080093;
         public static final int p15_equipolocal=0x7f080073;
         public static final int p15_equipolocal_0=0x7f080074;
         public static final int p15_equipolocal_1=0x7f080075;
@@ -170,7 +168,6 @@ public final class R {
         public static final int p15_equipovisitante_1=0x7f08007a;
         public static final int p15_equipovisitante_2=0x7f08007b;
         public static final int p15_equipovisitante_m=0x7f08007c;
-        public static final int p15_x=0x7f080092;
         public static final int p1_1=0x7f08003c;
         public static final int p1_2=0x7f08003e;
         public static final int p1_x=0x7f08003d;
@@ -229,10 +226,10 @@ public final class R {
         public static final int ptos_por_partido_local_visit=0x7f08001b;
         public static final int quiniela_aciertos=0x7f080004;
         public static final int quiniela_botonera=0x7f08007d;
-        public static final int quiniela_eliminar=0x7f0800a0;
+        public static final int quiniela_eliminar=0x7f08009c;
         public static final int quiniela_nombre=0x7f080003;
-        public static final int quiniela_patron_eliminar=0x7f0800a2;
-        public static final int quiniela_patron_modificar=0x7f0800a1;
+        public static final int quiniela_patron_eliminar=0x7f08009e;
+        public static final int quiniela_patron_modificar=0x7f08009d;
         public static final int resultado=0x7f080006;
         public static final int rivales1=0x7f08003b;
         public static final int rivales10=0x7f08005f;
@@ -240,7 +237,6 @@ public final class R {
         public static final int rivales12=0x7f080067;
         public static final int rivales13=0x7f08006b;
         public static final int rivales14=0x7f08006f;
-        public static final int rivales15=0x7f080090;
         public static final int rivales2=0x7f08003f;
         public static final int rivales3=0x7f080043;
         public static final int rivales4=0x7f080047;
@@ -258,12 +254,12 @@ public final class R {
         public static final int triples_valor=0x7f08008b;
         public static final int ult4partidos=0x7f080086;
         public static final int ult4partidos_localvisit=0x7f080087;
-        public static final int usuario_eliminar=0x7f0800a4;
-        public static final int usuario_modificar=0x7f0800a3;
+        public static final int usuario_eliminar=0x7f0800a0;
+        public static final int usuario_modificar=0x7f08009f;
         public static final int usuario_nombre=0x7f080008;
         public static final int valor=0x7f080021;
-        public static final int ver_quinielas_pasadas=0x7f080097;
-        public static final int ver_quinielas_tiempo_real=0x7f080098;
+        public static final int ver_quinielas_pasadas=0x7f080093;
+        public static final int ver_quinielas_tiempo_real=0x7f080094;
     }
     public static final class layout {
         public static final int cada_equipo=0x7f030000;

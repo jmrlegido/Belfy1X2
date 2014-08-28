@@ -1254,6 +1254,38 @@ public class QuinielaOp
 		   res= "12";
 	   else if (par == RES_1X2)
 		   res= "1x2";
+	   else if (par == RES_PLENO15_00)
+		   res= "p00";
+	   else if (par == RES_PLENO15_01)
+		   res= "p01";
+	   else if (par == RES_PLENO15_02)
+		   res= "p02";
+	   else if (par == RES_PLENO15_0M)
+		   res= "p0m";
+	   else if (par == RES_PLENO15_10)
+		   res= "p10";
+	   else if (par == RES_PLENO15_11)
+		   res= "p11";
+	   else if (par == RES_PLENO15_12)
+		   res= "p12";
+	   else if (par == RES_PLENO15_1M)
+		   res= "p1m";
+	   else if (par == RES_PLENO15_20)
+		   res= "p20";
+	   else if (par == RES_PLENO15_21)
+		   res= "p21";
+	   else if (par == RES_PLENO15_22)
+		   res= "p22";
+	   else if (par == RES_PLENO15_2M)
+		   res= "p2m";
+	   else if (par == RES_PLENO15_M0)
+		   res= "pm0";
+	   else if (par == RES_PLENO15_M1)
+		   res= "pm1";
+	   else if (par == RES_PLENO15_M2)
+		   res= "pm2";
+	   else if (par == RES_PLENO15_MM)
+		   res= "pmm";
 	   else
 		   res= "-";
 	   return res;
@@ -1276,6 +1308,38 @@ public class QuinielaOp
 		   res= RES_X2;
 	   else if (par.equalsIgnoreCase("1x2"))		   
 		   res= RES_1X2;
+	   else if (par.equalsIgnoreCase("p00"))		   
+		   res= RES_PLENO15_00;
+	   else if (par.equalsIgnoreCase("p01"))		   
+		   res= RES_PLENO15_01;
+	   else if (par.equalsIgnoreCase("p02"))		   
+		   res= RES_PLENO15_02;
+	   else if (par.equalsIgnoreCase("p0m"))		   
+		   res= RES_PLENO15_0M;
+	   else if (par.equalsIgnoreCase("p10"))		   
+		   res= RES_PLENO15_10;
+	   else if (par.equalsIgnoreCase("p11"))		   
+		   res= RES_PLENO15_11;
+	   else if (par.equalsIgnoreCase("p12"))		   
+		   res= RES_PLENO15_12;
+	   else if (par.equalsIgnoreCase("p1m"))		   
+		   res= RES_PLENO15_1M;
+	   else if (par.equalsIgnoreCase("p20"))		   
+		   res= RES_PLENO15_20;
+	   else if (par.equalsIgnoreCase("p21"))		   
+		   res= RES_PLENO15_21;
+	   else if (par.equalsIgnoreCase("p22"))		   
+		   res= RES_PLENO15_22;
+	   else if (par.equalsIgnoreCase("p2m"))		   
+		   res= RES_PLENO15_2M;
+	   else if (par.equalsIgnoreCase("pm0"))		   
+		   res= RES_PLENO15_M0;
+	   else if (par.equalsIgnoreCase("pm1"))		   
+		   res= RES_PLENO15_M1;
+	   else if (par.equalsIgnoreCase("pm2"))		   
+		   res= RES_PLENO15_M2;
+	   else if (par.equalsIgnoreCase("pmm"))		   
+		   res= RES_PLENO15_MM;
 	   return res;
 	}
 }

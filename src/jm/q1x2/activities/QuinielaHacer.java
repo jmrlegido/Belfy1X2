@@ -271,11 +271,59 @@ public class QuinielaHacer extends Activity implements SeekBar.OnSeekBarChangeLi
     													 || res1x2==QuinielaOp.RES_1X2
     													 ? R.drawable.quin_sel : R.drawable.quin_2);
     }
+
+    private void mostrarResultadoPleno15(String eq1, String eq2, int res1x2)
+    {    	
+    	((TextView) findViewById(R.id.p15_equipolocal)).setText("      "+eq1);
+    	((ImageView) findViewById(R.id.p15_equipolocal_0)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_00 
+    													 || res1x2==QuinielaOp.RES_PLENO15_01 
+    													 || res1x2==QuinielaOp.RES_PLENO15_02
+    													 || res1x2==QuinielaOp.RES_PLENO15_0M
+    													 ? R.drawable.quin_sel : R.drawable.quin_goles0);
+    	((ImageView) findViewById(R.id.p15_equipolocal_1)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_10 
+														 || res1x2==QuinielaOp.RES_PLENO15_11 
+														 || res1x2==QuinielaOp.RES_PLENO15_12
+														 || res1x2==QuinielaOp.RES_PLENO15_1M
+														 ? R.drawable.quin_sel : R.drawable.quin_goles1);
+    	((ImageView) findViewById(R.id.p15_equipolocal_2)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_20 
+														 || res1x2==QuinielaOp.RES_PLENO15_21 
+														 || res1x2==QuinielaOp.RES_PLENO15_22
+														 || res1x2==QuinielaOp.RES_PLENO15_2M
+														 ? R.drawable.quin_sel : R.drawable.quin_goles2);
+    	((ImageView) findViewById(R.id.p15_equipolocal_m)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_M0 
+														 || res1x2==QuinielaOp.RES_PLENO15_M1 
+														 || res1x2==QuinielaOp.RES_PLENO15_M2
+														 || res1x2==QuinielaOp.RES_PLENO15_MM
+														 ? R.drawable.quin_sel : R.drawable.quin_golesm);
+
+    	((TextView) findViewById(R.id.p15_equipovisitante)).setText("      "+eq2);
+    	((ImageView) findViewById(R.id.p15_equipovisitante_0)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_00 
+    													 || res1x2==QuinielaOp.RES_PLENO15_10 
+    													 || res1x2==QuinielaOp.RES_PLENO15_20
+    													 || res1x2==QuinielaOp.RES_PLENO15_M0
+    													 ? R.drawable.quin_sel : R.drawable.quin_goles0);
+    	((ImageView) findViewById(R.id.p15_equipovisitante_1)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_01 
+														 || res1x2==QuinielaOp.RES_PLENO15_11 
+														 || res1x2==QuinielaOp.RES_PLENO15_21
+														 || res1x2==QuinielaOp.RES_PLENO15_M1
+														 ? R.drawable.quin_sel : R.drawable.quin_goles1);
+    	((ImageView) findViewById(R.id.p15_equipovisitante_2)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_02 
+														 || res1x2==QuinielaOp.RES_PLENO15_12 
+														 || res1x2==QuinielaOp.RES_PLENO15_22
+														 || res1x2==QuinielaOp.RES_PLENO15_M2
+														 ? R.drawable.quin_sel : R.drawable.quin_goles2);
+    	((ImageView) findViewById(R.id.p15_equipovisitante_m)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_0M 
+														 || res1x2==QuinielaOp.RES_PLENO15_1M 
+														 || res1x2==QuinielaOp.RES_PLENO15_2M
+														 || res1x2==QuinielaOp.RES_PLENO15_MM
+														 ? R.drawable.quin_sel : R.drawable.quin_golesm);
     
-    int[] resIdRivales= new int[]{R.id.rivales1,R.id.rivales2,R.id.rivales3,R.id.rivales4,R.id.rivales5,R.id.rivales6,R.id.rivales7,R.id.rivales8,R.id.rivales9,R.id.rivales10,R.id.rivales11,R.id.rivales12,R.id.rivales13,R.id.rivales14,R.id.rivales15};
-    int[] resIdSigno1= new int[]{R.id.p1_1,R.id.p2_1,R.id.p3_1,R.id.p4_1,R.id.p5_1,R.id.p6_1,R.id.p7_1,R.id.p8_1,R.id.p9_1,R.id.p10_1,R.id.p11_1,R.id.p12_1,R.id.p13_1,R.id.p14_1,R.id.p15_1};
-    int[] resIdSignoX= new int[]{R.id.p1_x,R.id.p2_x,R.id.p3_x,R.id.p4_x,R.id.p5_x,R.id.p6_x,R.id.p7_x,R.id.p8_x,R.id.p9_x,R.id.p10_x,R.id.p11_x,R.id.p12_x,R.id.p13_x,R.id.p14_x,R.id.p15_x};
-    int[] resIdSigno2= new int[]{R.id.p1_2,R.id.p2_2,R.id.p3_2,R.id.p4_2,R.id.p5_2,R.id.p6_2,R.id.p7_2,R.id.p8_2,R.id.p9_2,R.id.p10_2,R.id.p11_2,R.id.p12_2,R.id.p13_2,R.id.p14_2,R.id.p15_2};
+    }
+    
+    int[] resIdRivales= new int[]{R.id.rivales1,R.id.rivales2,R.id.rivales3,R.id.rivales4,R.id.rivales5,R.id.rivales6,R.id.rivales7,R.id.rivales8,R.id.rivales9,R.id.rivales10,R.id.rivales11,R.id.rivales12,R.id.rivales13,R.id.rivales14};
+    int[] resIdSigno1= new int[]{R.id.p1_1,R.id.p2_1,R.id.p3_1,R.id.p4_1,R.id.p5_1,R.id.p6_1,R.id.p7_1,R.id.p8_1,R.id.p9_1,R.id.p10_1,R.id.p11_1,R.id.p12_1,R.id.p13_1,R.id.p14_1};
+    int[] resIdSignoX= new int[]{R.id.p1_x,R.id.p2_x,R.id.p3_x,R.id.p4_x,R.id.p5_x,R.id.p6_x,R.id.p7_x,R.id.p8_x,R.id.p9_x,R.id.p10_x,R.id.p11_x,R.id.p12_x,R.id.p13_x,R.id.p14_x};
+    int[] resIdSigno2= new int[]{R.id.p1_2,R.id.p2_2,R.id.p3_2,R.id.p4_2,R.id.p5_2,R.id.p6_2,R.id.p7_2,R.id.p8_2,R.id.p9_2,R.id.p10_2,R.id.p11_2,R.id.p12_2,R.id.p13_2,R.id.p14_2};
     
     private class PresentarQuinielaSegundoPlano extends AsyncTask<String, Float, Integer>
     {
@@ -322,13 +370,22 @@ public class QuinielaHacer extends Activity implements SeekBar.OnSeekBarChangeLi
 	     		ArrayList<Partido> partidosConPronosticos1x2= quinOp.convertirValoracionesEnPronostico1X2(partidos, valoresLocalVisit, barraTriples.getProgress(), barraDobles.getProgress());
 	     		
 	     		Partido par;
-	     		for (int idx= 0; idx < 15; idx++)
+	     		for (int idx= 0; idx < 14; idx++)  // todos excepto pleno al 15
 	     		{
 		         	par= partidosConPronosticos1x2.get(idx);
 		         	quinielaHecha.annadirPartido(par);        	
 		         	filasQuiniela.add(new PartidoQuiniela(daoEq.getNombreEquipo(par.getIdEquipoLocal()), daoEq.getNombreEquipo(par.getIdEquipoVisit()), par.getResultadoQuiniela(), resIdRivales[idx], resIdSigno1[idx], resIdSignoX[idx], resIdSigno2[idx]));
 	     		}
-	         	
+
+	     		// pleno al 15
+	         	par= partidosConPronosticos1x2.get(14);
+	         	quinielaHecha.annadirPartido(par);   
+	         	PartidoQuiniela ple15= new PartidoQuiniela();
+	         	ple15.setEq1(daoEq.getNombreEquipo(par.getIdEquipoLocal()));
+	         	ple15.setEq2(daoEq.getNombreEquipo(par.getIdEquipoVisit()));
+	         	ple15.setResultado1x2(par.getResultadoQuiniela());
+	         	filasQuiniela.add(ple15);
+	     		
          	}
      		con.close();	    	        
 
@@ -356,9 +413,18 @@ public class QuinielaHacer extends Activity implements SeekBar.OnSeekBarChangeLi
           	}
           	else
           	{
-	          	for(PartidoQuiniela fila: filasQuiniela)
+          		PartidoQuiniela fila= null;
+	          	for(int k= 0; k< filasQuiniela.size()-1;k++)   // partidos 1 a 14
+	          	{
+		          	fila= filasQuiniela.get(k);
 	          		mostrarResultado(fila.getEq1(), fila.getEq2(), fila.getResultado1x2(), fila.getResIdRivales(), fila.getResId1(), fila.getResIdx(), fila.getResId2());
-	 			bQuinielaYaGenerada= true;
+	          	}
+	          	
+	          	//pleno al 15
+	          	fila= filasQuiniela.get(filasQuiniela.size()-1);
+	          	mostrarResultadoPleno15(fila.getEq1(), fila.getEq2(), fila.getResultado1x2());
+	          	
+		        bQuinielaYaGenerada= true;
           	}
           	if (dialog!=null && dialog.isShowing())
           		dialog.dismiss();

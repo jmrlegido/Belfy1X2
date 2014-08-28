@@ -40,6 +40,7 @@ public class Constantes
 	public static String NOTIFICACION_VERSIONES_BBDD= "versiones_bbdd";
 	public static String NOTIFICACION_CAMBIOS_DATOS_GENERALES= "cambios_datos_generales";
 	public static String NOTIFICACION_VERSIONCODE_MINIMO= "versioncode_minimo";
+	public static String NOTIFICACION_SEGUIMIENTO_TIEMPOREAL_ACTIVO= "seguim_treal_activo";
 
 	/* preferencias */
 	public static String PREFERENCIAS_NOMBRE = "jm1x2_preferencias";

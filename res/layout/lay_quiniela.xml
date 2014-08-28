@@ -467,91 +467,100 @@
 					</LinearLayout>
 				</LinearLayout>
 			
+
+
+				<!-- ############################### pleno al 15 (inicio) ############################# -->
+								
+				<LinearLayout
+					android:layout_height="wrap_content" 
+					android:layout_width="match_parent" 
+					android:orientation="vertical" 
+					>
+								
+			    		<TextView 
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:text="Pleno al 15:"
+						/>
+			    
+						<!-- partido 15: equipo local -->
+						<LinearLayout 
+						    android:orientation="horizontal"
+						    android:layout_width="fill_parent" android:layout_height="wrap_content"
+						    >
+							<LinearLayout 
+							    android:orientation="horizontal"
+							    android:layout_width="wrap_content" android:layout_height="wrap_content"
+							    >
+								<TextView 
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									android:id="@+id/p15_equipolocal" android:textStyle="bold"
+									/>
+							</LinearLayout>
+							<LinearLayout
+							    android:orientation="horizontal" android:gravity="right"
+							    android:layout_width="fill_parent" android:layout_height="wrap_content"
+							    >
+								<ImageView
+									android:id="@+id/p15_equipolocal_0"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+								<ImageView
+									android:id="@+id/p15_equipolocal_1"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+								<ImageView
+									android:id="@+id/p15_equipolocal_2"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+								<ImageView
+									android:id="@+id/p15_equipolocal_m"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+														
+							</LinearLayout>
+						</LinearLayout>
+					
+						<!-- partido 15: equipo visitante -->
+						<LinearLayout 
+						    android:orientation="horizontal"
+						    android:layout_width="fill_parent" android:layout_height="wrap_content"
+						    >
+							<LinearLayout 
+							    android:orientation="horizontal"
+							    android:layout_width="wrap_content" android:layout_height="wrap_content"
+							    >
+								<TextView 
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									android:id="@+id/p15_equipovisitante" android:textStyle="bold"
+									/>
+							</LinearLayout>
+							<LinearLayout
+							    android:orientation="horizontal" android:gravity="right"
+							    android:layout_width="fill_parent" android:layout_height="wrap_content"
+							    >
+								<ImageView
+									android:id="@+id/p15_equipovisitante_0"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+								<ImageView
+									android:id="@+id/p15_equipovisitante_1"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+								<ImageView
+									android:id="@+id/p15_equipovisitante_2"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+								<ImageView
+									android:id="@+id/p15_equipovisitante_m"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+														
+							</LinearLayout>
+						</LinearLayout>
+				</LinearLayout>
+				<!-- ############################### pleno al 15 (fin) ############################# -->
 				
-				<!-- partido 15: equipo local -->
-				<LinearLayout 
-				    android:orientation="horizontal"
-				    android:layout_width="fill_parent" android:layout_height="wrap_content"
-				    >
-					<LinearLayout 
-					    android:orientation="horizontal"
-					    android:layout_width="wrap_content" android:layout_height="wrap_content"
-					    >
-						<TextView 
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							android:id="@+id/p15_equipolocal" android:textStyle="bold"
-							/>
-					</LinearLayout>
-					<LinearLayout
-					    android:orientation="horizontal" android:gravity="right"
-					    android:layout_width="fill_parent" android:layout_height="wrap_content"
-					    >
-						<ImageView
-							android:id="@+id/p15_equipolocal_0"
-android:src="@drawable/quin_goles0"
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							/>
-						<ImageView
-							android:id="@+id/p15_equipolocal_1"
-android:src="@drawable/quin_goles1"
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							/>
-						<ImageView
-							android:id="@+id/p15_equipolocal_2"
-android:src="@drawable/quin_goles2"
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							/>
-						<ImageView
-							android:id="@+id/p15_equipolocal_m"
-android:src="@drawable/quin_golesm"
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							/>
-												
-					</LinearLayout>
-				</LinearLayout>
-			
-				<!-- partido 15: equipo visitante -->
-				<LinearLayout 
-				    android:orientation="horizontal"
-				    android:layout_width="fill_parent" android:layout_height="wrap_content"
-				    >
-					<LinearLayout 
-					    android:orientation="horizontal"
-					    android:layout_width="wrap_content" android:layout_height="wrap_content"
-					    >
-						<TextView 
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							android:id="@+id/p15_equipovisitante" android:textStyle="bold"
-							/>
-					</LinearLayout>
-					<LinearLayout
-					    android:orientation="horizontal" android:gravity="right"
-					    android:layout_width="fill_parent" android:layout_height="wrap_content"
-					    >
-						<ImageView
-							android:id="@+id/p15_equipovisitante_0"
-android:src="@drawable/quin_goles0"
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							/>
-						<ImageView
-							android:id="@+id/p15_equipovisitante_1"
-android:src="@drawable/quin_goles1"
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							/>
-						<ImageView
-							android:id="@+id/p15_equipovisitante_2"
-android:src="@drawable/quin_goles2"
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							/>
-						<ImageView
-							android:id="@+id/p15_equipovisitante_m"
-android:src="@drawable/quin_golesm"
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							/>
-												
-					</LinearLayout>
-				</LinearLayout>
-			
+					
 			</LinearLayout>	
 						
 			
