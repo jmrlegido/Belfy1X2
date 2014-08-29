@@ -193,6 +193,7 @@ public class QuinielaVerPronostico extends Activity
 	         		parQuin.setEq2(equipDao.getNombreEquipo(par.getIdEquipoVisit()));
 	         		parQuin.setResultado1x2(iRes);
 	         	}
+	         	
 	         	if (bQuinielaCorregida)
 	         	{
 	         		boolean bFinalizado= quinCorregida.getPartidos().get(k).getResultadoQuiniela() != QuinielaOp.RES_NO_DISPONIBLE;
