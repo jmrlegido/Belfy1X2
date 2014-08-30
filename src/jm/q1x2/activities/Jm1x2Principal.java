@@ -53,9 +53,6 @@ public class Jm1x2Principal extends TabActivity
     {
     	super.onCreate(savedInstanceState);   	
     	
-   		if (Log.isLoggable(Constantes.LOG_TAG, Log.VERBOSE))
-			Log.v(Constantes.LOG_TAG, "### onCreate");
-    	
     	bSeSoportaTituloPersonalizado= requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         bHayConexionInternet= Utils.hayConexionInternet(getApplicationContext());        
     	
@@ -183,9 +180,6 @@ public class Jm1x2Principal extends TabActivity
     {    	
 		super.onStart();
 		
-		if (Log.isLoggable(Constantes.LOG_TAG, Log.VERBOSE))
-			Log.v(Constantes.LOG_TAG, "### onStart");
-
     	if (bHayConexionInternet)
             cargaDatosIniciales();
 		

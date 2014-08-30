@@ -6,7 +6,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-import jm.q1x2.__Borrar;
 import jm.q1x2.bbdd.Basedatos;
 import jm.q1x2.bbdd.dao.IncidenciaDao;
 import jm.q1x2.logneg.QuinielaOp;
@@ -77,12 +76,10 @@ public class Utils
 	 */
 	public static String hoy()
 	{
-//		if (true)
-//			return __Borrar.hoy();
-		
 		Date date = Calendar.getInstance().getTime();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		return sdf.format(date);
+		String ret= sdf.format(date);
+		return ret;
 	}
 	
 	public static int generarClienteId()
