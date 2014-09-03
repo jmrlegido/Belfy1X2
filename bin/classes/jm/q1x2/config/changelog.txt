@@ -1,3 +1,6 @@
+[v4.0] 
+- Actualización para nueva temporada 2014/15. Cambios en equipos y en la quiniela: el pleno al 15 no va con 1,x,2  sino con 0,1,2,M.
+
 [v3.4]
 - Corrección de bug en pestaña Configuración.
 

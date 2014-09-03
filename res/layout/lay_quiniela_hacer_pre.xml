@@ -5,12 +5,12 @@
     android:layout_height="fill_parent"
     android:weightSum="1">
 
-	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	<ScrollView 
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
 		android:layout_weight="1">
     
-		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		<LinearLayout 
 		    android:orientation="vertical"
 		    android:layout_width="fill_parent" android:layout_height="wrap_content"
 		    >
@@ -19,17 +19,17 @@
 				android:layout_height="wrap_content"
 				android:text="La configuración actual tiene los siguientes valores:" />
 			
-			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			<LinearLayout 
 			    android:orientation="vertical"
 				android:paddingTop="15dp"
 				android:paddingBottom="15dp"  
 			    android:layout_width="fill_parent" android:layout_height="wrap_content"
 			    >
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -38,7 +38,7 @@
 							android:text="Aleatoriedad:" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -48,11 +48,11 @@
 							/>
 					</LinearLayout>
 				</LinearLayout>
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -61,7 +61,7 @@
 							android:text="Calidad intrínseca:" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -71,11 +71,11 @@
 							/>
 					</LinearLayout>
 				</LinearLayout>	
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -84,7 +84,7 @@
 							android:text="Factor campo:" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -94,11 +94,11 @@
 							/>
 					</LinearLayout>
 				</LinearLayout>	
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -107,7 +107,7 @@
 							android:text="Golaveraje total:" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -117,11 +117,11 @@
 							/>
 					</LinearLayout>
 				</LinearLayout>	
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -130,7 +130,7 @@
 							android:text="Golaveraje como local/visitante:" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -140,11 +140,11 @@
 							/>
 					</LinearLayout>
 				</LinearLayout>	
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -153,7 +153,7 @@
 							android:text="Puntos por partido:" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -163,11 +163,11 @@
 							/>
 					</LinearLayout>
 				</LinearLayout>	
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -176,7 +176,7 @@
 							android:text="Puntos por partido local/visit.:" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -186,11 +186,11 @@
 							/>
 					</LinearLayout>
 				</LinearLayout>	
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -199,7 +199,7 @@
 							android:text="Últimos 4 partidos:" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -209,11 +209,11 @@
 							/>
 					</LinearLayout>
 				</LinearLayout>	
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -222,7 +222,7 @@
 							android:text="Últimos 4 partidos local/visit.:" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -249,13 +249,13 @@
 
 			
 			<!-- dobles y triples -->
-			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			<LinearLayout 
 			    android:orientation="vertical"
 			    android:layout_width="fill_parent" android:layout_height="wrap_content"
 			    >
 			    
 			    <!-- triples -->
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"				    
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
@@ -265,7 +265,7 @@
 						android:layout_gravity="center_vertical|left"
 						android:text="Triples (0-9): "
 						/>
-				    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    <LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    android:layout_gravity="center_vertical|right"
@@ -289,7 +289,7 @@
 				</LinearLayout>			
 
 				<!-- dobles -->
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
@@ -300,7 +300,7 @@
 						android:layout_gravity="center_vertical|left"
 						android:text="Dobles (0-14): "
 						/>
-				    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    <LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    android:layout_gravity="center_vertical|right"
@@ -325,7 +325,7 @@
 
 			</LinearLayout>  <!-- fin dobles y triples -->			
 			
-			<LinearLayout android:id="@+id/linearLayout2" 
+			<LinearLayout android:id="@id/linearLayout2" 
 				android:layout_height="wrap_content" 
 				android:layout_width="fill_parent"				 
 				android:orientation="horizontal"
