@@ -7,13 +7,16 @@ import java.util.ArrayList;
 import jm.q1x2.R;
 import jm.q1x2.bbdd.Basedatos;
 import jm.q1x2.bbdd.dao.EquipoDao;
+import jm.q1x2.bbdd.dao.JornadaDao;
 import jm.q1x2.bbdd.dao.UsuarioDao;
 import jm.q1x2.logneg.AplicacionOp;
+import jm.q1x2.logneg.EquipoOp;
 import jm.q1x2.logneg.JornadaOp;
 import jm.q1x2.logneg.NoticiaOp;
 import jm.q1x2.logneg.QuinielaOp;
 import jm.q1x2.logneg.UsuarioOp;
 import jm.q1x2.transobj.Equipo;
+import jm.q1x2.transobj.Jornada;
 import jm.q1x2.transobj.Noticia;
 import jm.q1x2.transobj.Noticias;
 import jm.q1x2.transobj.Usuario;
@@ -71,7 +74,7 @@ public class Jm1x2Principal extends TabActivity
         	{
         		int iVersionCodeMin= Integer.parseInt(sVersionCodeMin);
         		int vc= Utils.getVersionCodeAplicacion(getApplicationContext());
-        		if (vc <= iVersionCodeMin)
+        		if (vc < iVersionCodeMin)
         		{
         			bIniciar= false;
                 	Mensajes.alerta(getApplicationContext(), "Necesitas actualizar Belfy1x2 a la última versión.");
@@ -108,12 +111,36 @@ public class Jm1x2Principal extends TabActivity
 		return ret;
 	}
 
+	/*
+	 * Sólo se aplicará si el versionCode es igual o superior al parámetro
+	 */
+	private void aplicarParches(int versionCodeMinimo)
+	{
+		int vc= Utils.getVersionCodeAplicacion(getApplicationContext());
+		if (vc >= versionCodeMinimo)
+		{
+			// si no está cargada la jornada 1 de div 1, se carga
+			SQLiteDatabase con= Basedatos.getConexion(getApplicationContext(), Basedatos.ESCRITURA);
+			EquipoDao eqDao= new EquipoDao(con);
+			JornadaDao jorDao= new JornadaDao(con);
+    		Jornada jor1Div1= JornadaOp.getJornada(Preferencias.getTemporadaActual(getApplicationContext()), Equipo.DIVISION_1, 1);
+    		if ( jor1Div1 != null 
+    				&& EquipoOp.existenEquipos(jor1Div1.getTemporada(), jor1Div1.getDivision(), jor1Div1.getPartidos(), getApplicationContext(), eqDao))
+    		{    		
+	    		if (jor1Div1!=null  &&  !jorDao.estaGrabadaJornada(jor1Div1))
+	    			jorDao.grabarJornada(jor1Div1);
+    		}
+		}
+	}
+	
     private void inicio()
     {
         SQLiteDatabase con= Basedatos.getConexion(getApplicationContext(), Basedatos.ESCRITURA);        
         crearUsuarioDemoSiNoExisteNingunUsuario(con);
         con.close();
 
+        aplicarParches(20);   // el versionCode=20 tuvo un fallo (no cargaba la jornada 1 de div 1). Lo arreglo aquí.
+        
         setContentView(R.layout.lay_main);              
         
         Resources res = getResources(); // Resource object to get Drawables

@@ -99,8 +99,8 @@ public class QuinielaHacerManual extends Activity
 	         	par= partidos.get(14);
 	         	quinielaHecha.annadirPartido(par);   
 	         	PartidoQuiniela pq= new PartidoQuiniela();
-	         	pq.setEq1(par.getIdEquipoLocal());
-	         	pq.setEq2(par.getIdEquipoVisit());
+	         	pq.setEq1(daoEq.getNombreEquipo(par.getIdEquipoLocal()));
+	         	pq.setEq2(daoEq.getNombreEquipo(par.getIdEquipoVisit()));
 	         	filasQuiniela.add(pq);
 	     		
          	}
@@ -244,8 +244,8 @@ public class QuinielaHacerManual extends Activity
 
     private void mostrarPartidoPleno15(String eq1, String eq2)
     {    	
-    	((TextView) findViewById(R.id.p15_equipolocal)).setText(eq1);
-    	((TextView) findViewById(R.id.p15_equipovisitante)).setText(eq2);
+    	((TextView) findViewById(R.id.p15_equipolocal)).setText("    "+eq1);
+    	((TextView) findViewById(R.id.p15_equipovisitante)).setText("    "+eq2);
     }
     
     int[] resIdRivales= new int[]{R.id.rivales1,R.id.rivales2,R.id.rivales3,R.id.rivales4,R.id.rivales5,R.id.rivales6,R.id.rivales7,R.id.rivales8,R.id.rivales9,R.id.rivales10,R.id.rivales11,R.id.rivales12,R.id.rivales13,R.id.rivales14};
@@ -435,7 +435,15 @@ public class QuinielaHacerManual extends Activity
 		else if (dobles > maxDobles[triples])
 			Mensajes.alerta(getApplicationContext(), "Con "+triples+" triples no se permiten más de "+maxDobles[triples]+" dobles.");			
 		else
-			botonera.setVisibility(View.VISIBLE);
+		{
+			if ( (signo_pleno15_local_0_marcado || signo_pleno15_local_1_marcado || signo_pleno15_local_2_marcado || signo_pleno15_local_m_marcado)
+				&&
+				 (signo_pleno15_visit_0_marcado || signo_pleno15_visit_1_marcado || signo_pleno15_visit_2_marcado || signo_pleno15_visit_m_marcado) 
+			   )
+		    {
+			   botonera.setVisibility(View.VISIBLE);
+		    }
+		}
 	}
 	
 }
