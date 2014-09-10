@@ -157,55 +157,56 @@ public class QuinielaVerPronostico extends Activity
      		EquipoDao equipDao= new EquipoDao(con);
 
      		Quiniela quinHecha= quinOp.getQuinielaHecha(idQuin, con);
-     		Quiniela quinCorregida= null;
-     		bQuinielaCorregida= quinHecha.haSidoCalculadoElNumeroDeAciertos();
-     		if (bQuinielaCorregida)
-     			quinCorregida= QuinielaOp.getQuinielaCorregidaDeJornada(quinHecha.getTemporada(), quinHecha.getJornada(), con);
-     		else
-     		{
-     			// quizá está corregida parcialmente
-     			quinCorregida= QuinielaOp.getQuinielaParcialmenteCorregida(getApplicationContext(), quinHecha.getTemporada(), quinHecha.getJornada());
-     			if (quinCorregida != null)
-     				bQuinielaCorregida= true;
-     		}
-     		
-     		ArrayList<Partido> partidos= quinHecha.getPartidos();
-     		
-     		filasQuiniela= new ArrayList<PartidoQuiniela>();
-
-     		int[] rivales= new int[]{R.id.rivales1, R.id.rivales2, R.id.rivales3, R.id.rivales4, R.id.rivales5, R.id.rivales6, R.id.rivales7, R.id.rivales8, R.id.rivales9, R.id.rivales10, R.id.rivales11, R.id.rivales12, R.id.rivales13, R.id.rivales14};
-     		int[] partidos_1= new int[]{R.id.p1_1, R.id.p2_1, R.id.p3_1, R.id.p4_1, R.id.p5_1, R.id.p6_1, R.id.p7_1, R.id.p8_1, R.id.p9_1, R.id.p10_1, R.id.p11_1, R.id.p12_1, R.id.p13_1, R.id.p14_1};
-     		int[] partidos_x= new int[]{R.id.p1_x, R.id.p2_x, R.id.p3_x, R.id.p4_x, R.id.p5_x, R.id.p6_x, R.id.p7_x, R.id.p8_x, R.id.p9_x, R.id.p10_x, R.id.p11_x, R.id.p12_x, R.id.p13_x, R.id.p14_x};
-     		int[] partidos_2= new int[]{R.id.p1_2, R.id.p2_2, R.id.p3_2, R.id.p4_2, R.id.p5_2, R.id.p6_2, R.id.p7_2, R.id.p8_2, R.id.p9_2, R.id.p10_2, R.id.p11_2, R.id.p12_2, R.id.p13_2, R.id.p14_2};
-     		
-     		for (int k= 0; k<15; k++)
-     		{
-	         	Partido par= partidos.get(k);
-	         	int iRes= par.getResultadoQuiniela();
-	         	PartidoQuiniela parQuin= null;
-	         	if (k<14)  // todos excepto pleno al 15
-	         		parQuin= new PartidoQuiniela(equipDao.getNombreEquipo(par.getIdEquipoLocal()), equipDao.getNombreEquipo(par.getIdEquipoVisit()), iRes, rivales[k], partidos_1[k], partidos_x[k], partidos_2[k]);
-	         	else
-	         	{
-	         		// pleno al 15
-	         		parQuin= new PartidoQuiniela();
-	         		parQuin.setEq1(equipDao.getNombreEquipo(par.getIdEquipoLocal()));
-	         		parQuin.setEq2(equipDao.getNombreEquipo(par.getIdEquipoVisit()));
-	         		parQuin.setResultado1x2(iRes);
-	         	}
-	         	
-	         	if (bQuinielaCorregida)
-	         	{
-	         		boolean bFinalizado= quinCorregida.getPartidos().get(k).getResultadoQuiniela() != QuinielaOp.RES_NO_DISPONIBLE;
-	         		parQuin.ponerFinalizado(bFinalizado);
-	         		if (bFinalizado)
-	         			parQuin.ponerAcertado(Utils.resultadoAcertado(quinHecha.getPartidos().get(k).getResultadoQuiniela() , quinCorregida.getPartidos().get(k).getResultadoQuiniela()));
-	         	}
-	         	filasQuiniela.add(parQuin);
-     		}
-         	
+			if (quinHecha != null)
+			{
+	     		Quiniela quinCorregida= null;
+	     		bQuinielaCorregida= quinHecha.haSidoCalculadoElNumeroDeAciertos();
+	     		if (bQuinielaCorregida)
+	     			quinCorregida= QuinielaOp.getQuinielaCorregidaDeJornada(quinHecha.getTemporada(), quinHecha.getJornada(), con);
+	     		else
+	     		{
+	     			// quizá está corregida parcialmente
+	     			quinCorregida= QuinielaOp.getQuinielaParcialmenteCorregida(getApplicationContext(), quinHecha.getTemporada(), quinHecha.getJornada());
+	     			if (quinCorregida != null)
+	     				bQuinielaCorregida= true;
+	     		}
+	     		
+	     		ArrayList<Partido> partidos= quinHecha.getPartidos();
+	     		
+	     		filasQuiniela= new ArrayList<PartidoQuiniela>();
+	
+	     		int[] rivales= new int[]{R.id.rivales1, R.id.rivales2, R.id.rivales3, R.id.rivales4, R.id.rivales5, R.id.rivales6, R.id.rivales7, R.id.rivales8, R.id.rivales9, R.id.rivales10, R.id.rivales11, R.id.rivales12, R.id.rivales13, R.id.rivales14};
+	     		int[] partidos_1= new int[]{R.id.p1_1, R.id.p2_1, R.id.p3_1, R.id.p4_1, R.id.p5_1, R.id.p6_1, R.id.p7_1, R.id.p8_1, R.id.p9_1, R.id.p10_1, R.id.p11_1, R.id.p12_1, R.id.p13_1, R.id.p14_1};
+	     		int[] partidos_x= new int[]{R.id.p1_x, R.id.p2_x, R.id.p3_x, R.id.p4_x, R.id.p5_x, R.id.p6_x, R.id.p7_x, R.id.p8_x, R.id.p9_x, R.id.p10_x, R.id.p11_x, R.id.p12_x, R.id.p13_x, R.id.p14_x};
+	     		int[] partidos_2= new int[]{R.id.p1_2, R.id.p2_2, R.id.p3_2, R.id.p4_2, R.id.p5_2, R.id.p6_2, R.id.p7_2, R.id.p8_2, R.id.p9_2, R.id.p10_2, R.id.p11_2, R.id.p12_2, R.id.p13_2, R.id.p14_2};
+	     		
+	     		for (int k= 0; k<15; k++)
+	     		{
+		         	Partido par= partidos.get(k);
+		         	int iRes= par.getResultadoQuiniela();
+		         	PartidoQuiniela parQuin= null;
+		         	if (k<14)  // todos excepto pleno al 15
+		         		parQuin= new PartidoQuiniela(equipDao.getNombreEquipo(par.getIdEquipoLocal()), equipDao.getNombreEquipo(par.getIdEquipoVisit()), iRes, rivales[k], partidos_1[k], partidos_x[k], partidos_2[k]);
+		         	else
+		         	{
+		         		// pleno al 15
+		         		parQuin= new PartidoQuiniela();
+		         		parQuin.setEq1(equipDao.getNombreEquipo(par.getIdEquipoLocal()));
+		         		parQuin.setEq2(equipDao.getNombreEquipo(par.getIdEquipoVisit()));
+		         		parQuin.setResultado1x2(iRes);
+		         	}
+		         	
+		         	if (bQuinielaCorregida)
+		         	{
+		         		boolean bFinalizado= quinCorregida.getPartidos().get(k).getResultadoQuiniela() != QuinielaOp.RES_NO_DISPONIBLE;
+		         		parQuin.ponerFinalizado(bFinalizado);
+		         		if (bFinalizado)
+		         			parQuin.ponerAcertado(Utils.resultadoAcertado(quinHecha.getPartidos().get(k).getResultadoQuiniela() , quinCorregida.getPartidos().get(k).getResultadoQuiniela()));
+		         	}
+		         	filasQuiniela.add(parQuin);
+	     		}	         	
+			}
      		con.close();	    	        
-
             return 1;
          }
 
@@ -224,7 +225,7 @@ public class QuinielaVerPronostico extends Activity
 
           	if (filasQuiniela == null)
           	{
-         		Mensajes.alerta(getApplicationContext(), "No se ha posido cargar la quiniela.");
+         		Mensajes.alerta(getApplicationContext(), "No se ha podido cargar la quiniela.");
          		finish();          		
           	}
           	else

@@ -46,10 +46,26 @@ import android.widget.TextView;
 
 public class Jm1x2Principal extends TabActivity 
 {
-    private ProgressDialog dialog;
+    private ProgressDialog dialog= null;
     
 	private boolean bSeSoportaTituloPersonalizado;
 	private boolean bHayConexionInternet;
+	
+	@Override
+	protected void onDestroy() 
+	{
+      	if(dialog!=null)
+    		dialog.dismiss();  
+		super.onDestroy();
+	}
+	
+	@Override
+	protected void onStop() 
+	{
+      	if(dialog!=null)
+    		dialog.dismiss();  
+		super.onStop();
+	}
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) 
@@ -304,8 +320,21 @@ public class Jm1x2Principal extends TabActivity
 
          protected void onPostExecute(Integer bytes) 
          {
-        	 if(dialog!=null && dialog.isShowing())
-           		dialog.dismiss();
+           	 if(dialog!=null && dialog.isShowing())
+         		dialog.dismiss();  // si se siguen produciendo excepciones en esta linea, usar la solución de abajo (http://stackoverflow.com/questions/2745061/java-lang-illegalargumentexception-view-not-attached-to-window-manager)
+        	 
+        	 
+//        	  try 
+//        	  {
+//               	 if(dialog!=null && dialog.isShowing())
+//                		dialog.dismiss();
+//        	  } 
+//        	  catch (final IllegalArgumentException e) {}  // Handle or log or ignore        	        
+//        	  catch (final Exception e) {}  // Handle or log or ignore
+//        	  finally 
+//        	  {
+//        	        dialog = null;
+//        	  }           
          }
          
          /*
