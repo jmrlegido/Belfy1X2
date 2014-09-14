@@ -26,9 +26,25 @@ import android.widget.TextView;
 
 public class QuinielaVerPronostico extends Activity 
 {
-    private ProgressDialog dialog;
+    private ProgressDialog dialog= null;
     int idQuin;
 	    
+	@Override
+	protected void onDestroy() 
+	{
+      	if(dialog!=null)
+    		dialog.dismiss();  
+		super.onDestroy();
+	}
+	
+	@Override
+	protected void onStop() 
+	{
+      	if(dialog!=null)
+    		dialog.dismiss();  
+		super.onStop();
+	}
+    
     @Override
     public void onCreate(Bundle savedInstanceState)
     {

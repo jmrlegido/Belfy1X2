@@ -230,7 +230,7 @@ public class QuinielaOp
 		return _ret.multiply(new BigDecimal(pesoFactorAleatoriedad)).divide(new BigDecimal(100), 4, RoundingMode.HALF_UP).setScale(0, RoundingMode.HALF_UP).intValue();
 	}	
 	
-	public ArrayList<ValoracionEquiposPartidoQuiniela> getValoracionesEquiposSegunCriterios(ArrayList<Partido> partidos, FactoresPesos fac, SQLiteDatabase con, int idTemporada, int idUsuario)
+	public ArrayList<ValoracionEquiposPartidoQuiniela> getValoracionesEquiposSegunCriterios(ArrayList<Partido> partidos, FactoresPesos fac, SQLiteDatabase con, int idTemporada, int idUsuario, Context ctx)
 	{
 		ArrayList<ValoracionEquiposPartidoQuiniela> ret= new ArrayList<ValoracionEquiposPartidoQuiniela>();
 
@@ -271,8 +271,8 @@ public class QuinielaOp
 //				Log.d(Constantes.LOG_TAG, "[pronóstico] (1) aleatoriedad ("+fac.getAleatoriedad()+") - local: "+valorFactorEnLocal.toString()+" ; visit: "+valorFactorEnVisit.toString());
 	
 			// 2: calidad intrínseca
-			int local_calidadIntrinseca= getCalidadIntrinseca(idLocal, eqDao, idTemporada, idUsuario);
-			int visit_calidadIntrinseca= getCalidadIntrinseca(idVisit, eqDao, idTemporada, idUsuario);
+			int local_calidadIntrinseca= getCalidadIntrinseca(idLocal, eqDao, idTemporada, idUsuario, ctx);
+			int visit_calidadIntrinseca= getCalidadIntrinseca(idVisit, eqDao, idTemporada, idUsuario, ctx);
 			valorFactorEnLocal= ponderarValor(local_calidadIntrinseca, visit_calidadIntrinseca, fac.getCalidadIntrinseca());
 			valorFactorEnVisit= ponderarValor(visit_calidadIntrinseca, local_calidadIntrinseca, fac.getCalidadIntrinseca());
 			local_puntos= local_puntos.add(valorFactorEnLocal);
@@ -435,14 +435,14 @@ public class QuinielaOp
 			Log.d(Constantes.LOG_TAG, "[pronóstico (pleno15)] (1) aleatoriedad ("+fac.getAleatoriedad()+") - local: "+local_valorAleatorioEntre0y3+" ; visit: "+visit_valorAleatorioEntre0y3);
 		
 		// 2: calidad intrínseca
-		int local_calidadIntrinseca= getCalidadIntrinseca(idLocal, eqDao, idTemporada, idUsuario);
+		int local_calidadIntrinseca= getCalidadIntrinseca(idLocal, eqDao, idTemporada, idUsuario, ctx);
 		if (local_calidadIntrinseca < 40) local_calidadIntrinseca= 0;   else if (local_calidadIntrinseca < 60) local_calidadIntrinseca= 1; 
 																		else if (local_calidadIntrinseca < 80) local_calidadIntrinseca= 2; 
 																		else local_calidadIntrinseca= 3; 
 		local_numerador= local_numerador.add(new BigDecimal(local_calidadIntrinseca).multiply(new BigDecimal(fac.getCalidadIntrinseca())));
 		local_denominador= local_denominador.add(new BigDecimal(fac.getCalidadIntrinseca()));
 		
-		int visit_calidadIntrinseca= getCalidadIntrinseca(idVisit, eqDao, idTemporada, idUsuario);
+		int visit_calidadIntrinseca= getCalidadIntrinseca(idVisit, eqDao, idTemporada, idUsuario, ctx);
 		if (visit_calidadIntrinseca < 40) visit_calidadIntrinseca= 0;   else if (visit_calidadIntrinseca < 60) visit_calidadIntrinseca= 1; 
 																		else if (visit_calidadIntrinseca < 80) visit_calidadIntrinseca= 2; 
 																		else visit_calidadIntrinseca= 3; 
@@ -876,10 +876,17 @@ public class QuinielaOp
 		return ret;
 	}
 		
-	private int getCalidadIntrinseca(String idEq, EquipoDao eqDao, int idTemporada, int idUsuario)
+	private int getCalidadIntrinseca(String idEq, EquipoDao eqDao, int idTemporada, int idUsuario, Context ctx)
 	{
 		Equipo eq= eqDao.getEquipo(idEq, idTemporada, idUsuario);
-		return eq.getCalidadIntrinseca();
+		if (eq == null)  
+		{
+			// algo que no debería pasar nunca, pero como aparecen NullPointerExcepcion en "eq.getCalidadIntrinseca()" intento ver por qué
+			AplicacionOp.mandarInfoError("QuinielaOp.getCalidadIntriseca(): objeto equipo nulo. Datos: idEq:"+idEq+", idTemp:"+idTemporada+", idUsu:"+idUsuario, ctx) ;
+			return 50; // un valor medio cualquiera
+		}
+		else
+			return eq.getCalidadIntrinseca();
 	}
 	
 	public void grabarQuiniela(Quiniela q, int idUsuario, Context ctx)

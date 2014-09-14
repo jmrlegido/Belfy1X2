@@ -17,14 +17,17 @@ public class Basedatos
 		SQLiteDatabase con = null;
 		
 		String versiones_bbdd= Notificaciones.getNotificacion(Constantes.NOTIFICACION_VERSIONES_BBDD);
-		String[] vers= versiones_bbdd.split(",");
-		int versionBBDD= new Integer(vers[vers.length-1]).intValue();		
-		
-		Q1x2SQLiteHelper sqliteHelper = new Q1x2SQLiteHelper(ctx, nombreBBDD, null, versionBBDD);
-		if (lecturaEscritura == LECTURA)
-			con = sqliteHelper.getReadableDatabase();
-		else
-			con = sqliteHelper.getWritableDatabase();
+		if (versiones_bbdd != null)
+		{
+			String[] vers= versiones_bbdd.split(",");
+			int versionBBDD= new Integer(vers[vers.length-1]).intValue();		
+			
+			Q1x2SQLiteHelper sqliteHelper = new Q1x2SQLiteHelper(ctx, nombreBBDD, null, versionBBDD);
+			if (lecturaEscritura == LECTURA)
+				con = sqliteHelper.getReadableDatabase();
+			else
+				con = sqliteHelper.getWritableDatabase();
+		}
 		return con;
 	}
 

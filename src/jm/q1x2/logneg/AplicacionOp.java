@@ -2,7 +2,10 @@ package jm.q1x2.logneg;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 import jm.q1x2.activities.Jm1x2Principal.TareaSegundoPlano;
 import jm.q1x2.bbdd.Basedatos;
@@ -124,5 +127,47 @@ public class AplicacionOp
     	
     	return contenido==null?null:contenido.split(";");
     }
-    
+
+
+    /**
+     * @since v4.4
+     */
+	public static void mandarInfoError(String infoerror, Context ctx) 
+	{
+		if (Utils.hayConexionInternet(ctx))
+		{
+			try
+			{
+				infoerror= infoerror.replaceAll(" ", "%20");
+				infoerror= infoerror.replaceAll("\\?", "_");
+				infoerror= infoerror.replaceAll("&", "_");
+				String sUrl= Utils.reemplazarParamsUrl(Config.getURLInfoError(), new String[]{"infoerror", infoerror
+																							,"versioncode", ""+Utils.getVersionCodeAplicacion(ctx)}); 
+				URL url = new URL(sUrl);
+				URLConnection connection = url.openConnection();
+				HttpURLConnection httpConnection = (HttpURLConnection)connection;
+				
+				int responseCode = httpConnection.getResponseCode();
+				if (responseCode == HttpURLConnection.HTTP_OK) 
+				{
+	    			if (Log.isLoggable(Constantes.LOG_TAG, Log.INFO))
+	    				Log.i(Constantes.LOG_TAG, "Información de error mandada correctamente.");
+				}
+				else
+				{
+	    			if (Log.isLoggable(Constantes.LOG_TAG, Log.WARN))
+	    				Log.w(Constantes.LOG_TAG, "Se ha producido un error al mandar información de error.");
+				}
+			}
+			catch (MalformedURLException e) 
+			{
+				Log.e(Constantes.LOG_TAG, "Se ha producido un error al mandar información de error.", e);
+			}
+			catch (Exception e) 
+			{ 
+				Log.e(Constantes.LOG_TAG, "Se ha producido un error cargando las notificaciones. La conexión a la URL no es posible.", e);
+			}		
+		}
+	}   
+   
 }

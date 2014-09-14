@@ -366,7 +366,7 @@ public class QuinielaHacer extends Activity implements SeekBar.OnSeekBarChangeLi
 	     		
 	     		filasQuiniela= new ArrayList<PartidoQuiniela>();
 	     			    		
-	     		ArrayList<ValoracionEquiposPartidoQuiniela> valoresLocalVisit= quinOp.getValoracionesEquiposSegunCriterios(partidos, fac, con, idTemporada, idUsuario);
+	     		ArrayList<ValoracionEquiposPartidoQuiniela> valoresLocalVisit= quinOp.getValoracionesEquiposSegunCriterios(partidos, fac, con, idTemporada, idUsuario, getApplicationContext());
 	     		ArrayList<Partido> partidosConPronosticos1x2= quinOp.convertirValoracionesEnPronostico1X2(partidos, valoresLocalVisit, barraTriples.getProgress(), barraDobles.getProgress());
 	     		
 	     		Partido par;

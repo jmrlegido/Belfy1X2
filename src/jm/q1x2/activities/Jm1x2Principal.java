@@ -71,7 +71,6 @@ public class Jm1x2Principal extends TabActivity
     public void onCreate(Bundle savedInstanceState) 
     {
     	super.onCreate(savedInstanceState);   	
-    	
     	bSeSoportaTituloPersonalizado= requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         bHayConexionInternet= Utils.hayConexionInternet(getApplicationContext());        
     	
@@ -82,35 +81,52 @@ public class Jm1x2Principal extends TabActivity
         }
         else
         {
-        	inicializarBBDD();  // NO QUITAR ESTA LINEA BAJO NINGÚN CONCEPTO
-        	
         	boolean bIniciar= true;
-        	String sVersionCodeMin= Notificaciones.getNotificacion(Constantes.NOTIFICACION_VERSIONCODE_MINIMO);
-        	if (sVersionCodeMin != null)
+
+        	String error= inicializarBBDD();  // NO QUITAR ESTA LINEA BAJO NINGÚN CONCEPTO
+        	if (error != null)
         	{
-        		int iVersionCodeMin= Integer.parseInt(sVersionCodeMin);
-        		int vc= Utils.getVersionCodeAplicacion(getApplicationContext());
-        		if (vc < iVersionCodeMin)
-        		{
-        			bIniciar= false;
-                	Mensajes.alerta(getApplicationContext(), "Necesitas actualizar Belfy1x2 a la última versión.");
-                	finish();
-        		}
+        		bIniciar= false;        	
+    			Mensajes.alerta(getApplicationContext(), error);
+         	    finish();
         	}
-        	
+        	else
+        	{
+            	String sVersionCodeMin= Notificaciones.getNotificacion(Constantes.NOTIFICACION_VERSIONCODE_MINIMO);
+            	if (sVersionCodeMin != null)
+            	{
+            		int iVersionCodeMin= Integer.parseInt(sVersionCodeMin);
+            		int vc= Utils.getVersionCodeAplicacion(getApplicationContext());
+            		if (vc < iVersionCodeMin)
+            		{
+            			bIniciar= false;
+                    	Mensajes.alerta(getApplicationContext(), "Necesitas actualizar Belfy1x2 a la última versión.");
+                    	finish();
+            		}
+            	}
+        	}
+        	        	
         	if (bIniciar)
         		inicio();
         }
     }
 	
-	private void inicializarBBDD()
+	/*
+	 * @return null si todo OK. Mensaje de error en caso de error
+	 */
+	private String inicializarBBDD()
 	{		
     	/*
     	 *  Hago un primer acceso en modo ESCRITURA por si requiere actualizar la BB.DD.
     	 *  NO QUITAR LAS SIGUIENTES 2 LÍNEAS BAJO NINGÚN CONCEPTO
     	 */
-        SQLiteDatabase con= Basedatos.getConexion(getApplicationContext(), Basedatos.ESCRITURA);        
-        con.close();
+		String ret= null;
+        SQLiteDatabase con= Basedatos.getConexion(getApplicationContext(), Basedatos.ESCRITURA);
+        if (con == null)
+        	ret= "Se ha producido un error en la comunicación con el servidor.";
+        else 
+        	con.close();
+        return ret;
 	}
 	
 	private boolean esPrimeraInvocacion()

@@ -109,8 +109,8 @@ public class Q1x2SQLiteHelper extends SQLiteOpenHelper
     	 * En       android:versionCode="20"     android:versionName="4.0"
 				al ser la primera versión de la temporada 2014/15, no hay actualización.
 				Siempre será onCreate
-		   Las 2 siguientes líneas SÓLO deberían estar presentes en esta versión.
-		   Todas las   android:versionCode  superiores a 20 de la temporada 2014/15, no deben tener estas 2 líneas 
+		   Las 2 siguientes líneas SÓLO deberían estar presentes si hay 1 única versión de BB.DD. (la 13090301).
+		   En el momento en que haya más, hay que quitarlas 
     	 */
     	onCreate(db);
     	if (true) return;
