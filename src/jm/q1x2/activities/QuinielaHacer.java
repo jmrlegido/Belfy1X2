@@ -35,7 +35,7 @@ public class QuinielaHacer extends Activity implements SeekBar.OnSeekBarChangeLi
     private int SUBACTIVITY_PARAMS_QUINIELAS= 1;
 	private int SUBACTIVITY_GRABAR_QUINIELA= 2;
 	
-    private ProgressDialog dialog;
+    private ProgressDialog dialog= null;
 	private Quiniela quinielaHecha= null;
 
 	SeekBar barraTriples;	SeekBar barraDobles;
@@ -43,6 +43,22 @@ public class QuinielaHacer extends Activity implements SeekBar.OnSeekBarChangeLi
 	TextView valorTriples;	TextView valorDobles;
 	
 	private boolean bQuinielaYaGenerada= false;
+	
+	@Override
+	protected void onDestroy() 
+	{
+      	if(dialog!=null)
+    		dialog.dismiss();  
+		super.onDestroy();
+	}
+	
+	@Override
+	protected void onStop() 
+	{
+      	if(dialog!=null)
+    		dialog.dismiss();  
+		super.onStop();
+	}
 	
     /** Called when the activity is first created. */
     @Override

@@ -538,6 +538,10 @@ public class QuinielaOp
 		if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
 			Log.d(Constantes.LOG_TAG, "[pronóstico (pleno15)] (9) últimos 4 partidos local/visit ("+fac.getUltimos4LocalVisit()+") - local: "+local_ptosUltimos4Local+"; visit: "+visit_ptosUltimos4Visit);
 		
+		if (local_denominador.equals(cero))
+			local_denominador= local_numerador;
+		if (visit_denominador.equals(cero))
+			visit_denominador= local_numerador;
 		
 		ret.add(new ValoracionEquiposPartidoQuiniela(local_numerador.divide(local_denominador, 4, RoundingMode.HALF_UP), visit_numerador.divide(visit_denominador, 4, RoundingMode.HALF_UP)));
 		

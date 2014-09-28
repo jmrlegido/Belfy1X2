@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 import jm.q1x2.bbdd.Basedatos;
@@ -77,7 +78,7 @@ public class Utils
 	public static String hoy()
 	{
 		Date date = Calendar.getInstance().getTime();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.GERMAN);
 		String ret= sdf.format(date);
 		return ret;
 	}
