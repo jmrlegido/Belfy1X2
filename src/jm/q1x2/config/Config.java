@@ -95,7 +95,14 @@ public class Config
     {
     	return getDato("url_noticias");
     }
-    
+
+    /*
+     * @since v4.4
+     */
+    public static String getURLInfoError()
+    {
+    	return getDato("url_info_error");
+    }
     
     /*
      * @since 1.6

@@ -17,22 +17,30 @@ public class Basedatos
 		SQLiteDatabase con = null;
 		
 		String versiones_bbdd= Notificaciones.getNotificacion(Constantes.NOTIFICACION_VERSIONES_BBDD);
-		String[] vers= versiones_bbdd.split(",");
-		int versionBBDD= new Integer(vers[vers.length-1]).intValue();		
-		
-		Q1x2SQLiteHelper sqliteHelper = new Q1x2SQLiteHelper(ctx, nombreBBDD, null, versionBBDD);
-		if (lecturaEscritura == LECTURA)
-			con = sqliteHelper.getReadableDatabase();
-		else
-			con = sqliteHelper.getWritableDatabase();
+		if (versiones_bbdd != null)
+		{
+			String[] vers= versiones_bbdd.split(",");
+			int versionBBDD= new Integer(vers[vers.length-1]).intValue();		
+			
+			Q1x2SQLiteHelper sqliteHelper = new Q1x2SQLiteHelper(ctx, nombreBBDD, null, versionBBDD);
+			if (lecturaEscritura == LECTURA)
+				con = sqliteHelper.getReadableDatabase();
+			else
+				con = sqliteHelper.getWritableDatabase();
+		}
 		return con;
 	}
 
     public static void db_execSQL_log(SQLiteDatabase db, String sql)
     {
-    	db.execSQL(sql);    	
-		if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
-			Log.d(Constantes.LOG_TAG, "sql> "+sql);
+    	if (!sql.startsWith("#"))   // sería un comentario
+    	{
+			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
+				Log.d(Constantes.LOG_TAG, "sql> "+sql);
+	    	db.execSQL(sql);    	
+			if (Log.isLoggable(Constantes.LOG_TAG, Log.DEBUG))
+				Log.d(Constantes.LOG_TAG, "\tsql << OK ");
+    	}
     }
 	
 }

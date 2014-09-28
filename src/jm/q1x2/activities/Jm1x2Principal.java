@@ -43,19 +43,31 @@ import android.widget.TextView;
 
 public class Jm1x2Principal extends TabActivity 
 {
-    private ProgressDialog dialog;
+    private ProgressDialog dialog= null;
     
 	private boolean bSeSoportaTituloPersonalizado;
 	private boolean bHayConexionInternet;
 	
 	@Override
+	protected void onDestroy() 
+	{
+      	if(dialog!=null)
+    		dialog.dismiss();  
+		super.onDestroy();
+	}
+	
+	@Override
+	protected void onStop() 
+	{
+      	if(dialog!=null)
+    		dialog.dismiss();  
+		super.onStop();
+	}
+	
+	@Override
     public void onCreate(Bundle savedInstanceState) 
     {
     	super.onCreate(savedInstanceState);   	
-    	
-   		if (Log.isLoggable(Constantes.LOG_TAG, Log.VERBOSE))
-			Log.v(Constantes.LOG_TAG, "### onCreate");
-    	
     	bSeSoportaTituloPersonalizado= requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         bHayConexionInternet= Utils.hayConexionInternet(getApplicationContext());        
     	
@@ -66,35 +78,52 @@ public class Jm1x2Principal extends TabActivity
         }
         else
         {
-        	inicializarBBDD();  // NO QUITAR ESTA LINEA BAJO NINGÚN CONCEPTO
-        	
         	boolean bIniciar= true;
-        	String sVersionCodeMin= Notificaciones.getNotificacion(Constantes.NOTIFICACION_VERSIONCODE_MINIMO);
-        	if (sVersionCodeMin != null)
+
+        	String error= inicializarBBDD();  // NO QUITAR ESTA LINEA BAJO NINGÚN CONCEPTO
+        	if (error != null)
         	{
-        		int iVersionCodeMin= Integer.parseInt(sVersionCodeMin);
-        		int vc= Utils.getVersionCodeAplicacion(getApplicationContext());
-        		if (vc <= iVersionCodeMin)
-        		{
-        			bIniciar= false;
-                	Mensajes.alerta(getApplicationContext(), "Necesitas actualizar Belfy1x2 a la última versión.");
-                	finish();
-        		}
+        		bIniciar= false;        	
+    			Mensajes.alerta(getApplicationContext(), error);
+         	    finish();
         	}
-        	
+        	else
+        	{
+            	String sVersionCodeMin= Notificaciones.getNotificacion(Constantes.NOTIFICACION_VERSIONCODE_MINIMO);
+            	if (sVersionCodeMin != null)
+            	{
+            		int iVersionCodeMin= Integer.parseInt(sVersionCodeMin);
+            		int vc= Utils.getVersionCodeAplicacion(getApplicationContext());
+            		if (vc < iVersionCodeMin)
+            		{
+            			bIniciar= false;
+                    	Mensajes.alerta(getApplicationContext(), "Necesitas actualizar Belfy1x2 a la última versión.");
+                    	finish();
+            		}
+            	}
+        	}
+        	        	
         	if (bIniciar)
         		inicio();
         }
     }
 	
-	private void inicializarBBDD()
+	/*
+	 * @return null si todo OK. Mensaje de error en caso de error
+	 */
+	private String inicializarBBDD()
 	{		
     	/*
     	 *  Hago un primer acceso en modo ESCRITURA por si requiere actualizar la BB.DD.
     	 *  NO QUITAR LAS SIGUIENTES 2 LÍNEAS BAJO NINGÚN CONCEPTO
     	 */
-        SQLiteDatabase con= Basedatos.getConexion(getApplicationContext(), Basedatos.ESCRITURA);        
-        con.close();
+		String ret= null;
+        SQLiteDatabase con= Basedatos.getConexion(getApplicationContext(), Basedatos.ESCRITURA);
+        if (con == null)
+        	ret= "Se ha producido un error en la comunicación con el servidor.";
+        else 
+        	con.close();
+        return ret;
 	}
 	
 	private boolean esPrimeraInvocacion()
@@ -110,7 +139,7 @@ public class Jm1x2Principal extends TabActivity
 			Preferencias.grabarPreferenciaInt(getApplicationContext(), Constantes.PREFERENCIAS_PRIMERA_PRESENTACION, 0);
 		return ret;
 	}
-
+	
     private void inicio()
     {
         SQLiteDatabase con= Basedatos.getConexion(getApplicationContext(), Basedatos.ESCRITURA);        
@@ -183,9 +212,6 @@ public class Jm1x2Principal extends TabActivity
     {    	
 		super.onStart();
 		
-		if (Log.isLoggable(Constantes.LOG_TAG, Log.VERBOSE))
-			Log.v(Constantes.LOG_TAG, "### onStart");
-
     	if (bHayConexionInternet)
             cargaDatosIniciales();
 		
@@ -283,8 +309,21 @@ public class Jm1x2Principal extends TabActivity
 
          protected void onPostExecute(Integer bytes) 
          {
-        	 if(dialog!=null && dialog.isShowing())
-           		dialog.dismiss();
+           	 if(dialog!=null && dialog.isShowing())
+         		dialog.dismiss();  // si se siguen produciendo excepciones en esta linea, usar la solución de abajo (http://stackoverflow.com/questions/2745061/java-lang-illegalargumentexception-view-not-attached-to-window-manager)
+        	 
+        	 
+//        	  try 
+//        	  {
+//               	 if(dialog!=null && dialog.isShowing())
+//                		dialog.dismiss();
+//        	  } 
+//        	  catch (final IllegalArgumentException e) {}  // Handle or log or ignore        	        
+//        	  catch (final Exception e) {}  // Handle or log or ignore
+//        	  finally 
+//        	  {
+//        	        dialog = null;
+//        	  }           
          }
          
          /*

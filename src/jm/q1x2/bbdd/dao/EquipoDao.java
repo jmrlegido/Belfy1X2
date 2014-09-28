@@ -362,7 +362,7 @@ public class EquipoDao extends DaoGeneral
 	   {
 		   int goles= 0;
 		   if (totalLocalVisit == EquipoOp.EQUIPO_LOCAL_Y_VISITANTE)
-			   goles= getGoles(temporada, idEquipo, EquipoOp.EQUIPO_LOCAL) + getPuntos(temporada, idEquipo, EquipoOp.EQUIPO_VISITANTE);
+			   goles= getGoles(temporada, idEquipo, EquipoOp.EQUIPO_LOCAL) + getGoles(temporada, idEquipo, EquipoOp.EQUIPO_VISITANTE);
 		   else if (totalLocalVisit == EquipoOp.EQUIPO_LOCAL)
 			   goles= getGoles(temporada, idEquipo, EquipoOp.EQUIPO_LOCAL);
 		   else if (totalLocalVisit == EquipoOp.EQUIPO_VISITANTE)

@@ -4,26 +4,26 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:weightSum="1">
-	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	<ScrollView 
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
 		android:layout_weight="1">
     
-		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		<LinearLayout 
 		    android:orientation="vertical"
 		    android:layout_width="fill_parent" android:layout_height="wrap_content"
 		    >
-			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			<LinearLayout 
 			    android:orientation="vertical"
 				android:paddingTop="15dp"
 				android:paddingBottom="15dp"  
 			    android:layout_width="fill_parent" android:layout_height="wrap_content"
 			    >
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -32,7 +32,7 @@
 							android:id="@+id/rivales1" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -57,11 +57,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -70,7 +70,7 @@
 							android:id="@+id/rivales2" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -95,11 +95,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -108,7 +108,7 @@
 							android:id="@+id/rivales3" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -133,11 +133,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -146,7 +146,7 @@
 							android:id="@+id/rivales4" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -171,11 +171,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -184,7 +184,7 @@
 							android:id="@+id/rivales5" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -209,11 +209,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -222,7 +222,7 @@
 							android:id="@+id/rivales6" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -247,11 +247,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -260,7 +260,7 @@
 							android:id="@+id/rivales7" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -285,11 +285,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -298,7 +298,7 @@
 							android:id="@+id/rivales8" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -323,11 +323,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -336,7 +336,7 @@
 							android:id="@+id/rivales9" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -361,11 +361,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -374,7 +374,7 @@
 							android:id="@+id/rivales10" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -399,11 +399,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -412,7 +412,7 @@
 							android:id="@+id/rivales11" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -437,11 +437,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -450,7 +450,7 @@
 							android:id="@+id/rivales12" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -475,11 +475,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -488,7 +488,7 @@
 							android:id="@+id/rivales13" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -513,11 +513,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				<LinearLayout 
 				    android:orientation="horizontal"
 				    android:layout_width="fill_parent" android:layout_height="wrap_content"
 				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal"
 					    android:layout_width="wrap_content" android:layout_height="wrap_content"
 					    >
@@ -526,7 +526,7 @@
 							android:id="@+id/rivales14" android:textStyle="bold"
 							/>
 					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					<LinearLayout 
 					    android:orientation="horizontal" android:gravity="right"
 					    android:layout_width="fill_parent" android:layout_height="wrap_content"
 					    >
@@ -551,44 +551,116 @@
 					</LinearLayout>
 				</LinearLayout>
 			
-				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				    android:orientation="horizontal"
-				    android:layout_width="fill_parent" android:layout_height="wrap_content"
-				    >
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-					    android:orientation="horizontal"
-					    android:layout_width="wrap_content" android:layout_height="wrap_content"
-					    >
-						<TextView 
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							android:id="@+id/rivales15" android:textStyle="bold"
-							/>
-					</LinearLayout>
-					<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-					    android:orientation="horizontal" android:gravity="right"
-					    android:layout_width="fill_parent" android:layout_height="wrap_content"
-					    >
-						<ImageView
-							android:id="@+id/p15_1"
-							android:src="@drawable/quin_1"
-							android:onClick="clk15_1"							
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							/>
-						<ImageView
-							android:id="@+id/p15_x"
-							android:src="@drawable/quin_x"
-							android:onClick="clk15_x"
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							/>
-						<ImageView
-							android:id="@+id/p15_2"
-							android:src="@drawable/quin_2"
-							android:onClick="clk15_2"
-							android:layout_width="wrap_content" android:layout_height="wrap_content"
-							/>
-					</LinearLayout>
-				</LinearLayout>
 			
+				
+				<!-- ############################### pleno al 15 (inicio) ############################# -->
+								
+				<LinearLayout
+					android:layout_height="wrap_content" 
+					android:layout_width="match_parent" 
+					android:orientation="vertical" 
+					>
+								
+			    		<TextView 
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:text="Pleno al 15:"
+						/>
+			    
+						<!-- partido 15: equipo local -->
+						<LinearLayout 
+						    android:orientation="horizontal"
+						    android:layout_width="fill_parent" android:layout_height="wrap_content"
+						    >
+							<LinearLayout 
+							    android:orientation="horizontal"
+							    android:layout_width="wrap_content" android:layout_height="wrap_content"
+							    >
+								<TextView 
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									android:id="@+id/p15_equipolocal" android:textStyle="bold"
+									/>
+							</LinearLayout>
+							<LinearLayout
+							    android:orientation="horizontal" android:gravity="right"
+							    android:layout_width="fill_parent" android:layout_height="wrap_content"
+							    >
+								<ImageView
+									android:id="@+id/p15_equipolocal_0"
+									android:src="@drawable/quin_goles0"
+									android:onClick="clk15_local_0"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+								<ImageView
+									android:id="@+id/p15_equipolocal_1"
+									android:src="@drawable/quin_goles1"
+									android:onClick="clk15_local_1"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+								<ImageView
+									android:id="@+id/p15_equipolocal_2"
+									android:src="@drawable/quin_goles2"
+									android:onClick="clk15_local_2"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+								<ImageView
+									android:id="@+id/p15_equipolocal_m"
+									android:src="@drawable/quin_golesm"
+									android:onClick="clk15_local_m"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+														
+							</LinearLayout>
+						</LinearLayout>
+					
+						<!-- partido 15: equipo visitante -->
+						<LinearLayout 
+						    android:orientation="horizontal"
+						    android:layout_width="fill_parent" android:layout_height="wrap_content"
+						    >
+							<LinearLayout 
+							    android:orientation="horizontal"
+							    android:layout_width="wrap_content" android:layout_height="wrap_content"
+							    >
+								<TextView 
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									android:id="@+id/p15_equipovisitante" android:textStyle="bold"
+									/>
+							</LinearLayout>
+							<LinearLayout
+							    android:orientation="horizontal" android:gravity="right"
+							    android:layout_width="fill_parent" android:layout_height="wrap_content"
+							    >
+								<ImageView
+									android:id="@+id/p15_equipovisitante_0"
+									android:src="@drawable/quin_goles0"
+									android:onClick="clk15_visit_0"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+								<ImageView
+									android:id="@+id/p15_equipovisitante_1"
+									android:src="@drawable/quin_goles1"
+									android:onClick="clk15_visit_1"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+								<ImageView
+									android:id="@+id/p15_equipovisitante_2"
+									android:src="@drawable/quin_goles2"
+									android:onClick="clk15_visit_2"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+								<ImageView
+									android:id="@+id/p15_equipovisitante_m"
+									android:src="@drawable/quin_golesm"
+									android:onClick="clk15_visit_m"
+									android:layout_width="wrap_content" android:layout_height="wrap_content"
+									/>
+														
+							</LinearLayout>
+						</LinearLayout>
+				</LinearLayout>
+				<!-- ############################### pleno al 15 (fin) ############################# -->
+								
+				
 			</LinearLayout>	
 			
 			

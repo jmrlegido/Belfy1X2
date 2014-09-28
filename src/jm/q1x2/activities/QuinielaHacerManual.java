@@ -31,16 +31,24 @@ public class QuinielaHacerManual extends Activity
 	
 	private Quiniela quinielaHecha= null;
 
-    boolean[] signo1_marcadas= new boolean[16];  // no tendré en cuenta el índice 0
-    boolean[] signoX_marcadas= new boolean[16];  // no tendré en cuenta el índice 0
-    boolean[] signo2_marcadas= new boolean[16];  // no tendré en cuenta el índice 0
+    boolean[] signo1_marcadas= new boolean[15];  // no tendré en cuenta el índice 0
+    boolean[] signoX_marcadas= new boolean[15];  // no tendré en cuenta el índice 0
+    boolean[] signo2_marcadas= new boolean[15];  // no tendré en cuenta el índice 0
+    boolean signo_pleno15_local_0_marcado= false;
+    boolean signo_pleno15_local_1_marcado= false;
+    boolean signo_pleno15_local_2_marcado= false;
+    boolean signo_pleno15_local_m_marcado= false;
+    boolean signo_pleno15_visit_0_marcado= false;
+    boolean signo_pleno15_visit_1_marcado= false;
+    boolean signo_pleno15_visit_2_marcado= false;
+    boolean signo_pleno15_visit_m_marcado= false;
 	
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         
-        for (int k=1; k<=15; k++)
+        for (int k=1; k<=14; k++)
         {
         	signo1_marcadas[k]= false;
         	signoX_marcadas[k]= false;
@@ -80,18 +88,34 @@ public class QuinielaHacerManual extends Activity
 	     		quinielaHecha.setJornada(iJornadaQuinielaEstaSemana);
 	     		
 	     		Partido par;
-	     		for (int idx= 0; idx < 15; idx++)
+	     		for (int idx= 0; idx < 14; idx++)   // partidos 1 a 14
 	     		{
 		         	par= partidos.get(idx);
 		         	quinielaHecha.annadirPartido(par);        	
 		         	filasQuiniela.add(new PartidoQuiniela(daoEq.getNombreEquipo(par.getIdEquipoLocal()), daoEq.getNombreEquipo(par.getIdEquipoVisit()), resIdRivales[idx]));
 	     		}
-	         	
+
+	     		// pleno al 15
+	         	par= partidos.get(14);
+	         	quinielaHecha.annadirPartido(par);   
+	         	PartidoQuiniela pq= new PartidoQuiniela();
+	         	pq.setEq1(daoEq.getNombreEquipo(par.getIdEquipoLocal()));
+	         	pq.setEq2(daoEq.getNombreEquipo(par.getIdEquipoVisit()));
+	         	filasQuiniela.add(pq);
+	     		
          	}
      		con.close();
      		
-          	for(PartidoQuiniela fila: filasQuiniela)
-          		mostrarPartido(fila.getEq1(), fila.getEq2(), fila.getResIdRivales());
+     		PartidoQuiniela fila= null;
+     		for (int k= 0; k< filasQuiniela.size()-1; k++)   // partidos 1 a 14
+     		{
+     			fila= filasQuiniela.get(k);
+     			mostrarPartido(fila.getEq1(), fila.getEq2(), fila.getResIdRivales());
+     		}
+     		
+     		// pleno al 15:
+ 			fila= filasQuiniela.get(filasQuiniela.size()-1);
+ 			mostrarPartidoPleno15(fila.getEq1(), fila.getEq2());
  		}
     }    
 
@@ -111,9 +135,10 @@ public class QuinielaHacerManual extends Activity
 	    */
 		
 	   ArrayList<Partido> partidos= quinielaHecha.getPartidos();
-	   for (int k=0; k<15; k++)
+	   Partido p= null;
+	   for (int k=0; k<14; k++)   // todos menos el pleno al 15
 	   {
-		   Partido p= partidos.get(k);
+		   p= partidos.get(k);
 		   
 		   int result= -1;
 		   if (signo1_marcadas[k+1])
@@ -142,7 +167,55 @@ public class QuinielaHacerManual extends Activity
 		   
 		   p.setResultadoQuiniela(result);
 	   }
-		
+
+	   // pleno al 15:
+	   p= partidos.get(14);
+	   
+	   if (signo_pleno15_local_0_marcado)
+	   {
+		   if (signo_pleno15_visit_0_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_00);
+		   else if (signo_pleno15_visit_1_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_01);
+		   else if (signo_pleno15_visit_2_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_02);
+		   else if (signo_pleno15_visit_m_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_0M);
+	   }
+	   else if (signo_pleno15_local_1_marcado)
+	   {
+		   if (signo_pleno15_visit_0_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_10);
+		   else if (signo_pleno15_visit_1_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_11);
+		   else if (signo_pleno15_visit_2_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_12);
+		   else if (signo_pleno15_visit_m_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_1M);
+	   }
+	   else if (signo_pleno15_local_2_marcado)
+	   {
+		   if (signo_pleno15_visit_0_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_20);
+		   else if (signo_pleno15_visit_1_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_21);
+		   else if (signo_pleno15_visit_2_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_22);
+		   else if (signo_pleno15_visit_m_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_2M);
+	   }
+	   else if (signo_pleno15_local_m_marcado)
+	   {
+		   if (signo_pleno15_visit_0_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_M0);
+		   else if (signo_pleno15_visit_1_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_M1);
+		   else if (signo_pleno15_visit_2_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_M2);
+		   else if (signo_pleno15_visit_m_marcado)
+			   p.setResultadoQuiniela(QuinielaOp.RES_PLENO15_MM);
+	   }
+	   
 	   Intent i = new Intent(getApplicationContext(), QuinielaGrabar.class);			
 	   i.putExtra(Constantes.QUINIELA_GRABAR, quinielaHecha);
 	   startActivityForResult(i, SUBACTIVITY_GRABAR_QUINIELA);  
@@ -168,11 +241,17 @@ public class QuinielaHacerManual extends Activity
     {    	
     	((TextView) findViewById(resIdRivales)).setText(eq1 + " - "+ eq2);
     }
+
+    private void mostrarPartidoPleno15(String eq1, String eq2)
+    {    	
+    	((TextView) findViewById(R.id.p15_equipolocal)).setText("    "+eq1);
+    	((TextView) findViewById(R.id.p15_equipovisitante)).setText("    "+eq2);
+    }
     
-    int[] resIdRivales= new int[]{R.id.rivales1,R.id.rivales2,R.id.rivales3,R.id.rivales4,R.id.rivales5,R.id.rivales6,R.id.rivales7,R.id.rivales8,R.id.rivales9,R.id.rivales10,R.id.rivales11,R.id.rivales12,R.id.rivales13,R.id.rivales14,R.id.rivales15};
-    int[] resIdSigno1= new int[]{R.id.p1_1,R.id.p2_1,R.id.p3_1,R.id.p4_1,R.id.p5_1,R.id.p6_1,R.id.p7_1,R.id.p8_1,R.id.p9_1,R.id.p10_1,R.id.p11_1,R.id.p12_1,R.id.p13_1,R.id.p14_1,R.id.p15_1};
-    int[] resIdSignoX= new int[]{R.id.p1_x,R.id.p2_x,R.id.p3_x,R.id.p4_x,R.id.p5_x,R.id.p6_x,R.id.p7_x,R.id.p8_x,R.id.p9_x,R.id.p10_x,R.id.p11_x,R.id.p12_x,R.id.p13_x,R.id.p14_x,R.id.p15_x};
-    int[] resIdSigno2= new int[]{R.id.p1_2,R.id.p2_2,R.id.p3_2,R.id.p4_2,R.id.p5_2,R.id.p6_2,R.id.p7_2,R.id.p8_2,R.id.p9_2,R.id.p10_2,R.id.p11_2,R.id.p12_2,R.id.p13_2,R.id.p14_2,R.id.p15_2};
+    int[] resIdRivales= new int[]{R.id.rivales1,R.id.rivales2,R.id.rivales3,R.id.rivales4,R.id.rivales5,R.id.rivales6,R.id.rivales7,R.id.rivales8,R.id.rivales9,R.id.rivales10,R.id.rivales11,R.id.rivales12,R.id.rivales13,R.id.rivales14};
+    int[] resIdSigno1= new int[]{R.id.p1_1,R.id.p2_1,R.id.p3_1,R.id.p4_1,R.id.p5_1,R.id.p6_1,R.id.p7_1,R.id.p8_1,R.id.p9_1,R.id.p10_1,R.id.p11_1,R.id.p12_1,R.id.p13_1,R.id.p14_1};
+    int[] resIdSignoX= new int[]{R.id.p1_x,R.id.p2_x,R.id.p3_x,R.id.p4_x,R.id.p5_x,R.id.p6_x,R.id.p7_x,R.id.p8_x,R.id.p9_x,R.id.p10_x,R.id.p11_x,R.id.p12_x,R.id.p13_x,R.id.p14_x};
+    int[] resIdSigno2= new int[]{R.id.p1_2,R.id.p2_2,R.id.p3_2,R.id.p4_2,R.id.p5_2,R.id.p6_2,R.id.p7_2,R.id.p8_2,R.id.p9_2,R.id.p10_2,R.id.p11_2,R.id.p12_2,R.id.p13_2,R.id.p14_2};
     
     private void _clk1(int fila)
     {
@@ -247,10 +326,79 @@ public class QuinielaHacerManual extends Activity
 	public void clk14_1(View v)	{	_clk1(14);	}
 	public void clk14_x(View v)	{	_clkX(14);	}
 	public void clk14_2(View v)	{	_clk2(14);	}
-	public void clk15_1(View v)	{	_clk1(15);	}
-	public void clk15_x(View v)	{	_clkX(15);	}
-	public void clk15_2(View v)	{	_clk2(15);	}
-
+	public void clk15_local_0(View v)	
+	{	
+		desmarcarTodosLosGolesLocal();
+    	((ImageView) findViewById(R.id.p15_equipolocal_0)).setImageResource(signo_pleno15_local_0_marcado ? R.drawable.quin_goles0 : R.drawable.quin_sel);
+    	signo_pleno15_local_0_marcado= !signo_pleno15_local_0_marcado;
+    	ponerVisibleBotonDeGrabarSiTodoOK();
+	}
+	public void clk15_local_1(View v)	
+	{	
+		desmarcarTodosLosGolesLocal();
+    	((ImageView) findViewById(R.id.p15_equipolocal_1)).setImageResource(signo_pleno15_local_1_marcado ? R.drawable.quin_goles1 : R.drawable.quin_sel);
+    	signo_pleno15_local_1_marcado= !signo_pleno15_local_1_marcado;
+    	ponerVisibleBotonDeGrabarSiTodoOK();
+	}
+	public void clk15_local_2(View v)	
+	{	
+		desmarcarTodosLosGolesLocal();
+    	((ImageView) findViewById(R.id.p15_equipolocal_2)).setImageResource(signo_pleno15_local_2_marcado ? R.drawable.quin_goles2 : R.drawable.quin_sel);
+    	signo_pleno15_local_2_marcado= !signo_pleno15_local_2_marcado;
+    	ponerVisibleBotonDeGrabarSiTodoOK();
+	}
+	public void clk15_local_m(View v)	
+	{	
+		desmarcarTodosLosGolesLocal();
+    	((ImageView) findViewById(R.id.p15_equipolocal_m)).setImageResource(signo_pleno15_local_m_marcado ? R.drawable.quin_golesm : R.drawable.quin_sel);
+    	signo_pleno15_local_m_marcado= !signo_pleno15_local_m_marcado;
+    	ponerVisibleBotonDeGrabarSiTodoOK();
+	}
+	public void clk15_visit_0(View v)	
+	{	
+		desmarcarTodosLosGolesVisitante();
+    	((ImageView) findViewById(R.id.p15_equipovisitante_0)).setImageResource(signo_pleno15_visit_0_marcado ? R.drawable.quin_goles0 : R.drawable.quin_sel);
+    	signo_pleno15_visit_0_marcado= !signo_pleno15_visit_0_marcado;
+    	ponerVisibleBotonDeGrabarSiTodoOK();
+	}
+	public void clk15_visit_1(View v)	
+	{	
+		desmarcarTodosLosGolesVisitante();
+    	((ImageView) findViewById(R.id.p15_equipovisitante_1)).setImageResource(signo_pleno15_visit_1_marcado ? R.drawable.quin_goles1 : R.drawable.quin_sel);
+    	signo_pleno15_visit_1_marcado= !signo_pleno15_visit_1_marcado;
+    	ponerVisibleBotonDeGrabarSiTodoOK();
+	}
+	public void clk15_visit_2(View v)	
+	{	
+		desmarcarTodosLosGolesVisitante();
+    	((ImageView) findViewById(R.id.p15_equipovisitante_2)).setImageResource(signo_pleno15_visit_2_marcado ? R.drawable.quin_goles2 : R.drawable.quin_sel);
+    	signo_pleno15_visit_2_marcado= !signo_pleno15_visit_2_marcado;
+    	ponerVisibleBotonDeGrabarSiTodoOK();
+	}
+	public void clk15_visit_m(View v)	
+	{	
+		desmarcarTodosLosGolesVisitante();
+    	((ImageView) findViewById(R.id.p15_equipovisitante_m)).setImageResource(signo_pleno15_visit_m_marcado ? R.drawable.quin_golesm : R.drawable.quin_sel);
+    	signo_pleno15_visit_m_marcado= !signo_pleno15_visit_m_marcado;
+    	ponerVisibleBotonDeGrabarSiTodoOK();
+	}
+	
+	private void desmarcarTodosLosGolesLocal()
+	{
+		((ImageView) findViewById(R.id.p15_equipolocal_0)).setImageResource(R.drawable.quin_goles0);
+		((ImageView) findViewById(R.id.p15_equipolocal_1)).setImageResource(R.drawable.quin_goles1);
+		((ImageView) findViewById(R.id.p15_equipolocal_2)).setImageResource(R.drawable.quin_goles2);
+		((ImageView) findViewById(R.id.p15_equipolocal_m)).setImageResource(R.drawable.quin_golesm);
+	}
+	private void desmarcarTodosLosGolesVisitante()
+	{
+		((ImageView) findViewById(R.id.p15_equipovisitante_0)).setImageResource(R.drawable.quin_goles0);
+		((ImageView) findViewById(R.id.p15_equipovisitante_1)).setImageResource(R.drawable.quin_goles1);
+		((ImageView) findViewById(R.id.p15_equipovisitante_2)).setImageResource(R.drawable.quin_goles2);
+		((ImageView) findViewById(R.id.p15_equipovisitante_m)).setImageResource(R.drawable.quin_golesm);
+	}
+	
+	
     int maxDobles[]= new int[]{14, 13, 11, 10, 8, 7, 5, 3, 2, 0};  //el índice de la matriz es el número de triples
 	/*
 	 * Tabla de posibles valores. Para leer la tabla:  X -> Y se lee "si hay X triples, el número máximo de dobles es Y".
@@ -280,30 +428,22 @@ public class QuinielaHacerManual extends Activity
 				dobles++;
 			else if (marcadasEnEstaFila == 3)
 				triples++;
-		}
-
-		/*
-		 * pleno al 15
-		 */
-		int marcadasEnPleno15= 0;
-		if (signo1_marcadas[15]) marcadasEnPleno15++;
-		if (signoX_marcadas[15]) marcadasEnPleno15++;
-		if (signo2_marcadas[15]) marcadasEnPleno15++;		
-		if (marcadasEnPleno15 == 0)
-			return;  // se queda invisible y me salgo sin más
-		else if (marcadasEnPleno15 > 1)
-		{
-			Mensajes.alerta(getApplicationContext(), "El pleno al 15 no puede contener dobles ni triples.");
-			return;
-		}
-		
+		}		
 		
 		if (triples >= maxDobles.length)
 			Mensajes.alerta(getApplicationContext(), "Como máximo se permiten 9 triples.");
 		else if (dobles > maxDobles[triples])
 			Mensajes.alerta(getApplicationContext(), "Con "+triples+" triples no se permiten más de "+maxDobles[triples]+" dobles.");			
 		else
-			botonera.setVisibility(View.VISIBLE);
+		{
+			if ( (signo_pleno15_local_0_marcado || signo_pleno15_local_1_marcado || signo_pleno15_local_2_marcado || signo_pleno15_local_m_marcado)
+				&&
+				 (signo_pleno15_visit_0_marcado || signo_pleno15_visit_1_marcado || signo_pleno15_visit_2_marcado || signo_pleno15_visit_m_marcado) 
+			   )
+		    {
+			   botonera.setVisibility(View.VISIBLE);
+		    }
+		}
 	}
 	
 }

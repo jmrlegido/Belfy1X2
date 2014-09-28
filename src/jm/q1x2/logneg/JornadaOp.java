@@ -301,7 +301,7 @@ public class JornadaOp
     		return new Integer(notifUltJorDisp.trim()).intValue();
     }
  
-	private static Jornada getJornada(int temporada, int _division, int _jornada) 
+	public static Jornada getJornada(int temporada, int _division, int _jornada) 
 	{
 		try
 		{

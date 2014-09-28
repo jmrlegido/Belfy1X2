@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 import jm.q1x2.bbdd.Basedatos;
@@ -77,8 +78,9 @@ public class Utils
 	public static String hoy()
 	{
 		Date date = Calendar.getInstance().getTime();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		return sdf.format(date);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.GERMAN);
+		String ret= sdf.format(date);
+		return ret;
 	}
 	
 	public static int generarClienteId()
@@ -203,6 +205,15 @@ public class Utils
 					 (iPronosticoUsuario==QuinielaOp.RES_2 || iPronosticoUsuario==QuinielaOp.RES_12 || iPronosticoUsuario==QuinielaOp.RES_X2)	)
 					ret= true;
 			}
+		}
+		else if (   iResultadoOK == QuinielaOp.RES_PLENO15_00  ||  iResultadoOK == QuinielaOp.RES_PLENO15_01  || iResultadoOK == QuinielaOp.RES_PLENO15_02  || iResultadoOK == QuinielaOp.RES_PLENO15_0M
+				 || iResultadoOK == QuinielaOp.RES_PLENO15_10  ||  iResultadoOK == QuinielaOp.RES_PLENO15_11  || iResultadoOK == QuinielaOp.RES_PLENO15_12  || iResultadoOK == QuinielaOp.RES_PLENO15_1M
+				 || iResultadoOK == QuinielaOp.RES_PLENO15_20  ||  iResultadoOK == QuinielaOp.RES_PLENO15_21  || iResultadoOK == QuinielaOp.RES_PLENO15_22  || iResultadoOK == QuinielaOp.RES_PLENO15_2M
+				 || iResultadoOK == QuinielaOp.RES_PLENO15_M0  ||  iResultadoOK == QuinielaOp.RES_PLENO15_M1  || iResultadoOK == QuinielaOp.RES_PLENO15_M2  || iResultadoOK == QuinielaOp.RES_PLENO15_MM
+				)
+		{
+			// pleno al 15
+			ret= (iPronosticoUsuario == iResultadoOK);
 		}
 		return ret;
 	}

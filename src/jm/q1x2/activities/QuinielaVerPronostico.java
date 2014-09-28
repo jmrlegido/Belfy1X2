@@ -26,9 +26,25 @@ import android.widget.TextView;
 
 public class QuinielaVerPronostico extends Activity 
 {
-    private ProgressDialog dialog;
+    private ProgressDialog dialog= null;
     int idQuin;
 	    
+	@Override
+	protected void onDestroy() 
+	{
+      	if(dialog!=null)
+    		dialog.dismiss();  
+		super.onDestroy();
+	}
+	
+	@Override
+	protected void onStop() 
+	{
+      	if(dialog!=null)
+    		dialog.dismiss();  
+		super.onStop();
+	}
+    
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -78,6 +94,64 @@ public class QuinielaVerPronostico extends Activity
     	if (bQuinielaCorregida  &&  bFinalizado)
 			((TextView) findViewById(resIdRivales)).setTextColor(bAcertada?Color.GREEN:Color.RED);
     }
+    private void mostrarResultadoPleno15(PartidoQuiniela partido, boolean bQuinielaCorregida)
+    {    	
+    	String eq1= partido.getEq1();
+    	String eq2= partido.getEq2();
+    	int res1x2= partido.getResultado1x2();
+    	boolean bAcertada= partido.estaAcertado();
+    	boolean bFinalizado= partido.esFinalizado();
+    	
+    	((TextView) findViewById(R.id.p15_equipolocal)).setText("      "+eq1);
+    	((ImageView) findViewById(R.id.p15_equipolocal_0)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_00 
+    													 || res1x2==QuinielaOp.RES_PLENO15_01 
+    													 || res1x2==QuinielaOp.RES_PLENO15_02
+    													 || res1x2==QuinielaOp.RES_PLENO15_0M
+    													 ? R.drawable.quin_sel : R.drawable.quin_goles0);
+    	((ImageView) findViewById(R.id.p15_equipolocal_1)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_10 
+														 || res1x2==QuinielaOp.RES_PLENO15_11 
+														 || res1x2==QuinielaOp.RES_PLENO15_12
+														 || res1x2==QuinielaOp.RES_PLENO15_1M
+														 ? R.drawable.quin_sel : R.drawable.quin_goles1);
+    	((ImageView) findViewById(R.id.p15_equipolocal_2)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_20 
+														 || res1x2==QuinielaOp.RES_PLENO15_21 
+														 || res1x2==QuinielaOp.RES_PLENO15_22
+														 || res1x2==QuinielaOp.RES_PLENO15_2M
+														 ? R.drawable.quin_sel : R.drawable.quin_goles2);
+    	((ImageView) findViewById(R.id.p15_equipolocal_m)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_M0 
+														 || res1x2==QuinielaOp.RES_PLENO15_M1 
+														 || res1x2==QuinielaOp.RES_PLENO15_M2
+														 || res1x2==QuinielaOp.RES_PLENO15_MM
+														 ? R.drawable.quin_sel : R.drawable.quin_golesm);
+
+    	((TextView) findViewById(R.id.p15_equipovisitante)).setText("      "+eq2);
+    	((ImageView) findViewById(R.id.p15_equipovisitante_0)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_00 
+    													 || res1x2==QuinielaOp.RES_PLENO15_10 
+    													 || res1x2==QuinielaOp.RES_PLENO15_20
+    													 || res1x2==QuinielaOp.RES_PLENO15_M0
+    													 ? R.drawable.quin_sel : R.drawable.quin_goles0);
+    	((ImageView) findViewById(R.id.p15_equipovisitante_1)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_01 
+														 || res1x2==QuinielaOp.RES_PLENO15_11 
+														 || res1x2==QuinielaOp.RES_PLENO15_21
+														 || res1x2==QuinielaOp.RES_PLENO15_M1
+														 ? R.drawable.quin_sel : R.drawable.quin_goles1);
+    	((ImageView) findViewById(R.id.p15_equipovisitante_2)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_02 
+														 || res1x2==QuinielaOp.RES_PLENO15_12 
+														 || res1x2==QuinielaOp.RES_PLENO15_22
+														 || res1x2==QuinielaOp.RES_PLENO15_M2
+														 ? R.drawable.quin_sel : R.drawable.quin_goles2);
+    	((ImageView) findViewById(R.id.p15_equipovisitante_m)).setImageResource(res1x2==QuinielaOp.RES_PLENO15_0M 
+														 || res1x2==QuinielaOp.RES_PLENO15_1M 
+														 || res1x2==QuinielaOp.RES_PLENO15_2M
+														 || res1x2==QuinielaOp.RES_PLENO15_MM
+														 ? R.drawable.quin_sel : R.drawable.quin_golesm);
+    	
+    	if (bQuinielaCorregida  &&  bFinalizado)
+    	{
+			((TextView) findViewById(R.id.p15_equipolocal)).setTextColor(bAcertada?Color.GREEN:Color.RED);
+			((TextView) findViewById(R.id.p15_equipovisitante)).setTextColor(bAcertada?Color.GREEN:Color.RED);
+    	}
+    }
     
     private class PresentarQuinielaSegundoPlano extends AsyncTask<String, Float, Integer>
     {
@@ -99,44 +173,56 @@ public class QuinielaVerPronostico extends Activity
      		EquipoDao equipDao= new EquipoDao(con);
 
      		Quiniela quinHecha= quinOp.getQuinielaHecha(idQuin, con);
-     		Quiniela quinCorregida= null;
-     		bQuinielaCorregida= quinHecha.haSidoCalculadoElNumeroDeAciertos();
-     		if (bQuinielaCorregida)
-     			quinCorregida= QuinielaOp.getQuinielaCorregidaDeJornada(quinHecha.getTemporada(), quinHecha.getJornada(), con);
-     		else
-     		{
-     			// quizá está corregida parcialmente
-     			quinCorregida= QuinielaOp.getQuinielaParcialmenteCorregida(getApplicationContext(), quinHecha.getTemporada(), quinHecha.getJornada());
-     			if (quinCorregida != null)
-     				bQuinielaCorregida= true;
-     		}
-     		
-     		ArrayList<Partido> partidos= quinHecha.getPartidos();
-     		
-     		filasQuiniela= new ArrayList<PartidoQuiniela>();
-
-     		int[] rivales= new int[]{R.id.rivales1, R.id.rivales2, R.id.rivales3, R.id.rivales4, R.id.rivales5, R.id.rivales6, R.id.rivales7, R.id.rivales8, R.id.rivales9, R.id.rivales10, R.id.rivales11, R.id.rivales12, R.id.rivales13, R.id.rivales14, R.id.rivales15};
-     		int[] partidos_1= new int[]{R.id.p1_1, R.id.p2_1, R.id.p3_1, R.id.p4_1, R.id.p5_1, R.id.p6_1, R.id.p7_1, R.id.p8_1, R.id.p9_1, R.id.p10_1, R.id.p11_1, R.id.p12_1, R.id.p13_1, R.id.p14_1, R.id.p15_1};
-     		int[] partidos_x= new int[]{R.id.p1_x, R.id.p2_x, R.id.p3_x, R.id.p4_x, R.id.p5_x, R.id.p6_x, R.id.p7_x, R.id.p8_x, R.id.p9_x, R.id.p10_x, R.id.p11_x, R.id.p12_x, R.id.p13_x, R.id.p14_x, R.id.p15_x};
-     		int[] partidos_2= new int[]{R.id.p1_2, R.id.p2_2, R.id.p3_2, R.id.p4_2, R.id.p5_2, R.id.p6_2, R.id.p7_2, R.id.p8_2, R.id.p9_2, R.id.p10_2, R.id.p11_2, R.id.p12_2, R.id.p13_2, R.id.p14_2, R.id.p15_2};
-     		
-     		for (int k= 0; k<15; k++)
-     		{
-	         	Partido par= partidos.get(k);
-	         	int iRes= par.getResultadoQuiniela();
-	         	PartidoQuiniela parQuin= new PartidoQuiniela(equipDao.getNombreEquipo(par.getIdEquipoLocal()), equipDao.getNombreEquipo(par.getIdEquipoVisit()), iRes, rivales[k], partidos_1[k], partidos_x[k], partidos_2[k]);
-	         	if (bQuinielaCorregida)
-	         	{
-	         		boolean bFinalizado= quinCorregida.getPartidos().get(k).getResultadoQuiniela() != QuinielaOp.RES_NO_DISPONIBLE;
-	         		parQuin.ponerFinalizado(bFinalizado);
-	         		if (bFinalizado)
-	         			parQuin.ponerAcertado(Utils.resultadoAcertado(quinHecha.getPartidos().get(k).getResultadoQuiniela() , quinCorregida.getPartidos().get(k).getResultadoQuiniela()));
-	         	}
-	         	filasQuiniela.add(parQuin);
-     		}
-         	
+			if (quinHecha != null)
+			{
+	     		Quiniela quinCorregida= null;
+	     		bQuinielaCorregida= quinHecha.haSidoCalculadoElNumeroDeAciertos();
+	     		if (bQuinielaCorregida)
+	     			quinCorregida= QuinielaOp.getQuinielaCorregidaDeJornada(quinHecha.getTemporada(), quinHecha.getJornada(), con);
+	     		else
+	     		{
+	     			// quizá está corregida parcialmente
+	     			quinCorregida= QuinielaOp.getQuinielaParcialmenteCorregida(getApplicationContext(), quinHecha.getTemporada(), quinHecha.getJornada());
+	     			if (quinCorregida != null)
+	     				bQuinielaCorregida= true;
+	     		}
+	     		
+	     		ArrayList<Partido> partidos= quinHecha.getPartidos();
+	     		
+	     		filasQuiniela= new ArrayList<PartidoQuiniela>();
+	
+	     		int[] rivales= new int[]{R.id.rivales1, R.id.rivales2, R.id.rivales3, R.id.rivales4, R.id.rivales5, R.id.rivales6, R.id.rivales7, R.id.rivales8, R.id.rivales9, R.id.rivales10, R.id.rivales11, R.id.rivales12, R.id.rivales13, R.id.rivales14};
+	     		int[] partidos_1= new int[]{R.id.p1_1, R.id.p2_1, R.id.p3_1, R.id.p4_1, R.id.p5_1, R.id.p6_1, R.id.p7_1, R.id.p8_1, R.id.p9_1, R.id.p10_1, R.id.p11_1, R.id.p12_1, R.id.p13_1, R.id.p14_1};
+	     		int[] partidos_x= new int[]{R.id.p1_x, R.id.p2_x, R.id.p3_x, R.id.p4_x, R.id.p5_x, R.id.p6_x, R.id.p7_x, R.id.p8_x, R.id.p9_x, R.id.p10_x, R.id.p11_x, R.id.p12_x, R.id.p13_x, R.id.p14_x};
+	     		int[] partidos_2= new int[]{R.id.p1_2, R.id.p2_2, R.id.p3_2, R.id.p4_2, R.id.p5_2, R.id.p6_2, R.id.p7_2, R.id.p8_2, R.id.p9_2, R.id.p10_2, R.id.p11_2, R.id.p12_2, R.id.p13_2, R.id.p14_2};
+	     		
+	     		for (int k= 0; k<15; k++)
+	     		{
+		         	Partido par= partidos.get(k);
+		         	int iRes= par.getResultadoQuiniela();
+		         	PartidoQuiniela parQuin= null;
+		         	if (k<14)  // todos excepto pleno al 15
+		         		parQuin= new PartidoQuiniela(equipDao.getNombreEquipo(par.getIdEquipoLocal()), equipDao.getNombreEquipo(par.getIdEquipoVisit()), iRes, rivales[k], partidos_1[k], partidos_x[k], partidos_2[k]);
+		         	else
+		         	{
+		         		// pleno al 15
+		         		parQuin= new PartidoQuiniela();
+		         		parQuin.setEq1(equipDao.getNombreEquipo(par.getIdEquipoLocal()));
+		         		parQuin.setEq2(equipDao.getNombreEquipo(par.getIdEquipoVisit()));
+		         		parQuin.setResultado1x2(iRes);
+		         	}
+		         	
+		         	if (bQuinielaCorregida)
+		         	{
+		         		boolean bFinalizado= quinCorregida.getPartidos().get(k).getResultadoQuiniela() != QuinielaOp.RES_NO_DISPONIBLE;
+		         		parQuin.ponerFinalizado(bFinalizado);
+		         		if (bFinalizado)
+		         			parQuin.ponerAcertado(Utils.resultadoAcertado(quinHecha.getPartidos().get(k).getResultadoQuiniela() , quinCorregida.getPartidos().get(k).getResultadoQuiniela()));
+		         	}
+		         	filasQuiniela.add(parQuin);
+	     		}	         	
+			}
      		con.close();	    	        
-
             return 1;
          }
 
@@ -155,13 +241,22 @@ public class QuinielaVerPronostico extends Activity
 
           	if (filasQuiniela == null)
           	{
-         		Mensajes.alerta(getApplicationContext(), "No se ha posido cargar la quiniela.");
+         		Mensajes.alerta(getApplicationContext(), "No se ha podido cargar la quiniela.");
          		finish();          		
           	}
           	else
           	{
-	          	for(PartidoQuiniela fila: filasQuiniela)
+          		PartidoQuiniela fila= null;
+	          	for(int k=0; k<filasQuiniela.size()-1; k++)   // todos los partidos excepto pleno al 15
+	          	{
+	          		fila= filasQuiniela.get(k); 
 	          		mostrarResultado(fila, bQuinielaCorregida);
+	          	}
+
+	          	// pleno al 15
+          		fila= filasQuiniela.get(filasQuiniela.size()-1); 
+          		mostrarResultadoPleno15(fila, bQuinielaCorregida);
+
           	}
           	if(dialog!=null && dialog.isShowing())
           		dialog.dismiss();

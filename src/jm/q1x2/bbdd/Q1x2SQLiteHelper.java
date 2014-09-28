@@ -88,7 +88,7 @@ public class Q1x2SQLiteHelper extends SQLiteOpenHelper
     		if (sqlCreate == null)
     			sqlCreate= getSentenciasSQLDeFichero("jm1x2_create.sql");
     		for (String sql : sqlCreate)
-    			Basedatos.db_execSQL_log(db, sql);
+    			Basedatos.db_execSQL_log(db, sql.trim());
     	}
     	catch (FileNotFoundException e) 
     	{
@@ -105,6 +105,17 @@ public class Q1x2SQLiteHelper extends SQLiteOpenHelper
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAnterior, int versionNueva) 
     {
+    	/*
+    	 * En       android:versionCode="20"     android:versionName="4.0"
+				al ser la primera versión de la temporada 2014/15, no hay actualización.
+				Siempre será onCreate
+		   Las 2 siguientes líneas SÓLO deberían estar presentes si hay 1 única versión de BB.DD. (la 13090301).
+		   En el momento en que haya más, hay que quitarlas 
+    	 */
+    	onCreate(db);
+    	if (true) return;
+    	
+    	
     	try
     	{
 			if (Log.isLoggable(Constantes.LOG_TAG, Log.INFO))

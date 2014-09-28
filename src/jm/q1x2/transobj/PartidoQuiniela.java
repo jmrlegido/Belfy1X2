@@ -11,7 +11,11 @@ public class PartidoQuiniela
 	private int resId2;
 	private boolean finalizado;
 	private boolean acertado;
-
+	
+	
+	public PartidoQuiniela()
+	{}
+	
 	public PartidoQuiniela(String _eq1, String _eq2, int _resIdRivales)
 	{
 		eq1= _eq1;
@@ -30,6 +34,7 @@ public class PartidoQuiniela
 		resId2= _resId2;
 	}
 
+	
 	public String getEq1() {
 		return eq1;
 	}
@@ -101,5 +106,6 @@ public class PartidoQuiniela
 	public void ponerFinalizado(boolean b) {
 		this.finalizado = b;
 	}
+
 	
 }
