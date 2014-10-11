@@ -27,13 +27,10 @@ public class Constantes
 	public static String PESTANA_EQUIPOS_TIT= "Equipos";
 	public static String PESTANA_CONFIG_TIT= "Configuración";
 
-	/* notificaciones */   /* los valores deben coincidir con contenido de fichero jm1x2_notifs.properties (en web) */
-	public static String NOTIFICACION_TEMPORADA_ACTUAL= "temporada_actual";
-	public static String NOTIFICACION_TEMPORADA_LETRERO= "temporada_letrero";
+	/* notificaciones */   /* los valores deben coincidir con lo devuelto por jm1x2_notifs.php (en web) */
 	public static String NOTIFICACION_JORNADAS_NODISPONIBLES= "jornadas_no_disponibles";  /* obsoleta desde v1.6 */
 	public static String NOTIFICACION_JORNADAS_NODISPONIBLES_DIV1= "jornadas_no_disponibles_div1";
 	public static String NOTIFICACION_JORNADAS_NODISPONIBLES_DIV2= "jornadas_no_disponibles_div2";
-	public static String NOTIFICACION_JORNADA= "jornada";  /* obsoleta desde v1.6 */
 	public static String NOTIFICACION_JORNADA_DIV1= "jornada_div1";
 	public static String NOTIFICACION_JORNADA_DIV2= "jornada_div2";
 	public static String NOTIFICACION_QUINIELA_PROXIMA= "quiniela_proxima";

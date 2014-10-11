@@ -111,6 +111,22 @@ public class Config
     {
     	return getDato("url_notificar_premio");
     }
+
+    /*
+     * @since 4.6
+     */
+    public static String getTemporadaActual()
+    {
+    	return getDato("temporada_actual");
+    }
+    
+    /*
+     * @since 4.6
+     */
+    public static String getTemporadaLetrero()
+    {
+    	return getDato("temporada_letrero");
+    }
     
     public static boolean esDesarrollo()
     {

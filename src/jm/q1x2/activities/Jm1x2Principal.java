@@ -198,7 +198,7 @@ public class Jm1x2Principal extends TabActivity
     
     private void ponerTituloInicial()
     {
-		String letreroTemporada= Notificaciones.getNotificacion(Constantes.NOTIFICACION_TEMPORADA_LETRERO);            
+		String letreroTemporada= jm.q1x2.config.Config.getTemporadaLetrero();            
 				
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.lay_titulo_app); 
 		TextView appLabel = (TextView) findViewById(R.id.app_nombreyVersion);        
@@ -248,7 +248,8 @@ public class Jm1x2Principal extends TabActivity
         	bHayDatosQueActualizar= true;
         else if (bHayConexionInternet)
         	bHayDatosQueActualizar= hayDatosQueActualizar(con);
-        con.close();
+        if (con != null)
+        	con.close();
         
     	if (bHayConexionInternet)
     	{    		
@@ -449,7 +450,7 @@ public class Jm1x2Principal extends TabActivity
  
     private void cargaDatosIniciales()
     {
-    	String notifTemp= Notificaciones.getNotificacion(Constantes.NOTIFICACION_TEMPORADA_ACTUAL);
+    	String notifTemp= jm.q1x2.config.Config.getTemporadaActual();
     	if (notifTemp != null)
     		Preferencias.grabarPreferenciaInt(getApplicationContext(), Constantes.PREFERENCIAS_TEMPORADA_ACTUAL, new Integer(notifTemp).intValue());    	
     }

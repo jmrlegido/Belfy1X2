@@ -886,7 +886,7 @@ public class QuinielaOp
 		if (eq == null)  
 		{
 			// algo que no debería pasar nunca, pero como aparecen NullPointerExcepcion en "eq.getCalidadIntrinseca()" intento ver por qué
-			AplicacionOp.mandarInfoError("QuinielaOp.getCalidadIntriseca(): objeto equipo nulo. Datos: idEq:"+idEq+", idTemp:"+idTemporada+", idUsu:"+idUsuario, ctx) ;
+			AplicacionOp.mandarInfoError("[thread: "+Thread.currentThread().hashCode()+"] QuinielaOp.getCalidadIntriseca(): objeto equipo nulo. Datos: idEq:"+idEq+", idTemp:"+idTemporada+", idUsu:"+idUsuario, ctx) ;
 			return 50; // un valor medio cualquiera
 		}
 		else
@@ -939,6 +939,8 @@ public class QuinielaOp
 					JSONArray partido= partidos.getJSONArray(k);  //  	[ 'sev', 'gij' ]
 					par.setIdEquipoLocal(partido.getString(0));
 					par.setIdEquipoVisit(partido.getString(1));
+					if (par.getIdEquipoLocal().equals("")  || par.getIdEquipoVisit().equals(""))
+						AplicacionOp.mandarInfoError("[thread: "+Thread.currentThread().hashCode()+"] QuinielaOp.getQuiniela(): loc o visit vacíos (partido #"+(k+1)+"). JSON de la quiniela: "+quiniela.toString(), ctx) ;
 					par.setPartidoNum(k+1);
 					qui.annadirPartido(par);
 				}

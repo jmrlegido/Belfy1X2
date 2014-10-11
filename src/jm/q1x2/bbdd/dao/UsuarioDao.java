@@ -3,10 +3,9 @@ package jm.q1x2.bbdd.dao;
 
 import java.util.ArrayList;
 
+import jm.q1x2.config.Config;
 import jm.q1x2.logneg.UsuarioOp;
 import jm.q1x2.transobj.Usuario;
-import jm.q1x2.utils.Constantes;
-import jm.q1x2.utils.Notificaciones;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -166,7 +165,7 @@ public class UsuarioDao extends DaoGeneral
    
    public void rellenarTablaEquiposUsuariosConValoresPorDefecto(long idUsu)
    {
-	   int iTemporadaActual= new Integer(Notificaciones.getNotificacion(Constantes.NOTIFICACION_TEMPORADA_ACTUAL)).intValue();
+	   int iTemporadaActual= new Integer(Config.getTemporadaActual()).intValue();
 	   
        Cursor c = con.rawQuery("SELECT id_equipo,calidad_intrinseca FROM valoresdefecto_equipos_calidadintrinseca where id_temporada="+iTemporadaActual, null);          
        if (c.moveToFirst())
