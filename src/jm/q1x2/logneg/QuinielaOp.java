@@ -582,7 +582,7 @@ public class QuinielaOp
 			 * 			(es decir, aquel partido cuyo V esté más próximo a un umbral cualquiera)
 			 */
 			int numPartidos= partidosSinPlenoAl15.size();
-			Partido par;
+			Partido par= null;
 			ValoracionEquiposPartidoQuiniela valoracion;
 	
 			

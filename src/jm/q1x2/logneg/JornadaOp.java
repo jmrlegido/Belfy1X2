@@ -211,46 +211,6 @@ public class JornadaOp
     	return true;  // no quiero que el usuario se entere de posibles errores
     }
         
-    private static void cargarFicheroDePartidosSuspendidos_o_Corregidos(String fich, Context ctx, SQLiteDatabase con)
-    {
-        JornadaDao jorDao= new JornadaDao(con);
-
-		try
-		{
-			String datosFichero = CargaFichero.getContenidoFicheroJornadaPartidosSuspendidos_o_Corregidos(fich+".json");		
-				
-	    	JSONObject jObject = new JSONObject(datosFichero);
-			int temp = jObject.getInt("temporada");
-			JSONArray partidos = jObject.getJSONArray("partidos");
-			for (int k= 0; k< partidos.length(); k++) 
-			{
-				JSONObject partido= partidos.getJSONObject(k);
-				int division= partido.getInt("division");
-				int jornada= partido.getInt("jornada_num");
-				JSONObject datosPartido= partido.getJSONObject("partido");
-				String localNombre= datosPartido.getString("local_nombre");
-				int localGoles= datosPartido.getInt("local_goles");
-				String visitNombre= datosPartido.getString("visit_nombre");
-				int visitGoles= datosPartido.getInt("visit_goles");
-				
-				Partido par= new Partido();
-				par.setTemporada(temp);
-				par.setDivision(division);
-				par.setJornada(jornada);
-				par.setIdEquipoLocal(localNombre);
-				par.setLocalGoles(localGoles);
-				par.setIdEquipoVisit(visitNombre);
-				par.setVisitGoles(visitGoles);
-				jorDao.modificarOAnadirPartido(par);
-			}						
-		}
-		catch(JSONException e)
-		{
-			Log.e(Constantes.LOG_TAG, "Error leyendo fichero de partidos suspendidos o corregidos: "+fich, e);
-		}
-	}   
-    
-    
     public static int getUltimaJornadaCargada(Context ctx, int division)
     {
     	// se mirará en BB.DD.

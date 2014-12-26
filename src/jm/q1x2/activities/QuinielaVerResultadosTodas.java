@@ -55,6 +55,22 @@ public class QuinielaVerResultadosTodas extends ListActivity
 	boolean bHayAlgunaQuinielaSinCorregir= false;
 	long iValorTimer= -1;
 	long systemCurrentTimeEnTimerCuandoPantallaPierdeFoco= -1;
+
+	@Override
+	protected void onDestroy() 
+	{
+      	if(dialog!=null)
+    		dialog.dismiss();  
+		super.onDestroy();
+	}
+	
+	@Override
+	protected void onStop() 
+	{
+      	if(dialog!=null)
+    		dialog.dismiss();  
+		super.onStop();
+	}
 	
     public void onCreate(Bundle savedInstanceState) 
     {

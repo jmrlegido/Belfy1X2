@@ -467,7 +467,6 @@ public class Jm1x2Principal extends TabActivity
     {
     	task.publicarProgreso(prcMin);    	
     	
-    	int iUltimaTemporadaEnBBDD= JornadaOp.getUltimaTemporadaCargada(ctx);
     	int iTemporadaActual= Preferencias.getTemporadaActual(ctx);
     	
     	task.publicarProgresoEnRango(prcMin, prcMax, 10f);  // 10%

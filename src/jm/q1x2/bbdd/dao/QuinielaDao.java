@@ -31,7 +31,7 @@ public class QuinielaDao extends DaoGeneral
    {
 	   // lo lee de BB.DD.
 	   Quiniela quin= null;
-       Cursor c = con.rawQuery("SELECT par.id_local, par.id_visitante, par.partido_num, par. par.resultado_1x2 " +
+       Cursor c = con.rawQuery("SELECT par.id_local, par.id_visitante, par.partido_num, par.resultado_1x2 " +
     		   				   " FROM quinielas_disponibles_server q, quinielas_partidos_disponibles_server par " +
     		   				   " WHERE par.id_quiniela=q.id" +
     		   				   		" and q.disponible_correccion = " + Quiniela.QUINIELA_CORREGIDA_SI +
