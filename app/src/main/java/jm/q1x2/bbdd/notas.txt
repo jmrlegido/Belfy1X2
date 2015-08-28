@@ -1,0 +1,21 @@
+Equipos de bajan de div1 a div2:
+    Almería
+    Córdoba
+    Elche
+
+Equipos que suben de div2 a div1:
+    Betis
+    Sporting Gijón
+    Las Palmas
+
+Equipos que suben a div2:
+    Oviedo
+    Gimnàstic
+    Bilbao B
+    Huesca
+
+Equipos que bajan de div2:
+    'bar2', 'Barcelona B'
+    'san',  'R.Santander'
+    'rec',  'Recreativo'
+    'sab',  'Sabadell'
