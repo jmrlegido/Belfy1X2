@@ -107,7 +107,6 @@ public class Notificaciones
 			URL url = new URL(Config.getURLNotificaciones());
 			URLConnection connection = url.openConnection();
 			HttpURLConnection httpConnection = (HttpURLConnection)connection;
-/*[jm]*/  if (Log.isLoggable(Constantes.LOG_TAG, Log.INFO))    Log.i(Constantes.LOG_TAG, "[jm] URL notifs: "+Config.getURLNotificaciones());
 			int responseCode = httpConnection.getResponseCode();
 			if (responseCode == HttpURLConnection.HTTP_OK) 
 			{

@@ -1,14 +1,5 @@
 package jm.q1x2.activities;
 
-import java.util.ArrayList;
-
-import jm.q1x2.R;
-import jm.q1x2.bbdd.Basedatos;
-import jm.q1x2.bbdd.dao.EquipoDao;
-import jm.q1x2.transobj.Partido;
-import jm.q1x2.transobj.vista.ResultadoPartido;
-import jm.q1x2.utils.Constantes;
-import jm.q1x2.utils.Preferencias;
 import android.app.ListActivity;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,6 +11,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import jm.q1x2.R;
+import jm.q1x2.bbdd.Basedatos;
+import jm.q1x2.bbdd.dao.EquipoDao;
+import jm.q1x2.transobj.Partido;
+import jm.q1x2.transobj.vista.ResultadoPartido;
+import jm.q1x2.utils.Constantes;
+import jm.q1x2.utils.Mensajes;
+import jm.q1x2.utils.Preferencias;
 
 public class EquipoResultados extends ListActivity 
 {
@@ -34,28 +36,36 @@ public class EquipoResultados extends ListActivity
         m_partidos = new ArrayList<ResultadoPartido>();
 
         Bundle extras = getIntent().getExtras();
-    	String idEquipo= extras.getString(Constantes.EQUIPO_SELEC_ID);
-    	String descEquipo= extras.getString(Constantes.EQUIPO_SELEC_NOMBRE);
-        
-        SQLiteDatabase con= Basedatos.getConexion(this, Basedatos.ESCRITURA);
-        EquipoDao eqDao= new EquipoDao(con);       
-        ArrayList<Partido> partidos= eqDao.getPartidos(Preferencias.getTemporadaActual(getApplicationContext()), idEquipo);
-        Basedatos.cerrarConexion(con);  //[jm] con.close();
-                
-    	ImageView img= (ImageView) findViewById(R.id.icono_equipo);
-    	if (img != null)
-    		img.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("esc_"+idEquipo, "drawable", getPackageName())));
-        TextView tt = (TextView) findViewById(R.id.nombre_equipo);
-        if (tt != null)
-            tt.setText(descEquipo);
-        
-        
-        m_partidos= new ArrayList<ResultadoPartido>();
-        for (Partido par: partidos)
-        	m_partidos.add(new ResultadoPartido(par));
-        
-        this.m_adaptador = new AdaptadorResultados(this, R.layout.cada_resultado, m_partidos);
-        setListAdapter(this.m_adaptador);        
+        if (extras == null)
+        {
+            Mensajes.alerta(getApplicationContext(), "No es posible ver los resultados en estos momentos ...");
+            finish();
+        }
+        else
+        {
+            String idEquipo = extras.getString(Constantes.EQUIPO_SELEC_ID);
+            String descEquipo = extras.getString(Constantes.EQUIPO_SELEC_NOMBRE);
+
+            SQLiteDatabase con = Basedatos.getConexion(this, Basedatos.ESCRITURA);
+            EquipoDao eqDao = new EquipoDao(con);
+            ArrayList<Partido> partidos = eqDao.getPartidos(Preferencias.getTemporadaActual(getApplicationContext()), idEquipo);
+            Basedatos.cerrarConexion(con);  //[jm] con.close();
+
+            ImageView img = (ImageView) findViewById(R.id.icono_equipo);
+            if (img != null)
+                img.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("esc_" + idEquipo, "drawable", getPackageName())));
+            TextView tt = (TextView) findViewById(R.id.nombre_equipo);
+            if (tt != null)
+                tt.setText(descEquipo);
+
+
+            m_partidos = new ArrayList<ResultadoPartido>();
+            for (Partido par : partidos)
+                m_partidos.add(new ResultadoPartido(par));
+
+            this.m_adaptador = new AdaptadorResultados(this, R.layout.cada_resultado, m_partidos);
+            setListAdapter(this.m_adaptador);
+        }
 	}
     
 	private class AdaptadorResultados extends ArrayAdapter<ResultadoPartido> 

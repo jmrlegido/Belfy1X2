@@ -1,5 +1,11 @@
 package jm.q1x2.activities;
 
+import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import java.math.BigDecimal;
 
 import jm.q1x2.R;
@@ -7,12 +13,8 @@ import jm.q1x2.bbdd.Basedatos;
 import jm.q1x2.bbdd.dao.EquipoDao;
 import jm.q1x2.transobj.EstadisticasEquipo;
 import jm.q1x2.utils.Constantes;
+import jm.q1x2.utils.Mensajes;
 import jm.q1x2.utils.Preferencias;
-import android.app.Activity;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 public class EquipoEstadisticas extends Activity 
 {
@@ -22,17 +24,25 @@ public class EquipoEstadisticas extends Activity
         setContentView(R.layout.lay_equipo_estadisticas);
 
         Bundle extras = getIntent().getExtras();
-    	String idEquipo= extras.getString(Constantes.EQUIPO_SELEC_ID);
-    	String descEquipo= extras.getString(Constantes.EQUIPO_SELEC_NOMBRE);
-                       
-    	ImageView img= (ImageView) findViewById(R.id.icono_equipo);
-    	if (img != null)
-    		img.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("esc_"+idEquipo, "drawable", getPackageName())));
-        TextView tt = (TextView) findViewById(R.id.nombre_equipo);
-        if (tt != null)
-            tt.setText(descEquipo);
-        
-        presentarEstadisticas(idEquipo);        
+        if (extras == null)
+        {
+            Mensajes.alerta(getApplicationContext(), "No es posible ver las estadísticas en estos momentos ...");
+            finish();
+        }
+        else
+        {
+            String idEquipo = extras.getString(Constantes.EQUIPO_SELEC_ID);
+            String descEquipo = extras.getString(Constantes.EQUIPO_SELEC_NOMBRE);
+
+            ImageView img = (ImageView) findViewById(R.id.icono_equipo);
+            if (img != null)
+                img.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("esc_" + idEquipo, "drawable", getPackageName())));
+            TextView tt = (TextView) findViewById(R.id.nombre_equipo);
+            if (tt != null)
+                tt.setText(descEquipo);
+
+            presentarEstadisticas(idEquipo);
+        }
 	}
     
     private void presentarEstadisticas(String idEquipo)

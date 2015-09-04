@@ -1,6 +1,17 @@
 package jm.q1x2.activities;
 
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 import jm.q1x2.R;
@@ -13,16 +24,6 @@ import jm.q1x2.transobj.Quiniela;
 import jm.q1x2.utils.Constantes;
 import jm.q1x2.utils.Mensajes;
 import jm.q1x2.utils.Utils;
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class QuinielaVerPronostico extends Activity 
 {
@@ -51,8 +52,16 @@ public class QuinielaVerPronostico extends Activity
         super.onCreate(savedInstanceState);
 
         Bundle extras = getIntent().getExtras();
-    	idQuin= extras.getInt(Constantes.ID_QUINIELA);    	
-    	presentarQuiniela();    	
+		if (extras == null)
+		{
+			Mensajes.alerta(getApplicationContext(), "No es posible ver el pronóstico en estos momentos ...");
+			finish();
+		}
+		else
+		{
+			idQuin = extras.getInt(Constantes.ID_QUINIELA);
+			presentarQuiniela();
+		}
     }    
 
     protected void accionesPresentacion()

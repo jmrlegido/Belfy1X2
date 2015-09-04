@@ -70,7 +70,12 @@ public class QuinielaHacer extends Activity implements SeekBar.OnSeekBarChangeLi
         initDoblesTriples();
     	
         String notifQuin= Notificaciones.getNotificacion(Constantes.NOTIFICACION_QUINIELA_PROXIMA);
-        if (notifQuin.compareTo(Utils.hoy()) <= 0)  // la quiniela que está en notificaciones es de una fecha anterior o igual al día de hoy
+		if (notifQuin == null)
+		{
+			Mensajes.alerta(getApplicationContext(), "Aún no es posible obtener la quiniela de esta semana ...");
+			finish();
+		}
+		else if (notifQuin.compareTo(Utils.hoy()) <= 0)  // la quiniela que está en notificaciones es de una fecha anterior o igual al día de hoy
         {
      		Mensajes.alerta(getApplicationContext(), "Aún no está disponible la quiniela de esta semana ...");
      		finish();        	

@@ -1,6 +1,11 @@
 package jm.q1x2.activities;
 
 
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+
 import jm.q1x2.R;
 import jm.q1x2.bbdd.Basedatos;
 import jm.q1x2.bbdd.dao.UsuarioDao;
@@ -8,10 +13,6 @@ import jm.q1x2.transobj.Usuario;
 import jm.q1x2.utils.Constantes;
 import jm.q1x2.utils.Mensajes;
 import jm.q1x2.utils.Preferencias;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
 
 public class UsuarioModificar extends UsuarioNuevo 
 {
@@ -25,14 +26,22 @@ public class UsuarioModificar extends UsuarioNuevo
         super.onCreate(savedInstanceState);
 
         Bundle extras = getIntent().getExtras();
-    	idUsuario= extras.getInt(Constantes.ID_USUARIO_MODIF_BORRAR);
-    	bEsElUsuarioActual= extras.getBoolean(Constantes.ES_USUARIO_ACTUAL);
-        SQLiteDatabase con= Basedatos.getConexion(this, Basedatos.LECTURA);
-        UsuarioDao usuDao= new UsuarioDao(con);
-        Usuario usu= usuDao.getUsuario(idUsuario);
-        Basedatos.cerrarConexion(con);  //[jm] con.close();
-        EditText v= (EditText) findViewById(R.id.valor);
-    	v.setText(usu.getNombre());
+        if (extras == null)
+        {
+            Mensajes.alerta(getApplicationContext(), "No es posible modificar el usuario en estos momentos ...");
+            finish();
+        }
+        else
+        {
+            idUsuario = extras.getInt(Constantes.ID_USUARIO_MODIF_BORRAR);
+            bEsElUsuarioActual = extras.getBoolean(Constantes.ES_USUARIO_ACTUAL);
+            SQLiteDatabase con = Basedatos.getConexion(this, Basedatos.LECTURA);
+            UsuarioDao usuDao = new UsuarioDao(con);
+            Usuario usu = usuDao.getUsuario(idUsuario);
+            Basedatos.cerrarConexion(con);  //[jm] con.close();
+            EditText v = (EditText) findViewById(R.id.valor);
+            v.setText(usu.getNombre());
+        }
     }    
 
     @Override
