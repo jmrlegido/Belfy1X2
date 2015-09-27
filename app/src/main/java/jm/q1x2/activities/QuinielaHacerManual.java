@@ -105,7 +105,13 @@ public class QuinielaHacerManual extends Activity
 	     		
          	}
      		Basedatos.cerrarConexion(con);  //[jm] con.close();
-     		
+
+			if (filasQuiniela.size() == 0)
+			{
+				Mensajes.alerta(getApplicationContext(), "Se ha descargado una quiniela sin partidos. Vuelva a intentarlo en unos minutos.");
+				finish();
+			}
+
      		PartidoQuiniela fila= null;
      		for (int k= 0; k< filasQuiniela.size()-1; k++)   // partidos 1 a 14
      		{
