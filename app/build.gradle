@@ -8,8 +8,8 @@ android {
         applicationId "jm.q1x2"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 33
-        versionName '5.3'
+        versionCode 34
+        versionName '5.4'
     }
     buildTypes {
         release {

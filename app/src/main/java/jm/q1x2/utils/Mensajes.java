@@ -31,7 +31,7 @@ public class Mensajes
 	{
 		int icon = R.drawable.icono_belfy1x2_32x32;
 		Notification notification = new Notification.Builder(ctx)
-				.setContentTitle("Title").setContentText("Text")
+				.setContentTitle("Belfy1X2").setContentText("Quiniela premiada")
 				.setSmallIcon(icon).getNotification();
 
 		NotificationManager mNotificationManager =
