@@ -327,14 +327,17 @@ public class QuinielaVerResultadosTodas extends ListActivity
         	  }
         	  else if (itemsId[item] == MENU_ELIMINAR)
         	  {
-	           	   Integer idQuin= id_elemsLista.get(pos);
-	    		   SQLiteDatabase con= Basedatos.getConexion(getApplicationContext(), Basedatos.ESCRITURA);
-	    		   QuinielaDao qDao= new QuinielaDao(con);
-	    		   qDao.borrar(idQuin.intValue());
-	    		   Basedatos.cerrarConexion(con);  //[jm] con.close();
-	    		   actualizarListaQuinielas(temporadaActual);
-	        	  
-	    		   Mensajes.alerta(getApplicationContext(), "Quiniela eliminada correctamente");
+				   if (id_elemsLista.size() > pos)
+				   {
+					   Integer idQuin = id_elemsLista.get(pos);
+					   SQLiteDatabase con = Basedatos.getConexion(getApplicationContext(), Basedatos.ESCRITURA);
+					   QuinielaDao qDao = new QuinielaDao(con);
+					   qDao.borrar(idQuin.intValue());
+					   Basedatos.cerrarConexion(con);  //[jm] con.close();
+					   actualizarListaQuinielas(temporadaActual);
+
+					   Mensajes.alerta(getApplicationContext(), "Quiniela eliminada correctamente");
+				   }
         	  }
           }
       });

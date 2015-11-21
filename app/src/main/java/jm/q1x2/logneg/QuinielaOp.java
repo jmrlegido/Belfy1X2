@@ -542,8 +542,10 @@ public class QuinielaOp
 			local_denominador= (local_numerador.equals(cero)? uno : local_numerador);
 		if (visit_denominador.equals(cero))
 			visit_denominador= (visit_numerador.equals(cero)? uno : visit_numerador);
-		
-		ret.add(new ValoracionEquiposPartidoQuiniela(local_numerador.divide(local_denominador, 4, RoundingMode.HALF_UP), visit_numerador.divide(visit_denominador, 4, RoundingMode.HALF_UP)));
+
+		BigDecimal numer= local_numerador.divide(local_denominador, 4, RoundingMode.HALF_UP);
+		BigDecimal denom= visit_numerador.divide(visit_denominador, 4, RoundingMode.HALF_UP);
+		ret.add(new ValoracionEquiposPartidoQuiniela(numer, denom));
 		
 		return ret;
 	}
