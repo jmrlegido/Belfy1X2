@@ -2,8 +2,8 @@ package jm.q1x2.config;
 
 public class Config
 {
-    private final static String temporada_actual= "1516";
-    private final static String temporada_letrero= "2015/16";
+    private final static String temporada_actual= "1617";
+    private final static String temporada_letrero= "2016/17";
     private final static String _base= "http://jmrlegido.es/proyectos/belfy1x2";
     private final static String url_notificaciones= _base + "/jm1x2_notifs.php";
     private final static String url_carpeta_jornadas= _base + "/jornadas";

@@ -24,6 +24,7 @@ public class Notificaciones
 
     public static String getNotificacion(String key)     
     {
+//if (key.equalsIgnoreCase(Constantes.NOTIFICACION_VERSIONES_BBDD)) return "16091504";   // [jm] quitar
     	actualizarNotificacionesSiProcede();
     	return (propNotificaciones==null ? null : propNotificaciones.getProperty(key));
     }

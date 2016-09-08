@@ -107,10 +107,10 @@ public class Q1x2SQLiteHelper extends SQLiteOpenHelper
     public void onUpgrade(SQLiteDatabase db, int versionAnterior, int versionNueva) 
     {
     	/*
-    	 * En       android:versionCode="28"     android:versionName="5.0"
-				al ser la primera versión de la temporada 2015/16, no hay actualización.
+    	 * En       android:versionCode="36"     android:versionName="6.0"
+				al ser la primera versión de la temporada 2016/17, no hay actualización.
 				Siempre será onCreate
-		   Las 2 siguientes líneas SÓLO deberían estar presentes si hay 1 única versión de BB.DD. (la 15082401).
+		   Las 2 siguientes líneas SÓLO deberían estar presentes si hay 1 única versión de BB.DD. (la 16091101).
 		   En el momento en que haya más, hay que quitarlas 
     	 */
     	onCreate(db);
